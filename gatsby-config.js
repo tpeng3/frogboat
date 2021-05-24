@@ -6,6 +6,9 @@ const siteUrl = "https://gatsby-starter-typescript-deluxe.netlify.com";
 const siteImage = `${siteUrl}/icons/icon_512x512.png`;
 const siteKeywords = ["gatsby", "typescript", "starter", "javascript", "react"];
 
+// gatsby-config.js
+const path = require('path')
+
 module.exports = {
   siteMetadata: {
     title: siteTitle,
@@ -64,5 +67,15 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-root-import`,
+      options: {
+        // src: path.join(__dirname, 'src'),
+        '@pages': path.join(__dirname, 'src/pages'),
+        '@components': path.join(__dirname, 'src/components'),
+        '@util': path.join(__dirname, 'src/util'),
+        '@store': path.join(__dirname, 'src/store')
+      },
+    },
   ],
 };

@@ -1,6 +1,10 @@
+const path = require('path');
 
 module.exports = {
-  stories: ['../**/*.stories.tsx'],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.tsx',
+    "../src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/**/stories.@(js|jsx|ts|tsx)",
+  ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-knobs",
@@ -12,7 +16,7 @@ module.exports = {
     // 'PRODUCTION' is used when building the static version of storybook.
 
     // Make whatever fine-grained changes you need
-// Transpile Gatsby module because Gatsby includes un-transpiled ES6 code.
+    // Transpile Gatsby module because Gatsby includes un-transpiled ES6 code.
     config.module.rules[0].exclude = [/node_modules\/(?!(gatsby)\/)/];
 
     // use installed babel-loader which is v8.0-beta (which is meant to work with @babel/core@7)
@@ -42,8 +46,15 @@ module.exports = {
     });
 
     config.resolve.extensions.push(".ts", ".tsx");
-    return config;
-    // Return the altered config
+
+    // sass??
+    config.module.rules.push({
+      test: /\.(sass|scss)$/,
+      loaders: ['style-loader', 'css-loader', 'sass-loader'],
+      include: path.resolve(__dirname, '../')
+    })
+    config.resolve.extensions.push(".ts", ".tsx")
+
     return config;
   },
 }

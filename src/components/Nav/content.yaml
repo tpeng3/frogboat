@@ -1,0 +1,156 @@
+title: Froggo's OCs
+
+navItems:
+  - label: Home
+    route: /oc
+  - label: SAQ
+    route: /oc/saq
+    subItems:
+    - label: Seina
+      route: /oc/saq/seina
+    - label: Quille
+      route: /oc/saq/quille
+    - label: Heidi
+      route: /oc/saq/heidi
+    - label: Kane
+      route: /oc/saq/kane
+  - label: DFC
+    route: /oc/dfc
+    subItems:
+    - label: Seven
+      route: /oc/dfc/seven
+    - label: Aster
+      route: /oc/dfc/aster
+    - label: Patti
+      route: /oc/dfc/patti
+    - label: Nova
+      route: /oc/dfc/nova
+    - label: Curry
+      route: /oc/dfc/curry
+  - label: ONM
+    route: /oc/onm
+    subItems:
+    - label: Seven
+      route: /oc/onm/hotaru
+    - label: Kokoro
+      route: /oc/onm/kokoro
+    - label: Marina
+      route: /oc/onm/marina
+    - label: Tetsu
+      route: /oc/onm/tetsu
+    - label: Jun
+      route: /oc/onm/jun
+    - label: Sachiko
+      route: /oc/onm/sachiko
+    - label: Aogi
+      route: /oc/onm/aogi
+      secret: true
+  - label: HORO
+    route: /oc/horo
+    subItems:
+    - label: Fei
+      route: /oc/horo/fei
+    - label: Priyanka
+      route: /oc/horo/priyanka
+    - label: Kazuma
+      route: /oc/horo/kazuma
+    - label: Vivianne
+      route: /oc/horo/vivianne
+    - label: Jonah
+      route: /oc/horo/jonah
+    - label: Tedd
+      route: /oc/horo/tedd
+      secret: true
+  - label: Etc.
+    route: /oc/etc
+    subItems:
+    - label: CITC
+      route: /oc/etc/citc
+    - label: Harold
+      route: /oc/etc/harold
+    - label: NMD
+      route: /oc/etc/nmd
+    - label: SVSB
+      route: /oc/etc/svsb
+    - label: Others
+      route: /oc/etc/others
+
+mobileNavItems:
+  - label: Home
+    route: /oc
+  - label: SAQ
+    subItems:
+    - label: About
+      route: /oc/saq
+    - label: Seina
+      route: /oc/saq/seina
+    - label: Quille
+      route: /oc/saq/quille
+    - label: Heidi
+      route: /oc/saq/heidi
+    - label: Kane
+      route: /oc/saq/kane
+  - label: DFC
+    subItems:
+    - label: About
+      route: /oc/dfc
+    - label: Seven
+      route: /oc/dfc/seven
+    - label: Aster
+      route: /oc/dfc/aster
+    - label: Patti
+      route: /oc/dfc/patti
+    - label: Nova
+      route: /oc/dfc/nova
+    - label: Curry
+      route: /oc/dfc/curry
+  - label: ONM
+    subItems:
+    - label: About
+      route: /oc/onm
+    - label: Seven
+      route: /oc/onm/hotaru
+    - label: Kokoro
+      route: /oc/onm/kokoro
+    - label: Marina
+      route: /oc/onm/marina
+    - label: Tetsu
+      route: /oc/onm/tetsu
+    - label: Jun
+      route: /oc/onm/jun
+    - label: Sachiko
+      route: /oc/onm/sachiko
+    - label: Aogi
+      route: /oc/onm/aogi
+      secret: true
+  - label: HORO
+    subItems:
+    - label: About
+      route: /oc/horo
+    - label: Fei
+      route: /oc/horo/fei
+    - label: Priyanka
+      route: /oc/horo/priyanka
+    - label: Kazuma
+      route: /oc/horo/kazuma
+    - label: Vivianne
+      route: /oc/horo/vivianne
+    - label: Jonah
+      route: /oc/horo/jonah
+    - label: Tedd
+      route: /oc/horo/tedd
+      secret: true
+  - label: Etc.
+    subItems:
+    - label: About
+      route: /oc/etc
+    - label: CITC
+      route: /oc/etc/citc
+    - label: Harold
+      route: /oc/etc/harold
+    - label: NMD
+      route: /oc/etc/nmd
+    - label: SVSB
+      route: /oc/etc/svsb
+    - label: Others
+      route: /oc/etc/others

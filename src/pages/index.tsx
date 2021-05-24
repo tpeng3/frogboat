@@ -1,11 +1,13 @@
 import React from "react";
 import { Layout } from "../components/layout";
-import { SEO } from "../components/seo";
-import { Code } from "../components/code";
-import { Link } from "../components/link";
+import { SEO } from "@components/seo";
+import { Code } from "@components/code";
+import { Link } from "@components/link";
 
 const command =
   "gatsby new my-app https://github.com/gojutin/gatsby-starter-typescript-deluxe";
+
+console.log("hewo")
 
 const App = () => (
   <Layout>
