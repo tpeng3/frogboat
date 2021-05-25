@@ -1,7 +1,6 @@
 /// <reference types="react/index.d.ts"/>
 /// <reference types="styled-components/cssprop" />
 
-import "styled-components";
 
 // Add support for css prop
 declare namespace React {
@@ -11,6 +10,7 @@ declare namespace React {
 }
 
 declare module "styled-components" {
+  import "styled-components";
   export interface DefaultTheme {
     [key: string]: any | DefaultTheme;
   }
@@ -38,14 +38,19 @@ declare module '*.sass' {
   export default content;
 }
 
+declare module '*.scss' {
+  const content: any;
+  export default content;
+}
+
 declare module '*.json' {
   const content: any;
   export default content;
 }
 
 declare module '*.yaml' {
-  const content: any;
-  export default content;
+  const data: any
+  export default data
 }
 
 declare module 'async!*' {

@@ -6,21 +6,31 @@
     "node_modules"
   ],
   "compilerOptions": {
-    "target": "es5",
-    "jsx": "react",
-    "skipLibCheck": true,
+    "module": "commonjs",
+    "target": "es6",
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "es2015",
+      "es2017"
+    ],
+    "strict": true,
+    "noEmit": true,
     "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "removeComments": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
     "typeRoots": [
       "node_modules/@types/",
       "./src/@types/",
       ".src/**/@types/"
     ],
-    "strict": true,
     "baseUrl": ".",
     "paths": {
       // "src": [
@@ -36,7 +46,7 @@
         "src/util/*"
       ],
       "@store/*": [
-        "src/store"
+        "src/store/*"
       ],
     }
   }
