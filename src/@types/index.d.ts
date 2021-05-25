@@ -1,6 +1,7 @@
 /// <reference types="react/index.d.ts"/>
 /// <reference types="styled-components/cssprop" />
 
+import "styled-components";
 
 // Add support for css prop
 declare namespace React {
@@ -10,7 +11,6 @@ declare namespace React {
 }
 
 declare module "styled-components" {
-  import "styled-components";
   export interface DefaultTheme {
     [key: string]: any | DefaultTheme;
   }
@@ -24,8 +24,6 @@ declare global {
     }
   }
 }
-
-declare const firebase: typeof import('firebase');
 
 // Prevent typescript from complaining about various file paths
 declare module '*.css' {
@@ -58,11 +56,14 @@ declare module 'async!*' {
   export default content;
 }
 
-declare module '*.svg' {
-  const content: any;
-  export default content;
+declare module "*.svg" {
+  import React = require("react");
+  export const ReactComponent: React.SFC<React.SVGProps<SVGSVGElement>>;
+  const src: string;
+  export default src;
 }
 
+declare const firebase: typeof import('firebase');
 declare namespace JSX {
   interface HTMLAttributes {
     native?: string;

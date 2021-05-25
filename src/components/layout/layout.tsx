@@ -26,32 +26,32 @@ const Tagline = styled.h2`
 `;
 
 const Layout: React.FC = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-          description
-        }
-      }
-    }
-  `);
+  // const data = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //         description
+  //       }
+  //     }
+  //   }
+  // `);
 
-  const { title, description } = data.site.siteMetadata;
+  // const { title, description } = data.site.siteMetadata;
 
   return (
     <ThemeProvider theme={theme()}>
-      <Container>
-        <GlobalStyles />
-        <CSSDebugger />
-        <Link to="/">
+      {/* <Container> */}
+      <GlobalStyles />
+      <CSSDebugger />
+      {/* <Link to="/">
           <Title>{title.toUpperCase()}</Title>
         </Link>
-        <Tagline>{description}</Tagline>
-        <br />
-        <main>{children}</main>
-        <Footer />
-      </Container>
+        <Tagline>{description}</Tagline> */}
+      {/* <br /> */}
+      <main>{children}</main>
+      {/* <Footer /> */}
+      {/* </Container> */}
     </ThemeProvider>
   );
 };

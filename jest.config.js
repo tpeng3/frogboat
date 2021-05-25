@@ -14,7 +14,8 @@ module.exports = {
     '@pages/(.*)': '<rootDir>/src/pages/$1',
     '@components/(.*)': '<rootDir>/src/components/$1',
     '@util/(.*)': '<rootDir>/src/util/$1',
-    '@store/(.*)': '<rootDir>/src/store/$1'
+    '@store/(.*)': '<rootDir>/src/store/$1',
+    '@images/(.*)': '<rootDir>/src/images/$1',
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   testPathIgnorePatterns: ["node_modules", ".cache"],
