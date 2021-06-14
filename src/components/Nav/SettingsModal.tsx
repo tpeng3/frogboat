@@ -3,26 +3,16 @@ import styled from "styled-components";
 import content from "./content.yaml";
 import useSystemStore from "@store/system";
 import Link from "@components/Link";
-import MobileNav from "./MobileNav";
-import SettingsModal from "./SettingsModal";
 import HomeIcon from "@images/SVG/home.svg";
 import SettingsIcon from "@images/SVG/settings.svg";
 import MenuIcon from "@images/SVG/menu.svg";
 import { hexToRGBA, media, elevation } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import useWindowSize from "@util/screen";
-import Drawer from "@material-ui/core/Drawer";
-
-const StyledDrawer = styled(Drawer)`
-  && {
-    .MuiDrawer-paper {
-      background-color: ${COLORS.GREY_DEFAULT};
-    }
-  }
-`;
 
 const NavContainer = styled.div`
-  background-color: ${hexToRGBA(COLORS.GREY_DEFAULT, 0.9)};
+  /* background-color: ${hexToRGBA(COLORS.GREY_DEFAULT, 0.9)}; */
+  background-color: ${hexToRGBA(COLORS.GREY_DEFAULT, 1)};
   width: 100%;
   height: 64px;
   display: flex;
@@ -37,9 +27,6 @@ const NavContainer = styled.div`
 const NavItem = styled.div`
   &:not(:last-child) {
     margin-right: 12px;
-    img {
-      margin-right: 6px;
-    }
   }
   &:last-child {
     margin-left: auto;
@@ -57,6 +44,9 @@ const NavButton = styled.button`
   min-width: 80px;
   :hover {
     background-color: ${COLORS.GREY_HOVER};
+  }
+  img {
+    margin-right: 6px;
   }
 `;
 
@@ -82,7 +72,7 @@ const SubNavContainer = styled.div`
   background-color: ${COLORS.GREY_DEFAULT};
   width: 250px;
   ${elevation(2)}
-  z-index: 1;
+  z-index: 0;
   :hover {
     display: block;
   }
@@ -144,80 +134,63 @@ export interface NavProps {
 
 const Nav = ({ primary }: NavProps) => {
   const darkMode = useSystemStore((state) => state.darkMode);
-  const [mobileNavOpened, toggleMobileNav] = React.useState<boolean>(false);
-  const [settingsModalOpened, togglSettingsModal] =
-    React.useState<boolean>(false);
-
   const { isTablet } = useWindowSize();
 
   return isTablet ? (
-    <>
-      <NavContainer>
-        <NavItem>
-          <NavButton onClick={() => toggleMobileNav(true)}>
-            <StyledIcon src={MenuIcon} alt={"menu icon"} />
-          </NavButton>
-        </NavItem>
-        <NavItem>
-          <NavButton>
-            <StyledIcon src={SettingsIcon} alt={"settings icon"} />
-          </NavButton>
-        </NavItem>
-      </NavContainer>
-      {/* <SettingsModal /> */}
-      <StyledDrawer
-        anchor={"left"}
-        open={mobileNavOpened}
-        onClose={() => toggleMobileNav(false)}
-      >
-        <MobileNav />
-      </StyledDrawer>
-    </>
+    <NavContainer>
+      <NavItem>
+        <NavButton>
+          <StyledIcon src={MenuIcon} alt={"menu icon"} />
+        </NavButton>
+      </NavItem>
+      <NavItem>
+        <NavButton>
+          <StyledIcon src={SettingsIcon} alt={"settings icon"} />
+        </NavButton>
+      </NavItem>
+    </NavContainer>
   ) : (
-    <>
-      <NavContainer>
-        <NavItem>
-          <Link to={"/oc"}>
-            <NavButton>
-              <span>
-                <StyledIcon src={HomeIcon} alt={"home icon"} />
-                Home
-              </span>
-            </NavButton>
-          </Link>
-        </NavItem>
-        {content.navItems.map((item) => {
-          return (
-            <NavItem>
-              <DropdownContainer>
-                <Link to={item.route}>
-                  <NavButton key={item.label}>
-                    <span>{item.label}</span>
-                  </NavButton>
-                </Link>
-                {item.subItems && (
-                  <SubNavContainer>
-                    {item.subItems.map((subitem) => (
-                      <Link to={subitem.route} key={subitem.label}>
-                        <SubNavButton key={subitem.label}>
-                          <span>{subitem.label}</span>
-                        </SubNavButton>
-                      </Link>
-                    ))}
-                  </SubNavContainer>
-                )}
-              </DropdownContainer>
-            </NavItem>
-          );
-        })}
-        <NavItem>
+    <NavContainer>
+      <NavItem>
+        <Link to={"/io"}>
           <NavButton>
-            <StyledIcon src={SettingsIcon} alt={"settings icon"} />
+            <span>
+              <StyledIcon src={HomeIcon} alt={"home icon"} />
+              Home
+            </span>
           </NavButton>
-        </NavItem>
-      </NavContainer>
-      {/* <SettingsModal /> */}
-    </>
+        </Link>
+      </NavItem>
+      {content.navItems.map((item) => {
+        return (
+          <NavItem>
+            <DropdownContainer>
+              <Link to={item.route}>
+                <NavButton key={item.label}>
+                  <span>{item.label}</span>
+                </NavButton>
+              </Link>
+              {item.subItems && (
+                <SubNavContainer>
+                  {item.subItems.map((subitem) => (
+                    <Link to={subitem.route}>
+                      <SubNavButton key={subitem.label}>
+                        <span>{subitem.label}</span>
+                      </SubNavButton>
+                    </Link>
+                  ))}
+                </SubNavContainer>
+              )}
+            </DropdownContainer>
+          </NavItem>
+        );
+      })}
+      <NavItem>
+        <NavButton>
+          <StyledIcon src={SettingsIcon} alt={"settings icon"} />
+        </NavButton>
+      </NavItem>
+    </NavContainer>
   );
 };
 

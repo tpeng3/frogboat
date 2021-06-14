@@ -1,9 +1,6 @@
-import { isRunningInBrowser } from '../util/helpers';
+// import { isRunningInBrowser } from "../util/helpers";
 
-/**
- * @fileoverview
- * Basic utils for guestimating if the user is on mobile based on the screen size.
- */
+import { useEffect, useState } from "react";
 
 export const breakpoints = {
   mobile: 370,
@@ -14,14 +11,45 @@ export const breakpoints = {
   desktopXlarge: 2400,
 };
 
-export const isMobile = () => {
-  if (isRunningInBrowser) {
-    return document.documentElement.clientWidth < breakpoints.tablet;
-  }
-};
+/**
+ * Get the current size of the browser window.
+ * @return {windowSize}
+ */
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+    isMobile: window.innerWidth < breakpoints.tablet,
+    isTablet: window.innerWidth <= breakpoints.laptop,
+    isLandscape: window.matchMedia(
+      "only screen and (max-device-height: 411px) and (max-device-width: 823px) and (orientation: landscape)"
+    ).matches,
+  });
 
-export const isLessThanScreenSize = (breakpoint: number) => {
-  if (isRunningInBrowser) {
-    return document.documentElement.clientWidth < breakpoint;
-  }
-};
+  useEffect(() => {
+    /**
+     * update window dimensions
+     */
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+        isMobile: window.innerWidth < breakpoints.tablet,
+        isTablet: window.innerWidth <= breakpoints.laptop,
+        isLandscape: window.matchMedia(
+          "only screen and (max-device-height: 411px) and (max-device-width: 823px) and (orientation: landscape)"
+        ).matches,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowSize;
+}
+
+export default useWindowSize;

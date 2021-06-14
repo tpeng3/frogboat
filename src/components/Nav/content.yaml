@@ -1,8 +1,8 @@
 title: Froggo's OCs
 
 navItems:
-  - label: Home
-    route: /oc
+  # - label: Home
+  #   route: /oc
   - label: SAQ
     route: /oc/saq
     subItems:
@@ -30,7 +30,7 @@ navItems:
   - label: ONM
     route: /oc/onm
     subItems:
-    - label: Seven
+    - label: Hotaru
       route: /oc/onm/hotaru
     - label: Kokoro
       route: /oc/onm/kokoro

@@ -28,9 +28,11 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
     "framer-motion": "^2.9.4",
     "gatsby": "^2.25.3",
     "gatsby-image": "^2.4.21",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-manifest": "^2.5.2",
     "gatsby-plugin-offline": "^3.3.3",
     "gatsby-plugin-react-axe": "^0.5.0",
@@ -91,7 +93,7 @@
     "jest": "^26.6.3",
     "jest-styled-components": "^7.0.3",
     "npm-check-updates": "^10.0.0",
-    "prettier": "^2.1.2",
+    "prettier": "^2.3.0",
     "ts-jest": "^26.4.4",
     "tslint-immutable": "^6.0.1",
     "typescript": "^4.0.5"
