@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import Nav, { NavProps } from ".";
-import { Layout } from "@components/layout";
+import Layout from "@components/Layout";
 
 export default {
   title: "Example/Nav",

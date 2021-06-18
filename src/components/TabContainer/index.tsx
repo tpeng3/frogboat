@@ -3,20 +3,27 @@ import { useState } from "react";
 import styled from "styled-components";
 import useWindowSize from "@util/screen";
 import { media } from "@util/helpers";
-import { THEME, COLORS } from "@util/constants";
+import { COLORS } from "@util/constants";
 import Relationships from "@components/Testimony";
+import Gallery from "@components/Gallery";
 
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin: 2rem 4rem 0rem 4rem;
+  justify-content: center;
+  ${media.laptop`
+    justify-content: flex-start;
+  `}
 `;
 
 const TabButton = styled.button<{ currentTheme: string; selected: boolean }>`
-  border: 1px solid ${(props) => THEME[props.currentTheme].secondaryColor};
+  border: 1px solid ${(props) => props.theme[props.currentTheme].secondaryColor};
   cursor: pointer;
   background-color: ${(props) =>
-    props.selected ? THEME[props.currentTheme].secondaryColor : "transparent"};
+    props.selected
+      ? props.theme[props.currentTheme].secondaryColor
+      : "transparent"};
   display: flex;
   justify-content: center;
   border-radius: 6px 6px 0 0;
@@ -26,7 +33,7 @@ const TabButton = styled.button<{ currentTheme: string; selected: boolean }>`
   :hover {
     background-color: ${(props) =>
       props.selected
-        ? THEME[props.currentTheme].primaryColor
+        ? props.theme[props.currentTheme].primaryColor
         : COLORS.GREY_HOVER};
   }
 `;
@@ -35,11 +42,14 @@ const Container = styled.div<{ currentTheme: string }>`
   border: 1px solid
     ${(props) =>
       props.currentTheme
-        ? THEME[props.currentTheme].secondaryColor
-        : THEME.default.secondaryColor};
+        ? props.theme[props.currentTheme].secondaryColor
+        : props.theme.default.secondaryColor};
   border-radius: 12px;
   color: ${COLORS.white};
-  padding: 2rem 4rem;
+  padding: 4rem 1rem;
+  ${media.laptop`
+    padding: 2rem 4rem;
+  `}
 `;
 
 export enum tabTypes {
@@ -65,7 +75,7 @@ const TabContainer = ({ currentTheme, keyName, tabs }: CharacterProps) => {
       case tabTypes.RELATIONSHIPS:
         return <Relationships keyName={keyName} />;
       case tabTypes.GALLERY:
-        return `gallery`;
+        return <Gallery keyName={keyName} />;
       case tabTypes.NOTES:
         return `notes`;
     }

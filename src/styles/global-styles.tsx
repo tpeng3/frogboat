@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { THEME } from "@util/constants";
+import { COLORS } from "@util/constants";
 import { media, font } from "@util/helpers";
 
 const GlobalStyles = createGlobalStyle`
@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   }
   h1, h2, h3, h4, h5, h6, span, p {
-    color: ${THEME.default.primaryColor}
+    color: ${COLORS.white}
   } 
   h1 {
     text-transform: uppercase;

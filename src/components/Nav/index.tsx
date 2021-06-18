@@ -61,6 +61,7 @@ const NavButton = styled.button`
 `;
 
 const SubNavButton = styled.button`
+  cursor: pointer;
   background-color: ${COLORS.GREY_DEFAULT};
   color: ${COLORS.white};
   padding: 16px;
@@ -188,7 +189,7 @@ const Nav = ({ primary }: NavProps) => {
         </NavItem>
         {content.navItems.map((item) => {
           return (
-            <NavItem>
+            <NavItem key={item.label}>
               <DropdownContainer>
                 <Link to={item.route}>
                   <NavButton key={item.label}>

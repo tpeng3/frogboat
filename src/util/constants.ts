@@ -20,25 +20,3 @@ export const COLORS = {
   shadow: "#29282C",
   TEAL_500: "#73DFCB",
 };
-
-export enum themeTypes {
-  default,
-  onm,
-}
-
-export const THEME = {
-  default: {
-    primaryColor: COLORS.GREY_50,
-    secondaryColor: COLORS.GREY_100,
-    accentColor: COLORS.TEAL_500,
-    backgroundColor: COLORS.GREY_HOVER,
-  },
-  onm: {
-    accentColor: "#28B5B3",
-    primaryColor: "#28B5B3",
-    secondaryColor: "#118180",
-    backgroundColor: "#141725",
-    backgroundGradient:
-      "linear-gradient(180.00deg, #2F9A8C 0.00%, #262539 70.00%, #141725 100.00%);",
-  },
-};

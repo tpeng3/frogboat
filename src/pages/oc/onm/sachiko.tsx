@@ -7,7 +7,7 @@ import CharacterAbout from "@components/CharacterPage";
 import TabContainer, { tabTypes } from "@components/TabContainer";
 import content from "./content.yaml";
 
-const CHARA_KEY = "hotaru";
+const CHARA_KEY = "sachiko";
 const THEME_KEY = themeTypes.ONM;
 
 const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {

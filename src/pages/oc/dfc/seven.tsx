@@ -7,8 +7,8 @@ import CharacterAbout from "@components/CharacterPage";
 import TabContainer, { tabTypes } from "@components/TabContainer";
 import content from "./content.yaml";
 
-const CHARA_KEY = "hotaru";
-const THEME_KEY = themeTypes.ONM;
+const CHARA_KEY = "seven";
+const THEME_KEY = themeTypes.DFC;
 
 const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   const path = location.pathname;

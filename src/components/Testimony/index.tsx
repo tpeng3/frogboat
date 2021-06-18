@@ -4,20 +4,27 @@ import styled from "styled-components";
 import useWindowSize from "@util/screen";
 import Link from "@components/Link";
 import { hexToRGBA, media } from "@util/helpers";
-import { THEME, COLORS } from "@util/constants";
+import { COLORS } from "@util/constants";
 
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 2rem 4rem 0rem 4rem;
 `;
 
 const PortraitIcon = styled.img`
-  height: 150px;
-  width: 150px;
+  position: relative;
+  height: 100px;
+  width: 100px;
   border-radius: 100%;
   object-fit: cover;
+  top: -50px;
+  right: -20px;
   background-color: ${COLORS.white};
+  ${media.laptop`
+    position: initial;
+    height: 150px;
+    width: 150px;
+  `}
 `;
 
 const Description = styled.p`
@@ -27,22 +34,32 @@ const Description = styled.p`
 
 const Bubble = styled.div`
   display: flex;
-  height: 150px;
-  border-radius: 150px;
-  width: 700px;
+  border-radius: 10px;
+  width: 100%;
   background-color: ${hexToRGBA(COLORS.GREY_200, 0.2)};
+  ${media.laptop`
+    height: 150px;
+    border-radius: 150px;
+    width: 700px;
+  `}
 `;
 
 const Testimony = styled.div<{ currentTheme?: string }>`
   display: flex;
-  &:nth-child(2n) {
-    justify-content: flex-end;
-    ${Bubble} {
-      flex-direction: row-reverse;
+  ${media.laptop`
+    &:nth-child(2n) {
+      justify-content: flex-end;
+      ${Bubble} {
+        flex-direction: row-reverse;
+      }
     }
-  }
+  `}
+
   &:not(:last-child) {
-    margin-bottom: 2rem;
+    margin-bottom: 6rem;
+    ${media.laptop`
+      margin-bottom: 2rem;
+    `}
   }
 `;
 
@@ -57,7 +74,7 @@ const Relationships = ({ keyName }: CharacterProps) => {
   return (
     <div>
       {[1, 2, 3].map((chara) => (
-        <Testimony>
+        <Testimony key={chara}>
           <Bubble>
             <PortraitIcon
               src={

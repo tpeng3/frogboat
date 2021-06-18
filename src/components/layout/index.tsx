@@ -2,13 +2,13 @@ import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import useSystemStore from "@store/system";
 import { useStaticQuery, graphql } from "gatsby";
-import { theme, GlobalStyles } from "../../styles";
+import { theme, GlobalStyles } from "src/styles";
 // Components
 import { CSSDebugger } from "../css-debugger";
 import Nav from "@components/Nav";
 import Polka from "@images/SVG/polka.svg";
-import { THEME, COLORS } from "@util/constants";
 import { hexToRGBA, elevation } from "@util/helpers";
+import { COLORS } from "@util/constants";
 import { test } from "./anim";
 
 const HeaderImage = styled.div`
@@ -20,27 +20,27 @@ const Main = styled.main<{ currentTheme: string }>`
   padding: 5rem 1rem;
   background-color: ${(props) =>
     props.currentTheme
-      ? THEME[props.currentTheme].backgroundColor
-      : THEME.default.backgroundColor};
+      ? props.theme[props.currentTheme].backgroundColor
+      : props.theme.default.backgroundColor};
   background-image: ${(props) =>
     props.currentTheme
-      ? THEME[props.currentTheme].backgroundGradient
-      : THEME.default.backgroundColor};
+      ? props.theme[props.currentTheme].backgroundGradient
+      : props.theme.default.backgroundColor};
   /* animation: ${test} 1s; */
   h1,
-  span {
+  .accent {
     color: ${(props) =>
       props.currentTheme
-        ? THEME[props.currentTheme].accentColor
-        : THEME.default.accentColor};
+        ? props.theme[props.currentTheme].accentColor
+        : props.theme.default.accentColor};
   }
   hr {
     border: none;
     border-top: 0.1em solid
       ${(props) =>
         props.currentTheme
-          ? THEME[props.currentTheme].accentColor
-          : THEME.default.accentColor};
+          ? props.theme[props.currentTheme].accentColor
+          : props.theme.default.accentColor};
   }
 `;
 
@@ -75,7 +75,15 @@ const BackgroundTexture = styled.img<{ rotated?: boolean }>`
   `}
 `;
 
-export interface LayoutProps {
+export enum themeTypes {
+  DEFAULT = "default",
+  SAQ = "saq",
+  DFC = "dfc",
+  ONM = "onm",
+  HORO = "horo",
+}
+
+interface LayoutProps {
   currentTheme: string;
   children?: any;
 }
@@ -114,4 +122,4 @@ const Layout = ({ currentTheme = "default", children }: LayoutProps) => {
   );
 };
 
-export { Layout };
+export default Layout;

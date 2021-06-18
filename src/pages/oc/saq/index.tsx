@@ -1,9 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { RouteComponentProps } from "@reach/router";
-import { Layout } from "@components/layout";
+import Layout, { themeTypes } from "@components/Layout";
 import { SEO } from "@components/seo";
 import SocialLinks from "@components/SocialLinks";
+import content from "./content.yaml";
+
+const THEME_KEY = themeTypes.SAQ;
 
 const AboutContainer = styled.div`
   margin: 2em 5em;
@@ -14,30 +18,26 @@ const AboutContainer = styled.div`
   }
 `;
 
-const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
+const SAQPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   const path = location.pathname;
   return (
-    <Layout currentTheme="default">
+    <Layout currentTheme={THEME_KEY}>
       <SEO
         title="About gatsby-starter-template-deluxe"
         description="Examples using the gatsby-starter-template-deluxe."
       />
-      <h1>Froggo's OCs</h1>
+      <h1>{content.main.title}</h1>
+      <h4>Genre: {content.main.genre}</h4>
       <hr />
       <AboutContainer>
-        <p>
-          Hello! This is where I dump my OC refs and gift art. Feel free to look
-          around! They're my precious children and I care for them very much
-          '-')9
-        </p>
-        <SocialLinks />
+        <p>{content.main.description}</p>
       </AboutContainer>
       <hr />
-      {/* there should be a carousel here... or just image */}
+      {/* Chara select screen here */}
       <hr />
-      {/* <DevNotes/> */}
+      {/* <Project Status/> */}
     </Layout>
   );
 };
 
-export default OCPage;
+export default SAQPage;

@@ -57,16 +57,14 @@ const MainImage = styled.img`
 `;
 
 interface CharacterProps {
-  key: string;
-  name: string;
+  title: string;
   quote: string;
   description: string;
   mainImg?: string;
 }
 
 const CharacterAbout = ({
-  key,
-  name,
+  title,
   quote,
   description,
   mainImg,
@@ -75,12 +73,12 @@ const CharacterAbout = ({
 
   return (
     <div>
-      <Name>{name}</Name>
+      <Name>{title}</Name>
       <hr />
       {isTablet ? (
         <AboutContainer>
           <AboutDescription>
-            {mainImg && <MainImage src={mainImg} alt={`${key} image`} />}
+            {mainImg && <MainImage src={mainImg} alt={`${title} image`} />}
             <Quote>{quote}</Quote>
           </AboutDescription>
           <p>{description}</p>
@@ -88,10 +86,10 @@ const CharacterAbout = ({
       ) : (
         <AboutContainer>
           <AboutDescription>
-            <Quote>{quote}</Quote>
+            <Quote className="accent">{quote}</Quote>
             <p>{description}</p>
           </AboutDescription>
-          {mainImg && <MainImage src={mainImg} alt={`${key} image`} />}
+          {mainImg && <MainImage src={mainImg} alt={`${title} image`} />}
         </AboutContainer>
       )}
     </div>

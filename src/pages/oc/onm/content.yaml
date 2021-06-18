@@ -1,0 +1,64 @@
+main:
+  title: One Night Murder
+  genre: Mystery, Supernatural, Romance(?)
+  description: >
+    One day, Hotaru wakes up in an unknown mansion with five other girls. None of them claim to know what's going on but everyone's bent on trying to leave. But it's too bad Hotaru's got a knack for unlucky timings because there's a dead body on the floor and Hotaru's holding the knife.
+    
+    Active project to turn this into an interactive visual novel with 6 chapters. In the past, I had an hour long prologue demo done, but I'm revamping it.
+
+hotaru:
+  key: hotaru
+  title: Akesaki Hotaru (明幸ホタル)
+  quote: >
+    "Well, I have my poker chips on alien abductions. They've trapped us in this replica of a mansion in order to observe how we humans interact."
+  description: this dumb kid
+  mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/ey-wr-qxgaecbt6_orig.jpg
+  facts:
+    - Birthday is July 20th (Cancer), which just so happens to be when the murder mystery takes place
+    - Just finished their first year in college (English major)
+    - My mascot oc. If it wasn't obvious by the incredible amount of art I have. Hi I love them.
+
+kokoro:
+  key: kokoro
+  title: Masagami Kokoro (正上こころ)
+  quote: >
+    "A-aliens? Are you sure?"
+  description: she's uwu
+  mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newheader_1.png
+  facts:
+    - a bit gullible but tries her best
+    - Another aesthetic OC because she has a good color palette.
+
+marina:
+  key: marina
+  title: Tomimura Marina (富マリナ)
+  quote: >
+    "Forgive my pessimism but I believe our situation is quite serious."
+  description: she can step on me
+  mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newheadertest_1.png
+  facts:
+    - She likes jazz music, can play the saxophone
+    - 6 foot trans queen
+    - Another self indulgent aesthetic oc _(:'3_
+
+tetsu:
+  key: tetsu
+  title: Watanabe Tetsuaki (渡辺鉄秋)
+  quote: >
+    "Well my gut says that she has good intentions, and you can trust my gut."
+  description: smart jock
+  mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newheadertest2_2.png
+  facts:
+    - Family runs an okonomiyaki restaraunt
+    - was the libero for her volleyball team in high school
+    - I know she has a fanbase among my friends for being ****.
+
+sachiko:
+  key: sachiko
+  title: Aya Sachiko (綾智子)
+  quote: >
+    "EYES ON ME! For I'm the one and only, Aya Sachiko~★"
+  description: mmm don't trust her
+  mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/oh.jpg
+    - she's an idol... yeah
+    - I designed her with all my drawing weaknesses (glasses, hair, muscles, frilly outfits) in mind so this is my least favorite OC.
