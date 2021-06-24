@@ -15,6 +15,9 @@ const AboutContainer = styled.div`
     margin-bottom: 2rem;
     white-space: pre-line;
     text-align: left;
+    ${media.laptop`
+      margin-right: 2rem;
+    `}
   }
   ${media.laptop`
     flex-direction: row;
@@ -79,7 +82,7 @@ const CharacterAbout = ({
         <AboutContainer>
           <AboutDescription>
             {mainImg && <MainImage src={mainImg} alt={`${title} image`} />}
-            <Quote>{quote}</Quote>
+            <Quote className="accent">{quote}</Quote>
           </AboutDescription>
           <p>{description}</p>
         </AboutContainer>

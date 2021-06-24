@@ -134,63 +134,18 @@ export interface NavProps {
 
 const Nav = ({ primary }: NavProps) => {
   const darkMode = useSystemStore((state) => state.darkMode);
+  const setDarkMode = useSystemStore((state) => state.setDarkMode);
   const { isTablet } = useWindowSize();
 
-  return isTablet ? (
-    <NavContainer>
-      <NavItem>
-        <NavButton>
-          <StyledIcon src={MenuIcon} alt={"menu icon"} />
-        </NavButton>
-      </NavItem>
-      <NavItem>
-        <NavButton>
-          <StyledIcon src={SettingsIcon} alt={"settings icon"} />
-        </NavButton>
-      </NavItem>
-    </NavContainer>
-  ) : (
-    <NavContainer>
-      <NavItem>
-        <Link to={"/io"}>
-          <NavButton>
-            <span>
-              <StyledIcon src={HomeIcon} alt={"home icon"} />
-              Home
-            </span>
-          </NavButton>
-        </Link>
-      </NavItem>
-      {content.navItems.map((item) => {
-        return (
-          <NavItem>
-            <DropdownContainer>
-              <Link to={item.route}>
-                <NavButton key={item.label}>
-                  <span>{item.label}</span>
-                </NavButton>
-              </Link>
-              {item.subItems && (
-                <SubNavContainer>
-                  {item.subItems.map((subitem) => (
-                    <Link to={subitem.route}>
-                      <SubNavButton key={subitem.label}>
-                        <span>{subitem.label}</span>
-                      </SubNavButton>
-                    </Link>
-                  ))}
-                </SubNavContainer>
-              )}
-            </DropdownContainer>
-          </NavItem>
-        );
-      })}
-      <NavItem>
-        <NavButton>
-          <StyledIcon src={SettingsIcon} alt={"settings icon"} />
-        </NavButton>
-      </NavItem>
-    </NavContainer>
+  return (
+    // <ModalContainer>
+    //   <Title>Settings</Title>
+    //   <MenuItem>
+    //   <span>Dark mode</span>
+    //   <Toggle/>
+    //   </MenuItem>
+    // </ModalContainer>
+    <div />
   );
 };
 

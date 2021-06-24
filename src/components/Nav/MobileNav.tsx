@@ -78,8 +78,12 @@ const NavButton = styled.button`
   :hover {
     background-color: ${COLORS.GREY_HOVER};
   }
-  img {
-    margin-right: 6px;
+  svg {
+    height: 24px;
+    width: 20px;
+    display: initial;
+    vertical-align: sub;
+    margin-right: 5px;
   }
 `;
 
@@ -126,14 +130,7 @@ const StyledAccordionDetails = styled(AccordionDetails)`
   flex-direction: column;
 `;
 
-const StyledIcon = styled.img`
-  height: 24px;
-  width: 20px;
-  display: initial;
-  vertical-align: sub;
-`;
-
-const AccordionIcon = styled.img<{ expanded: boolean }>`
+const AccordionIcon = styled(DownArrowIcon)<{ expanded: boolean }>`
   height: 24px;
   width: 13px;
   display: initial;
@@ -162,7 +159,7 @@ const Nav = ({ primary }: NavProps) => {
         <Link to={"/io"}>
           <NavButton>
             <span>
-              <StyledIcon src={HomeIcon} alt={"home icon"} />
+              <HomeIcon alt={"home icon"} />
               Home
             </span>
           </NavButton>
@@ -174,13 +171,13 @@ const Nav = ({ primary }: NavProps) => {
             square
             expanded={expanded === item.label}
             onChange={handleChange(item.label)}
+            key={item.label}
           >
             <StyledAccordionSummary
               aria-controls="panel1d-content"
               id="panel1d-header"
             >
               <AccordionIcon
-                src={DownArrowIcon}
                 alt={"accordion icon"}
                 expanded={expanded === item.label}
               />
@@ -189,8 +186,8 @@ const Nav = ({ primary }: NavProps) => {
             <StyledAccordionDetails>
               {item.subItems &&
                 item.subItems.map((subitem) => (
-                  <Link to={subitem.route}>
-                    <SubNavButton key={subitem.label}>
+                  <Link to={subitem.route} key={subitem.label}>
+                    <SubNavButton>
                       <span>{subitem.label}</span>
                     </SubNavButton>
                   </Link>

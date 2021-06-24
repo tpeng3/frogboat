@@ -3,40 +3,40 @@ main:
     Seina and Quille
   genre: Puzzle, Fantasy, Cooking, Slice of Life
   description: >
-    Far away in the land of [], there exists magic made from language and thoughts. Although this type of magic is well-known to many, the few who can utilize such extraordinary power are known as Wordeaters. The Witch of Words dedicated her life to researching and recording this form of magic, working tirelessly day and night. Upon her recent passing, her legacy has been passed on to her two young apprentices. The story follows a curious girl and reluctant young man's one year journey around their world and the discoveries they make about "magic" and themselves.
+    Far away in the land of [], there exists magic derived from language and thoughts. Although this type of magic is well-known to many, the few who can utilize such extraordinary power are known as Wordeaters. The Witch of Words dedicated her life to researching and recording this form of magic, working tirelessly day and night, to the unfortunate point of exhaustion. Upon her recent passing, her now legacy falls into the hands of two laidback young apprentices. The story follows a curious girl and reluctant young man's one year journey around their world and the discoveries they make about "magic" and themselves.
 
-    WIP project that ideally will take place as a simple 4 chapter fetch quest rpgmaker game with small crafting elements for cooking and eating "words".
+      WIP that ideally will take form as a simple 4 chapter rpgmaker-styled fetch-quest game, with small crafting elements for cooking and eating "words". My goto project when I want to think about funky fresh magic systems and design random worldbuilding lore.
 
 quille:
   title: Quille
   quote: >
     "Every word is important to me so I'd rather just save my breath."
   description: >
-    A second year university student who's currently taking a gap year to travel around the world. He specializes in linguistics and did research work under the Witch. At a glance, he appears cold, blunt and easy to annoy. In truth, he just tires out easily from casual conversations and prefers to avoid small talk if at all possible. Most of the time, he just acts like a grumpy old man.
+    A second year university student currently taking a gap year to travel around the world. He specializes in linguistics and did research work under the Witch. At a glance, Quille comes off as a blunt and irritable guy. In truth, he just tires out easily from casual conversations and prefers to avoid small talk if at all possible. Most of the time, he prefers to indulge in books and writing instead.
 
-    Quille has very low self esteem in regards to his intelligence. The university he's enrolled in is incredibly competitive and he was one of the students who fell behind. Although he is enthusiastic about learning, he hates getting compared to others.
+      Quille has very low self esteem in regards to his intelligence. The university he's enrolled in is incredibly competitive and he was one of the students who fell behind. Although he is enthusiastic about learning, he hates getting compared to others.
 
-    Quille met Seina because she was under the custody of the Witch. The story starts not too long after his mentor "passed away from old age".
+      Quille met Seina because she was under the custody of the Witch. The story starts not too long after his mentor "passed away from old age".
 
-    In contrast to the Witch of Words who made abundant use of her magic, Quille prefers to save his spells for only when he needs it the most. He worries for unexpected side effects due to the general lack of knowledge surrounding Wordeating. When he does eat, his spells usually take up the form of sweets and desserts.
+      In contrast to the Witch of Words who made abundant use of her magic, Quille prefers to save his spells for special or emergency occasions. He worries for unexpected side effects due to the general lack of knowledge around Wordeating. When he does eat, his spells usually take the form of sweets.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/aqaqsq.png
   facts:
     - An only child
     - Linguistics major at the top university in Spadeus
-    - Has a sweet tooth, but keeps this fact quiet and tries not to openly indulge
+    - Has a sweet tooth, but keeps this fact quiet and tries not to openly splurge
     - Bad at waking up in the mornings
     - my self-indulgent pretty boy oc i love him one of my favs
 
 seina:
   title: Seina
   quote: > 
-    "Wordeating is amazing! All my thoughts can be summed up in a slice of apple pie. Why don't we use it more to help others?"
+    "Wordeatin's amazing! All my thoughts are summed up in a slice of apple pie- Why don't we use it more to help others?"
   description: >
-    A curious child who has a natural talent for wordeating. Her conservative parents had trouble understanding this power so they have always kept their distance. She ended up living with her aunt and eventually with Quille.
+    A curious child with a natural talent for wordeating. Her conservative parents had trouble comprehending this power so they have always kept at a distance. She ended up living with her aunt and eventually with Quille.
 
-    A bit of a chatterbox and always willing to help others. She seems mature for her age but Seina is just very sensitive to her surroundings. In doing so, she believes she won't be making anyone uncomfortable, especially her parents. At the end of the day, she's just a child who wants to feel loved.
+      A bit of a chatterbox and always willing to help others. She seems mature for her age but Seina is just very sensitive to her surroundings. In doing so, she believes she won't cause discomfort, especially to her parents. At the end of the day, Seina's just a child who wants to be loved.
 
-    ​Seina's more eager to use her magic, especially if it's to help others out and prove that wordeating isn't something unusual or scary like her parents believe. Her spells generally take form in hearty dishes (carbs) or a dish related to the person she helps out.
+      ​Seina's more selfless with her magic, thinking it's a gift meant to improve the lives of others- as mentioned by her beloved aunt. She wants to prove that wordeating isn't something unusual or scary like her parents believe. Her spells generally take form in hearty dishes (carbs) or a dish related to the person she helps out.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/seinaa.png
   facts:
     - An only child
@@ -50,11 +50,11 @@ heidi:
   quote: >
     "Love is just like, the most amazing thing ever don't you think? Omigosh like, I def wanna find true love one day."
   description: >
-    One of the first people Seina and Quille meet upon arrival into town. In love with the idea of love, Heidi currently has a crush on someone and sends love letters to this person often. Energetic, caring, and optimistic- she can come off as charming to some, but annoying to others. Her family owns a small restaurant, and she often helps out.
+    One of the first people Seina and Quille meet upon arrival into town. In love with the idea of love, Heidi currently has a crush on someone and sends love letters to this person often. Energetic, caring, and optimistic- she can come off as charming to some, but annoying to others. Her family owns a small restaurant, which she frequently part-times.
 
-    Heidi finds Seina absolutely precious and treats her like a little sister. The two have a good relationship. She also likes to follow fads and give nicknames to people.
+      Heidi finds Seina absolutely precious and treats her like a little sister. The two have a good relationship. She also likes to follow fads and give nicknames to people.
 
-    Quille was childhood friends with Heidi's older brother but the two are rather distant themselves. There's a bit of an awkward backstory.
+      Quille was childhood friends with Heidi's older brother but the two are rather distant themselves. There's a bit of an awkward backstory involved.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newheadertest_1.png
   facts:
     - 15 years old, birthday is on December 26th (Capricorn)
@@ -62,14 +62,14 @@ heidi:
     - Has an older brother who is currently away in a business school in Diya
     - Is surprisingly bad at cooking because she goes with her gut feelings and gets distracted easily (improves in the future)
     - Writes fanfics
-    - She's my oldest oc, I made her back in my first year of high school. Heidi's been through a lot...
+    - She's my oldest oc, I made her back in my first year of high school as a shoujo protag parody. Heidi's been through a lot since...
 
 kane:
   title: Kane
   quote: >
     "To be honest, I'm not really interested in anything unless money's involved."
   description: >
-    Heidi's childhood friend who constantly feels embarrassed by her quirky behavior. He tries to act mature for his age, but a lot of the times, the act does not follow through. Instead, he gets flustered easily and teased a lot by Heidi; a really good straight man.
+    Heidi's childhood friend who acts as the straight man out of the duo. He tries to act mature for his age, but a lot of the times, the act does not follow through. Instead, he gets flustered easily and subjected to a lot of teasing by Heidi.
 
     Kane's family owns an inn next door to Heidi's family restaurant. His parents are pretty money-minded so they really rubbed off on him. He often talks about money and charging people but he's joking (most of the time).
 
@@ -80,4 +80,4 @@ kane:
     - His nickname from Heidi is "Kanny"
     - A cat person and naturally seems to attract cats
     - Can play the harmonica
-    - I'm sorry I shaft Kane a lot... Also it's Kane like... okane... haha young Tina was kinda dumb
+    - I'm sorry I shaft Kane a lot... Also it's Kane like... okane... haha young me was kinda dumb

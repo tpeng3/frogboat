@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { RouteComponentProps } from "@reach/router";
-import Layout, { themeTypes } from "@components/Layout";
+import Layout, { ThemeTypes } from "@components/Layout";
 import { SEO } from "@components/seo";
 import CharacterAbout from "@components/CharacterPage";
 import TabContainer, { tabTypes } from "@components/TabContainer";
 import content from "./content.yaml";
 
 const CHARA_KEY = "seina";
-const THEME_KEY = themeTypes.SAQ;
+const THEME_KEY = ThemeTypes.SAQ;
 
 const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   const path = location.pathname;

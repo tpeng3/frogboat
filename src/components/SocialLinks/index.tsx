@@ -15,19 +15,16 @@ const LinkContainer = styled.div`
 const StyledLink = styled.a`
   &:not(:last-child) {
     margin-right: 12px;
-    img {
+    svg {
       margin-right: 6px;
     }
   }
-`;
-
-const StyledIcon = styled.img`
-  height: 1.6em;
-  width: 1.6em;
-  display: initial;
-  vertical-align: sub;
-  &:hover {
-    path: ;
+  svg {
+    height: 1.6em;
+    width: 1.6em;
+    display: initial;
+    vertical-align: sub;
+    // move up if hover
   }
 `;
 
@@ -35,16 +32,16 @@ const SocialLinks = () => {
   return (
     <LinkContainer>
       <StyledLink href="https://twitter.com/shuttlefrog">
-        <StyledIcon src={TwitterIcon} alt={"twitter icon"} />
+        <TwitterIcon alt={"twitter icon"} />
       </StyledLink>
       <StyledLink href="https://shuttlefrog.itch.io/">
-        <StyledIcon src={ItchIcon} alt={"itch icon"} />
+        <ItchIcon alt={"itch icon"} />
       </StyledLink>
       <StyledLink href="https://github.com/tpeng3">
-        <StyledIcon src={GithubIcon} alt={"github icon"} />
+        <GithubIcon alt={"github icon"} />
       </StyledLink>
       <StyledLink href="mailto:hanmorinn@gmail.com">
-        <StyledIcon src={MailIcon} alt={"mail icon"} />
+        <MailIcon alt={"mail icon"} />
       </StyledLink>
     </LinkContainer>
   );

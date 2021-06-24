@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { RouteComponentProps } from "@reach/router";
-import Layout, { themeTypes } from "@components/Layout";
+import Layout, { ThemeTypes } from "@components/Layout";
 import { SEO } from "@components/seo";
 import ProjectAbout from "@components/ProjectAbout";
 import content from "./content.yaml";
 
-const THEME_KEY = themeTypes.HORO;
+const THEME_KEY = ThemeTypes.HORO;
 
 const DFCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   const path = location.pathname;

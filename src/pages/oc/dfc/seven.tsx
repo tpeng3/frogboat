@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { RouteComponentProps } from "@reach/router";
-import Layout, { themeTypes } from "@components/Layout";
+import Layout, { ThemeTypes } from "@components/Layout";
 import { SEO } from "@components/seo";
 import CharacterAbout from "@components/CharacterPage";
 import TabContainer, { tabTypes } from "@components/TabContainer";
 import content from "./content.yaml";
 
 const CHARA_KEY = "seven";
-const THEME_KEY = themeTypes.DFC;
+const THEME_KEY = ThemeTypes.DFC;
 
 const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   const path = location.pathname;

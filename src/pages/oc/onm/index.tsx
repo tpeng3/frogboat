@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { RouteComponentProps } from "@reach/router";
-import Layout, { themeTypes } from "@components/Layout";
+import Layout, { ThemeTypes } from "@components/Layout";
 import { SEO } from "@components/seo";
 import content from "./content.yaml";
 
-const THEME_KEY = themeTypes.ONM;
+const THEME_KEY = ThemeTypes.ONM;
 
 const AboutContainer = styled.div`
   margin: 2em 5em;

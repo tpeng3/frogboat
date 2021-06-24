@@ -22,6 +22,8 @@ const StyledDrawer = styled(Drawer)`
 `;
 
 const NavContainer = styled.div`
+  position: relative;
+  z-index: 1; // added for now because polka background is acting funky
   background-color: ${hexToRGBA(COLORS.GREY_DEFAULT, 0.9)};
   width: 100%;
   height: 64px;
@@ -37,9 +39,6 @@ const NavContainer = styled.div`
 const NavItem = styled.div`
   &:not(:last-child) {
     margin-right: 12px;
-    img {
-      margin-right: 6px;
-    }
   }
   &:last-child {
     margin-left: auto;
@@ -55,6 +54,13 @@ const NavButton = styled.button`
   border-radius: 10px;
   padding: 8px 12px;
   min-width: 80px;
+  svg {
+    height: 24px;
+    width: 20px;
+    display: initial;
+    vertical-align: sub;
+    margin-right: 5px;
+  }
   :hover {
     background-color: ${COLORS.GREY_HOVER};
   }
@@ -132,13 +138,6 @@ const DropdownContainer = styled.div`
   }
 `;
 
-const StyledIcon = styled.img`
-  height: 24px;
-  width: 20px;
-  display: initial;
-  vertical-align: sub;
-`;
-
 export interface NavProps {
   primary?: boolean;
 }
@@ -156,12 +155,12 @@ const Nav = ({ primary }: NavProps) => {
       <NavContainer>
         <NavItem>
           <NavButton onClick={() => toggleMobileNav(true)}>
-            <StyledIcon src={MenuIcon} alt={"menu icon"} />
+            <MenuIcon alt={"menu icon"} />
           </NavButton>
         </NavItem>
         <NavItem>
           <NavButton>
-            <StyledIcon src={SettingsIcon} alt={"settings icon"} />
+            <SettingsIcon alt={"settings icon"} />
           </NavButton>
         </NavItem>
       </NavContainer>
@@ -181,7 +180,7 @@ const Nav = ({ primary }: NavProps) => {
           <Link to={"/oc"}>
             <NavButton>
               <span>
-                <StyledIcon src={HomeIcon} alt={"home icon"} />
+                <HomeIcon alt={"home icon"} />
                 Home
               </span>
             </NavButton>
@@ -213,7 +212,7 @@ const Nav = ({ primary }: NavProps) => {
         })}
         <NavItem>
           <NavButton>
-            <StyledIcon src={SettingsIcon} alt={"settings icon"} />
+            <SettingsIcon alt={"settings icon"} />
           </NavButton>
         </NavItem>
       </NavContainer>

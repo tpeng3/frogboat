@@ -1,4 +1,4 @@
-const siteTitle = "gatsby-starter-typescript-deluxe";
+const siteTitle = "frogboat";
 const siteDescription =
   "A Gatsby starter with TypeScript, Storybook, Styled Components, Framer Motion, Jest, and more.";
 const siteAuthor = "@gojutin";
@@ -80,5 +80,13 @@ module.exports = {
         '@images': path.join(__dirname, 'src/images')
       },
     },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: path.join(__dirname, 'src/images/SVG')
+        }
+      }
+    }
   ],
 };

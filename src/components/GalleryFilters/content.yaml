@@ -1,0 +1,19 @@
+filter:
+  - label: Show all
+    value: all
+  - label: Personal art
+    value: personal
+  - label: Friend art
+    value: friend
+  - label: References
+    value: reference
+  - label: Commissions
+    value: commission
+
+sort:
+  - label: Default
+    value: popularity
+  - label: Most recent
+    value: created
+  - label: Head count
+    value: headcount

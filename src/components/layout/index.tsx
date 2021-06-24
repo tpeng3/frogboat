@@ -60,7 +60,7 @@ const Footer = styled.div`
   position: relative;
 `;
 
-const BackgroundTexture = styled.img<{ rotated?: boolean }>`
+const BackgroundTexture = styled(Polka)<{ rotated?: boolean }>`
   position: absolute;
   max-width: 40%;
   z-index: 0;
@@ -71,11 +71,12 @@ const BackgroundTexture = styled.img<{ rotated?: boolean }>`
     bottom: 0;
   `
       : `
+    top: -20px;
     right: 0;
   `}
 `;
 
-export enum themeTypes {
+export enum ThemeTypes {
   DEFAULT = "default",
   SAQ = "saq",
   DFC = "dfc",
@@ -109,7 +110,7 @@ const Layout = ({ currentTheme = "default", children }: LayoutProps) => {
       <GlobalStyles />
       <HeaderImage />
       <Nav />
-      <BackgroundTexture src={Polka} alt={"polka image"} />
+      <BackgroundTexture alt={"polka image"} />
       {/* <BackgroundTexture src={Polka} alt={"polka image"} rotated /> */}
       <Main currentTheme={currentTheme}>
         <Container>

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import useWindowSize from "@util/screen";
 import { media } from "@util/helpers";
 import { COLORS } from "@util/constants";
+import { ThemeTypes } from "@components/Layout";
 import Relationships from "@components/Testimony";
 import Gallery from "@components/Gallery";
 
@@ -59,7 +60,7 @@ export enum tabTypes {
 }
 
 interface CharacterProps {
-  currentTheme: string;
+  currentTheme: ThemeTypes;
   keyName: string;
   tabs: tabTypes[];
 }
@@ -75,7 +76,7 @@ const TabContainer = ({ currentTheme, keyName, tabs }: CharacterProps) => {
       case tabTypes.RELATIONSHIPS:
         return <Relationships keyName={keyName} />;
       case tabTypes.GALLERY:
-        return <Gallery keyName={keyName} />;
+        return <Gallery keyName={keyName} currentTheme={currentTheme} />;
       case tabTypes.NOTES:
         return `notes`;
     }

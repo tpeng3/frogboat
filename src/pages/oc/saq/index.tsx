@@ -2,21 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { RouteComponentProps } from "@reach/router";
-import Layout, { themeTypes } from "@components/Layout";
+import Layout, { ThemeTypes } from "@components/Layout";
 import { SEO } from "@components/seo";
-import SocialLinks from "@components/SocialLinks";
+import ProjectAbout from "@components/ProjectAbout";
 import content from "./content.yaml";
 
-const THEME_KEY = themeTypes.SAQ;
-
-const AboutContainer = styled.div`
-  margin: 2em 5em;
-  text-align: center;
-  p {
-    margin-bottom: 2em;
-    white-space: pre-line;
-  }
-`;
+const THEME_KEY = ThemeTypes.SAQ;
 
 const SAQPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   const path = location.pathname;
@@ -26,12 +17,7 @@ const SAQPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
         title="About gatsby-starter-template-deluxe"
         description="Examples using the gatsby-starter-template-deluxe."
       />
-      <h1>{content.main.title}</h1>
-      <h4>Genre: {content.main.genre}</h4>
-      <hr />
-      <AboutContainer>
-        <p>{content.main.description}</p>
-      </AboutContainer>
+      <ProjectAbout {...content.main} />
       <hr />
       {/* Chara select screen here */}
       <hr />
