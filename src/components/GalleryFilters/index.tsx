@@ -11,10 +11,29 @@ import CloseIcon from "@images/SVG/close.svg";
 import { ThemeTypes } from "@components/Layout";
 import content from "./content.yaml";
 
-const GalleryFiltersContainer = styled.div`
+const MenuContainer = styled.div`
+  position: relative;
+  display: flex;
+  border-radius: 12px;
+  width: 100%;
+  background-color: ${hexToRGBA(COLORS.GREY_200, 0.2)};
+  padding: 1.4rem 2rem 2rem 2rem;
+`;
+
+const GalleryFiltersContainer = styled.div<{ open: boolean }>`
   margin-bottom: 2rem;
   display: flex;
   justify-content: flex-end;
+  /* height: ${(props) => (props.open ? "auto" : "40px")};
+  overflow: hidden;
+  transition: transform .3s cubic-bezier(0, .52, 0, 1); */
+  /* opacity: 0; */
+  overflow: hidden;
+  /* transition: all .3s cubic-bezier(0, .52, 0, 1); */
+  transition: all 1s ease-in;
+  ${MenuContainer} {
+    max-height: ${(props) => (props.open ? "500px" : "40px")};
+  }
 `;
 
 const FilterButton = styled.button<{ currentTheme: ThemeTypes }>`
@@ -45,15 +64,6 @@ const FilterButton = styled.button<{ currentTheme: ThemeTypes }>`
 const FilterTitle = styled.h5`
   margin: 0;
   padding-bottom: 5px;
-`;
-
-const MenuContainer = styled.div`
-  position: relative;
-  display: flex;
-  border-radius: 12px;
-  width: 100%;
-  background-color: ${hexToRGBA(COLORS.GREY_200, 0.2)};
-  padding: 1.4rem 2rem 2rem 2rem;
 `;
 
 const StyledCloseIcon = styled(CloseIcon)`
@@ -143,11 +153,10 @@ const GalleryFilters = ({ currentTheme, filters }: Props) => {
     const filterList = filters ? [type, ...filters] : [type];
     updateActiveFilters(filterList);
     updateFilterType(type);
-    console.log(type, filterType);
   };
 
   return (
-    <GalleryFiltersContainer>
+    <GalleryFiltersContainer open={filterMenuOpened}>
       {!filterMenuOpened ? (
         <FilterButton
           currentTheme={currentTheme}

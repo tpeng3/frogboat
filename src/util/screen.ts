@@ -1,6 +1,6 @@
 // import { isRunningInBrowser } from "../util/helpers";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export const breakpoints = {
   mobile: 370,
@@ -53,3 +53,27 @@ function useWindowSize() {
 }
 
 export default useWindowSize;
+
+export const useDimensions = (ref) => {
+  const [dimensions, setDimensions] = useState({
+    width: 0,
+    height: 0
+  });
+
+  const handleResize = () => {
+    if (ref.current) {
+      setDimensions({
+        width: ref.current.offsetWidth,
+        height: ref.current.offsetHeight
+      });
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, [ref]);
+
+  return dimensions;
+}

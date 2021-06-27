@@ -76,7 +76,7 @@ const TabContainer = ({ currentTheme, keyName, tabs }: CharacterProps) => {
       case tabTypes.RELATIONSHIPS:
         return <Relationships keyName={keyName} />;
       case tabTypes.GALLERY:
-        return <Gallery keyName={keyName} currentTheme={currentTheme} />;
+        return <Gallery keyList={[keyName]} currentTheme={currentTheme} />;
       case tabTypes.NOTES:
         return `notes`;
     }

@@ -68,7 +68,7 @@ const BlocksWrapper = styled.section`
 const AboutPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   const path = location.pathname;
   return (
-    <Layout>
+    <div>
       <SEO
         title="About gatsby-starter-template-deluxe"
         description="Examples using the gatsby-starter-template-deluxe."
@@ -90,7 +90,7 @@ const AboutPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
         />
         <BlueBlock />
       </BlocksWrapper>
-    </Layout>
+    </div>
   );
 };
 

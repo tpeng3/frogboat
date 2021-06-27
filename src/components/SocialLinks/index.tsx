@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import TwitterIcon from "@images/SVG/twitter.svg";
 import ItchIcon from "@images/SVG/itch.svg";
@@ -13,6 +13,11 @@ const LinkContainer = styled.div`
 `;
 
 const StyledLink = styled.a`
+  transition: transform 450ms; // on unhover
+  &:hover {
+    transition: transform 125ms; // on hover
+    transform: translateY(-0.6em);
+  }
   &:not(:last-child) {
     margin-right: 12px;
     svg {
@@ -24,7 +29,6 @@ const StyledLink = styled.a`
     width: 1.6em;
     display: initial;
     vertical-align: sub;
-    // move up if hover
   }
 `;
 

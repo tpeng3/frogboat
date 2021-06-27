@@ -1,10 +1,9 @@
-import * as React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import content from "./content.yaml";
 import useSystemStore from "@store/system";
 import Link from "@components/Link";
 import MobileNav from "./MobileNav";
-import SettingsModal from "./SettingsModal";
 import HomeIcon from "@images/SVG/home.svg";
 import SettingsIcon from "@images/SVG/settings.svg";
 import MenuIcon from "@images/SVG/menu.svg";
@@ -12,6 +11,12 @@ import { hexToRGBA, media, elevation } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import useWindowSize from "@util/screen";
 import Drawer from "@material-ui/core/Drawer";
+import { SettingsButton, SettingsModal } from "./Settings";
+import { motion, useAnimation } from "framer-motion";
+
+const NavWrapper = styled.div`
+  position: relative;
+`;
 
 const StyledDrawer = styled(Drawer)`
   && {
@@ -23,7 +28,7 @@ const StyledDrawer = styled(Drawer)`
 
 const NavContainer = styled.div`
   position: relative;
-  z-index: 1; // added for now because polka background is acting funky
+  z-index: 1;
   background-color: ${hexToRGBA(COLORS.GREY_DEFAULT, 0.9)};
   width: 100%;
   height: 64px;
@@ -42,6 +47,7 @@ const NavItem = styled.div`
   }
   &:last-child {
     margin-left: auto;
+    padding-right: 12px;
   }
 `;
 
@@ -144,80 +150,75 @@ export interface NavProps {
 
 const Nav = ({ primary }: NavProps) => {
   const darkMode = useSystemStore((state) => state.darkMode);
-  const [mobileNavOpened, toggleMobileNav] = React.useState<boolean>(false);
-  const [settingsModalOpened, togglSettingsModal] =
-    React.useState<boolean>(false);
+  const [mobileNavOpened, toggleMobileNav] = useState<boolean>(false);
 
   const { isTablet } = useWindowSize();
 
-  return isTablet ? (
-    <>
-      <NavContainer>
-        <NavItem>
-          <NavButton onClick={() => toggleMobileNav(true)}>
-            <MenuIcon alt={"menu icon"} />
-          </NavButton>
-        </NavItem>
-        <NavItem>
-          <NavButton>
-            <SettingsIcon alt={"settings icon"} />
-          </NavButton>
-        </NavItem>
-      </NavContainer>
-      {/* <SettingsModal /> */}
-      <StyledDrawer
-        anchor={"left"}
-        open={mobileNavOpened}
-        onClose={() => toggleMobileNav(false)}
-      >
-        <MobileNav />
-      </StyledDrawer>
-    </>
-  ) : (
-    <>
-      <NavContainer>
-        <NavItem>
-          <Link to={"/oc"}>
-            <NavButton>
-              <span>
-                <HomeIcon alt={"home icon"} />
-                Home
-              </span>
-            </NavButton>
-          </Link>
-        </NavItem>
-        {content.navItems.map((item) => {
-          return (
-            <NavItem key={item.label}>
-              <DropdownContainer>
-                <Link to={item.route}>
-                  <NavButton key={item.label}>
-                    <span>{item.label}</span>
-                  </NavButton>
-                </Link>
-                {item.subItems && (
-                  <SubNavContainer>
-                    {item.subItems.map((subitem) => (
-                      <Link to={subitem.route} key={subitem.label}>
-                        <SubNavButton key={subitem.label}>
-                          <span>{subitem.label}</span>
-                        </SubNavButton>
-                      </Link>
-                    ))}
-                  </SubNavContainer>
-                )}
-              </DropdownContainer>
+  return (
+    <NavWrapper>
+      {isTablet ? (
+        <>
+          <NavContainer>
+            <NavItem>
+              <NavButton onClick={() => toggleMobileNav(true)}>
+                <MenuIcon alt={"menu icon"} />
+              </NavButton>
             </NavItem>
-          );
-        })}
-        <NavItem>
-          <NavButton>
-            <SettingsIcon alt={"settings icon"} />
-          </NavButton>
-        </NavItem>
-      </NavContainer>
-      {/* <SettingsModal /> */}
-    </>
+            <NavItem>
+              <SettingsButton />
+            </NavItem>
+          </NavContainer>
+          <StyledDrawer
+            anchor={"left"}
+            open={mobileNavOpened}
+            onClose={() => toggleMobileNav(false)}
+          >
+            <MobileNav />
+          </StyledDrawer>
+        </>
+      ) : (
+        <NavContainer>
+          <NavItem>
+            <Link to={"/oc"}>
+              <NavButton>
+                <span>
+                  <HomeIcon alt={"home icon"} />
+                  Home
+                </span>
+              </NavButton>
+            </Link>
+          </NavItem>
+          {content.navItems.map((item) => {
+            return (
+              <NavItem key={item.label}>
+                <DropdownContainer>
+                  <Link to={item.route}>
+                    <NavButton key={item.label}>
+                      <span>{item.label}</span>
+                    </NavButton>
+                  </Link>
+                  {item.subItems && (
+                    <SubNavContainer>
+                      {item.subItems.map((subitem) => (
+                        <Link to={subitem.route} key={subitem.label}>
+                          <SubNavButton key={subitem.label}>
+                            <span>{subitem.label}</span>
+                          </SubNavButton>
+                        </Link>
+                      ))}
+                    </SubNavContainer>
+                  )}
+                </DropdownContainer>
+              </NavItem>
+            );
+          })}
+          <NavItem>
+            <SettingsButton />
+          </NavItem>
+        </NavContainer>
+      )}
+      <SettingsModal />
+    </NavWrapper>
   );
 };
 

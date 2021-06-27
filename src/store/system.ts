@@ -10,14 +10,16 @@ interface SystemState {
 const initialState = {
   darkMode: true,
   activeFilters: [],
-  filterType: "personal",
+  filterType: "all",
   sortType: "popularity",
+  showSettingsModal: false,
 };
 
 /**
  * Store functions
  */
 const setDarkMode = (value) => ({ darkMode: value });
+const toggleSettingsModal = (value) => ({ showSettingsModal: value });
 
 const updateActiveFilters = (value) => ({ activeFilters: value });
 
@@ -34,6 +36,7 @@ const useSystemStore: any = create<SystemState>((set) => ({
   updateActiveFilters: (value) => set(() => updateActiveFilters(value)),
   updateFilterType: (value) => set(() => updateFilterType(value)),
   updateSortType: (value) => set(() => updateSortType(value)),
+  toggleSettingsModal: (value) => set(() => toggleSettingsModal(value)),
 }));
 
 export default useSystemStore;

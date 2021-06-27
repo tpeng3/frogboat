@@ -6,7 +6,7 @@ import { theme, GlobalStyles } from "src/styles";
 // Components
 import { CSSDebugger } from "../css-debugger";
 import Nav from "@components/Nav";
-import Polka from "@images/SVG/polka.svg";
+// import Polka from "@images/SVG/polka.svg";
 import { hexToRGBA, elevation } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import { test } from "./anim";
@@ -17,6 +17,7 @@ const HeaderImage = styled.div`
 `;
 
 const Main = styled.main<{ currentTheme: string }>`
+  position: relative;
   padding: 5rem 1rem;
   background-color: ${(props) =>
     props.currentTheme
@@ -60,18 +61,25 @@ const Footer = styled.div`
   position: relative;
 `;
 
-const BackgroundTexture = styled(Polka)<{ rotated?: boolean }>`
+const BackgroundTexture = styled.div<{ rotated?: boolean }>`
+  clip-path: polygon(45% 0, 100% 100%, 100% 0);
+  background-image: radial-gradient(#fff 0.15rem,transparent .15rem),radial-gradient(#fff .15rem,transparent .15rem);
+  background-color: transparent;
+  background-position: 0 0, 1rem 1rem;
+  background-size: 2rem 2rem;
+  height: 30%;
+  width: 100%;
   position: absolute;
-  max-width: 40%;
-  z-index: 0;
+  opacity: 50%; 
   ${(props) =>
     props.rotated
       ? `
-    transform: rotate(180deg);
-    bottom: 0;
+      clip-path: polygon(0 0, 55% 100%, 0 100%);
+      bottom: 0;
+      left: 0;
   `
       : `
-    top: -20px;
+    top: 0;
     right: 0;
   `}
 `;
@@ -110,9 +118,9 @@ const Layout = ({ currentTheme = "default", children }: LayoutProps) => {
       <GlobalStyles />
       <HeaderImage />
       <Nav />
-      <BackgroundTexture alt={"polka image"} />
-      {/* <BackgroundTexture src={Polka} alt={"polka image"} rotated /> */}
       <Main currentTheme={currentTheme}>
+        <BackgroundTexture />
+        <BackgroundTexture rotated />
         <Container>
           {/* <CSSDebugger /> */}
           <main>{children}</main>

@@ -130,7 +130,12 @@ export const TAG_LIST = [
   { key: "doodle", name: "Doodle", color: TAG_COLORS.ART, type: TAG_TYPE.ART },
   { key: "pixel", name: "Pixel", color: TAG_COLORS.ART, type: TAG_TYPE.ART },
   { key: "cringe", name: "Cringe", color: TAG_COLORS.ART, type: TAG_TYPE.ART },
-  { key: "reference", name: "Reference", color: TAG_COLORS.ART, type: TAG_TYPE.ART },
+  {
+    key: "reference",
+    name: "Reference",
+    color: TAG_COLORS.ART,
+    type: TAG_TYPE.ART,
+  },
 
   {
     key: "oceptember",
