@@ -57,23 +57,32 @@ export default useWindowSize;
 export const useDimensions = (ref) => {
   const [dimensions, setDimensions] = useState({
     width: 0,
-    height: 0
+    height: 0,
   });
 
   const handleResize = () => {
+    console.log(ref.current);
     if (ref.current) {
       setDimensions({
         width: ref.current.offsetWidth,
-        height: ref.current.offsetHeight
+        height: ref.current.offsetHeight,
       });
     }
-  }
+  };
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
-  }, [ref]);
+  }, []);
+
+  useEffect(() => {
+    handleResize();
+    console.log("does this change");
+  }, [
+    ref && ref.current && ref.current.offsetHeight,
+    ref && ref.current && ref.current.offsetWidth,
+  ]);
 
   return dimensions;
-}
+};

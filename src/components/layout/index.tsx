@@ -9,7 +9,6 @@ import Nav from "@components/Nav";
 // import Polka from "@images/SVG/polka.svg";
 import { hexToRGBA, elevation } from "@util/helpers";
 import { COLORS } from "@util/constants";
-import { test } from "./anim";
 
 const HeaderImage = styled.div`
   background-color: #fff;
@@ -27,7 +26,6 @@ const Main = styled.main<{ currentTheme: string }>`
     props.currentTheme
       ? props.theme[props.currentTheme].backgroundGradient
       : props.theme.default.backgroundColor};
-  /* animation: ${test} 1s; */
   h1,
   .accent {
     color: ${(props) =>
@@ -63,14 +61,15 @@ const Footer = styled.div`
 
 const BackgroundTexture = styled.div<{ rotated?: boolean }>`
   clip-path: polygon(45% 0, 100% 100%, 100% 0);
-  background-image: radial-gradient(#fff 0.15rem,transparent .15rem),radial-gradient(#fff .15rem,transparent .15rem);
+  background-image: radial-gradient(#fff 0.15rem, transparent 0.15rem),
+    radial-gradient(#fff 0.15rem, transparent 0.15rem);
   background-color: transparent;
   background-position: 0 0, 1rem 1rem;
   background-size: 2rem 2rem;
   height: 30%;
   width: 100%;
   position: absolute;
-  opacity: 50%; 
+  opacity: 50%;
   ${(props) =>
     props.rotated
       ? `

@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { RouteComponentProps } from "@reach/router";
-import Layout from "@components/Layout";
 import { SEO } from "@components/seo";
 import SocialLinks from "@components/SocialLinks";
 
@@ -18,7 +16,7 @@ const AboutContainer = styled.div`
 const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   const path = location.pathname;
   return (
-    <Layout currentTheme="default">
+    <div>
       <SEO
         title="About gatsby-starter-template-deluxe"
         description="Examples using the gatsby-starter-template-deluxe."
@@ -37,7 +35,7 @@ const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
       {/* there should be a carousel here... or just image */}
       <hr />
       {/* <DevNotes/> */}
-    </Layout>
+    </div>
   );
 };
 

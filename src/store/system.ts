@@ -13,6 +13,8 @@ const initialState = {
   filterType: "all",
   sortType: "popularity",
   showSettingsModal: false,
+  prevTheme: "default",
+  currentTheme: "default",
 };
 
 /**
@@ -20,6 +22,10 @@ const initialState = {
  */
 const setDarkMode = (value) => ({ darkMode: value });
 const toggleSettingsModal = (value) => ({ showSettingsModal: value });
+
+// Set page theme colors
+const setPreviousTheme = (value) => ({ prevTheme: value });
+const setCurrentTheme = (value) => ({ currentTheme: value });
 
 const updateActiveFilters = (value) => ({ activeFilters: value });
 
@@ -37,6 +43,8 @@ const useSystemStore: any = create<SystemState>((set) => ({
   updateFilterType: (value) => set(() => updateFilterType(value)),
   updateSortType: (value) => set(() => updateSortType(value)),
   toggleSettingsModal: (value) => set(() => toggleSettingsModal(value)),
+  setCurrentTheme: (value) => set(() => setCurrentTheme(value)),
+  setPreviousTheme: (value) => set(() => setPreviousTheme(value)),
 }));
 
 export default useSystemStore;

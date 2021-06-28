@@ -87,6 +87,22 @@ module.exports = {
           include: path.join(__dirname, 'src/images/SVG')
         }
       }
-    }
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Asap`,
+          `Cabin`
+        ],
+        display: 'swap'
+      }
+    },
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: path.join(__dirname, 'src/components/Layout')
+      },
+    },
   ],
 };

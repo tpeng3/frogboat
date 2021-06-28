@@ -17,7 +17,7 @@ const Switch = styled.div<{ toggled: boolean }>`
 const Handle = styled(motion.div)`
   width: 1.5rem;
   height: 1.5rem;
-  margin: .25rem;
+  margin: 0.25rem;
   border-radius: 1.5rem;
   background-color: white;
 `;
@@ -34,7 +34,7 @@ interface Props {
 }
 
 export default function Toggle(props: Props) {
-  const {value, toggleFunction} = props;
+  const { value, toggleFunction } = props;
 
   return (
     <Switch toggled={value} onClick={() => toggleFunction(!value)}>

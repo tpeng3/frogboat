@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import Nav, { NavProps } from ".";
-import Layout from "@components/Layout";
+import Layout from "src";
 
 export default {
   title: "Example/Nav",
@@ -9,9 +9,9 @@ export default {
 } as Meta;
 
 const Template: Story<NavProps> = (args) => (
-  <Layout>
+  <div>
     <Nav {...args} />
-  </Layout>
+  </div>
 );
 
 export const Default = Template.bind({});

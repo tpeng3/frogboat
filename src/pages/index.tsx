@@ -9,11 +9,11 @@ const command =
   "gatsby new my-app https://github.com/gojutin/gatsby-starter-typescript-deluxe";
 
 const App = () => (
-  <Layout>
+  <div>
     <SEO />
     <Code>{command}</Code>
     <Link to="/about">About</Link>
-  </Layout>
+  </div>
 );
 
 export default App;
