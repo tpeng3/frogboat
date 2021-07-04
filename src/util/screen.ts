@@ -61,7 +61,6 @@ export const useDimensions = (ref) => {
   });
 
   const handleResize = () => {
-    console.log(ref.current);
     if (ref.current) {
       setDimensions({
         width: ref.current.offsetWidth,
@@ -78,7 +77,6 @@ export const useDimensions = (ref) => {
 
   useEffect(() => {
     handleResize();
-    console.log("does this change");
   }, [
     ref && ref.current && ref.current.offsetHeight,
     ref && ref.current && ref.current.offsetWidth,

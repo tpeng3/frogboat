@@ -1,14 +1,20 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
+import {
+  motion,
+  AnimatePresence,
+  Variants,
+  AnimateSharedLayout,
+} from "framer-motion";
 import useWindowSize from "@util/screen";
 import { media } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import { ThemeTypes } from "@components/Layout";
-import Relationships from "@components/Testimony";
+import Relationships from "@components/Relationships";
 import Gallery from "@components/Gallery";
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled(motion.div)`
   display: flex;
   flex-direction: row;
   margin: 2rem 4rem 0rem 4rem;
@@ -31,6 +37,7 @@ const TabButton = styled.button<{ currentTheme: string; selected: boolean }>`
   min-width: 8rem;
   color: ${COLORS.white};
   padding: 0.2rem 1rem;
+  text-transform: capitalize;
   :hover {
     background-color: ${(props) =>
       props.selected
@@ -39,7 +46,7 @@ const TabButton = styled.button<{ currentTheme: string; selected: boolean }>`
   }
 `;
 
-const Container = styled.div<{ currentTheme: string }>`
+const Container = styled(motion.div)<{ currentTheme: string }>`
   border: 1px solid
     ${(props) =>
       props.currentTheme
@@ -48,35 +55,48 @@ const Container = styled.div<{ currentTheme: string }>`
   border-radius: 12px;
   color: ${COLORS.white};
   padding: 4rem 1rem;
+  /* min-height: 500px; */
   ${media.laptop`
     padding: 2rem 4rem;
   `}
 `;
 
 export enum tabTypes {
-  RELATIONSHIPS = "Relationships",
-  GALLERY = "Gallery",
-  NOTES = "Notes",
+  RELATIONSHIPS,
+  GALLERY,
+  NOTES,
 }
 
 interface CharacterProps {
   currentTheme: ThemeTypes;
   keyName: string;
   tabs: tabTypes[];
+  imageData?: any; // update later
 }
 
-const TabContainer = ({ currentTheme, keyName, tabs }: CharacterProps) => {
+const TabContainer = ({
+  currentTheme,
+  keyName,
+  tabs,
+  imageData,
+}: CharacterProps) => {
   const { isTablet } = useWindowSize();
   const [selectedTab, setSelectedTab] = useState<tabTypes>(
     tabTypes.RELATIONSHIPS
   );
+  const [direction, setDirection] = useState<number>(0);
+
+  const handleTabChange = (tab: tabTypes, i: number) => {
+    setDirection(i > selectedTab ? 1 : -1);
+    setSelectedTab(tab);
+  };
 
   const getCurrentTab = () => {
     switch (selectedTab) {
       case tabTypes.RELATIONSHIPS:
         return <Relationships keyName={keyName} />;
       case tabTypes.GALLERY:
-        return <Gallery keyList={[keyName]} currentTheme={currentTheme} />;
+        return <Gallery imageData={imageData} />;
       case tabTypes.NOTES:
         return `notes`;
     }
@@ -85,18 +105,33 @@ const TabContainer = ({ currentTheme, keyName, tabs }: CharacterProps) => {
   return (
     <div>
       <ButtonContainer>
-        {tabs.map((tab) => (
+        {tabs.map((tab, i) => (
           <TabButton
-            onClick={() => setSelectedTab(tab)}
+            onClick={() => handleTabChange(tab, i)}
             key={tab}
             currentTheme={currentTheme}
             selected={selectedTab === tab}
           >
-            {tab}
+            {tabTypes[tab].toLowerCase()}
           </TabButton>
         ))}
       </ButtonContainer>
-      <Container currentTheme={currentTheme}>{getCurrentTab()}</Container>
+      <AnimateSharedLayout>
+        <Container currentTheme={currentTheme} layout>
+          <AnimatePresence>
+            {/* <motion.div key={selectedTab} variants={containerVariants} custom={direction} initial="enter" animate="center" exit="exit"> */}
+            <motion.div
+              key={selectedTab}
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              {getCurrentTab()}
+            </motion.div>
+          </AnimatePresence>
+        </Container>
+      </AnimateSharedLayout>
     </div>
   );
 };

@@ -20,11 +20,20 @@ module.exports = {
   },
   plugins: [
     `gatsby-transformer-yaml`,
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/images`,
+        name: `data`,
+        path: `${__dirname}/src/data`,
+        ignore: [`**/\.*`], // ignore files starting with a dot
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: "images",
+        path: `${__dirname}/src/images`,
       },
     },
     {
@@ -39,8 +48,26 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          quality: 50,
+          breakpoints: [750, 1080, 1366, 1920],
+          backgroundColor: `transparent`,
+          tracedSVGOptions: {},
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        }
+      }
+    },
     "gatsby-plugin-react-helmet",
     `gatsby-plugin-sass`,
     {

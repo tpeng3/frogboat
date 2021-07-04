@@ -113,6 +113,7 @@ export default function BackgroundGradient(props) {
           {[0, 1, 2, 3].map((i) => (
             <motion.stop
               stopColor={GRADIENT_MAP[currentTheme].endGradient[i][0]}
+              key={`gradient-${i}`}
               variants={getGradientVariants(i)}
               transition={{
                 ease: "linear",

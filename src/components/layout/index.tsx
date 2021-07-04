@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
+import {
+  motion,
+  AnimatePresence,
+  Variants,
+  AnimateSharedLayout,
+} from "framer-motion";
 import useSystemStore from "@store/system";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, PageProps } from "gatsby";
 import { theme, GlobalStyles } from "src/styles";
 // Components
 import { CSSDebugger } from "../css-debugger";
@@ -9,6 +15,7 @@ import Nav from "@components/Nav";
 // import Polka from "@images/SVG/polka.svg";
 import { hexToRGBA, elevation } from "@util/helpers";
 import { COLORS } from "@util/constants";
+import BackgroundGradient from "@components/BackgroundGradient";
 
 const HeaderImage = styled.div`
   background-color: #fff;
@@ -43,7 +50,7 @@ const Main = styled.main<{ currentTheme: string }>`
   }
 `;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   background-color: ${hexToRGBA(COLORS.GREY_DEFAULT, 0.8)};
   margin: 0 auto;
   max-width: 1080px;
@@ -91,26 +98,24 @@ export enum ThemeTypes {
   HORO = "horo",
 }
 
-interface LayoutProps {
-  currentTheme: string;
-  children?: any;
-}
+interface LayoutProps extends PageProps {}
 
-const Layout = ({ currentTheme = "default", children }: LayoutProps) => {
+const Layout = ({ location, children }: LayoutProps) => {
   const darkMode = useSystemStore((state) => state.darkMode);
-  // const currentTheme = useSystemStore((state) => state.currentTheme);
-  // const data = useStaticQuery(graphql`
-  //   query SiteTitleQuery {
-  //     site {
-  //       siteMetadata {
-  //         title
-  //         description
-  //       }
-  //     }
-  //   }
-  // `);
+  const currentTheme = useSystemStore((state) => state.currentTheme);
+  const setPreviousTheme = useSystemStore((state) => state.setPreviousTheme);
+  const setCurrentTheme = useSystemStore((state) => state.setCurrentTheme);
 
-  // const { title, description } = data.site.siteMetadata;
+  useEffect(() => {
+    const pathList = location.pathname.split("/");
+    const pageTheme = pathList.length > 2 ? pathList[2] : "";
+    if (
+      Object.values(ThemeTypes).includes(ThemeTypes[pageTheme.toUpperCase()])
+    ) {
+      setPreviousTheme(pageTheme);
+      setCurrentTheme(pageTheme);
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={theme()}>
@@ -118,12 +123,22 @@ const Layout = ({ currentTheme = "default", children }: LayoutProps) => {
       <HeaderImage />
       <Nav />
       <Main currentTheme={currentTheme}>
+        <BackgroundGradient />
         <BackgroundTexture />
         <BackgroundTexture rotated />
-        <Container>
-          {/* <CSSDebugger /> */}
-          <main>{children}</main>
-        </Container>
+        <AnimateSharedLayout>
+          {/* TODO: move opacity to text and delay on change so box is less awkward */}
+          <Container
+            layout
+            transition={{ ease: "linear", stiffness: 0, velocity: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* <CSSDebugger /> */}
+            <main>{children}</main>
+          </Container>
+        </AnimateSharedLayout>
       </Main>
       <Footer />
     </ThemeProvider>

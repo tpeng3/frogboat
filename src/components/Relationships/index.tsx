@@ -1,6 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
+import {
+  motion,
+  AnimatePresence,
+  Variants,
+  AnimateSharedLayout,
+} from "framer-motion";
 import useWindowSize from "@util/screen";
 import Link from "@components/Link";
 import { hexToRGBA, media } from "@util/helpers";
@@ -44,7 +50,7 @@ const Bubble = styled.div`
   `}
 `;
 
-const Testimony = styled.div<{ currentTheme?: string }>`
+const Testimony = styled(motion.div)<{ currentTheme?: string }>`
   display: flex;
   ${media.laptop`
     &:nth-child(2n) {
@@ -71,10 +77,50 @@ interface CharacterProps {
 const Relationships = ({ keyName }: CharacterProps) => {
   const { isTablet } = useWindowSize();
 
+  const containerVariants: Variants = {
+    center: {
+      transition: { delay: 4, staggerChildren: 0.2, delayChildren: 0.5 },
+    },
+  };
+
+  // TODO: maybe add the animation based on when user scrolls down as well
+  const testimonyVariants: Variants = {
+    enter: (order: number) => ({
+      x: order % 2 === 0 ? -100 : 100,
+      opacity: 0,
+      visibility: "visible",
+      transition: {
+        x: { type: "easeIn", stiffness: 1000, velocity: 0 },
+      },
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      visibility: "visible",
+      transition: {
+        x: { type: "easeIn", stiffness: 1000, velocity: 0 },
+      },
+    },
+    // exit is not currently getting used
+    exit: {
+      x: 0,
+      opacity: 0,
+      visibility: "hidden",
+      transition: {
+        x: { stiffness: 1000 },
+      },
+    },
+  };
+
   return (
-    <div>
-      {[1, 2, 3].map((chara) => (
-        <Testimony key={chara}>
+    <motion.div
+      variants={containerVariants}
+      initial="enter"
+      animate="center"
+      exit="exit"
+    >
+      {[1, 2, 3].map((chara, i) => (
+        <Testimony key={chara} custom={i} variants={testimonyVariants}>
           <Bubble>
             <PortraitIcon
               src={
@@ -94,7 +140,7 @@ const Relationships = ({ keyName }: CharacterProps) => {
           <TabButton onClick={() => setSelectedTab(tab)} key={tab} currentTheme={currentTheme} selected={selectedTab === tab}>{tab}</TabButton>
         )} */}
       </ButtonContainer>
-    </div>
+    </motion.div>
   );
 };
 

@@ -10,9 +10,16 @@ import { COLORS, TAG_TYPE } from "@util/constants";
 import FsLightbox from "fslightbox-react";
 import useSystemStore from "@store/system";
 // TODO: we can import imageData for now but eventually move it to firebase and set it to the store
-import imageData from "src/data/imageData.json";
+// import imageData from "src/data/imageData.json";
 import "./lightbox.scss";
-import { light } from "@material-ui/core/styles/createPalette";
+import {
+  StaticImage,
+  GatsbyImage,
+  getImage,
+} from "gatsby-plugin-image";
+import { useStaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
+import MultiImage from "@images/SVG/multi_image.svg";
 
 const GalleryContainer = styled.div`
   display: grid;
@@ -21,8 +28,7 @@ const GalleryContainer = styled.div`
   row-gap: 10px;
 `;
 
-const GalleryPreview = styled.img`
-  border-radius: 5px;
+const PreviewContainer = styled.div`
   width: 100%;
   max-height: 160px;
   object-fit: cover;
@@ -34,29 +40,22 @@ const GalleryPreview = styled.img`
   }
 `;
 
-const HiddenBackstore = styled.div`
-  display: none;
-`;
-
-const GalleryBackdrop = styled.div`
-  width: 100vw;
-  height: 100vh;
-`;
-
-const Fragment = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  background-color: ${COLORS.black};
-  border-radius: 5px;
-  padding: 0.6rem;
-  width: fit-content;
-`;
-
-const ImageContainer = styled.div`
-  display: flex;
-  align-self: center;
+const MultiTag = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: ${hexToRGBA(COLORS.GREY_DEFAULT, 0.7)};
+  padding-left: 0.3rem;
+  border-radius: 5px 0 0 0;
+  span {
+    display: flex;
+    align-items: center;
+  }
+  svg {
+    width: 1rem;
+    height: 1rem;
+    margin: 0.3rem;
+  }
 `;
 
 const HorizontalImageContainer = styled.div<{ col: number }>`
@@ -83,16 +82,16 @@ const VerticalImageContainer = styled.div<{ row: number }>`
 `;
 
 // TODO: add image container for grid and 1v3 twitter esque styled
-
 interface Props {
-  keyList: string[];
-  currentTheme: ThemeTypes;
+  imageData?: any; // TODO: fix later
 }
 
-const Gallery = ({ keyList, currentTheme }: Props) => {
+const Gallery = (props: Props) => {
+  const { imageData } = props;
   const { isTablet } = useWindowSize();
   // const activeFilters = useSystemStore((state) => state.activeFilters);
   const filterType = useSystemStore((state) => state.filterType);
+  const currentTheme = useSystemStore((state) => state.currentTheme);
   const sortType = useSystemStore((state) => state.sortType);
   const [lightboxController, setLightboxController] = useState({
     toggler: false,
@@ -101,20 +100,54 @@ const Gallery = ({ keyList, currentTheme }: Props) => {
   const [displayedList, updateDisplayedList] = useState([]);
   const [productIndex, setProductIndex] = useState(0);
 
+  const imageQuery = useStaticQuery(graphql`
+    query ImagesQuery {
+      allFile(
+        filter: {
+          extension: { regex: "/(jpg)|(png)|(jpeg)/" }
+          relativeDirectory: { eq: "uploads" }
+        }
+      ) {
+        edges {
+          node {
+            base
+            childImageSharp {
+              fluid {
+                originalName
+                ...GatsbyImageSharpFluid
+              }
+              resize(height: 160, width: 160, fit: COVER, cropFocus: ENTROPY) {
+                src
+                aspectRatio
+                originalName
+              }
+              blur: resize(
+                height: 160
+                width: 160
+                fit: COVER
+                cropFocus: ENTROPY
+                base64: true
+              ) {
+                base64: src
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  // hacky fix to disable wheel scrolling in the lightbox
   useEffect(() => {
-    // hacky fix to disable wheel scrolling in the lightbox
     const stopWheelZoom = (e) => e.stopImmediatePropagation();
     window.addEventListener("wheel", stopWheelZoom, true);
 
     return () => window.removeEventListener("wheel", stopWheelZoom);
   }, []);
 
+  // update imageData based on filter menu
   useEffect(() => {
-    // filter image data by parent page's keys first
-    let filteredList = Object.values(imageData).filter((i) =>
-      i.tags.map((t) => t.key).some((t) => keyList.includes(t))
-    );
-    console.log(filteredList, keyList);
+    let filteredList = imageData;
 
     // filter next by filter options
     switch (filterType) {
@@ -122,22 +155,22 @@ const Gallery = ({ keyList, currentTheme }: Props) => {
         break;
       case "personal":
         filteredList = filteredList.filter((i) =>
-          i.tags.some((t) => keyList.includes("personal"))
+          i.tags.some((t) => t.includes("personal"))
         );
         break;
       case "friend":
         filteredList = filteredList.filter((i) =>
-          i.tags.some((t) => keyList.includes("friendart"))
+          i.tags.some((t) => t.includes("friendart"))
         );
         break;
       case "reference":
         filteredList = filteredList.filter((i) =>
-          i.tags.some((t) => keyList.includes("reference"))
+          i.tags.some((t) => t.includes("reference"))
         );
         break;
       case "commission":
         filteredList = filteredList.filter((i) =>
-          i.tags.some((t) => keyList.includes("commission"))
+          i.tags.some((t) => t.includes("commission"))
         );
         break;
       default:
@@ -177,13 +210,43 @@ const Gallery = ({ keyList, currentTheme }: Props) => {
     });
   };
 
+  const getFluidImage = (img, preview = false) => {
+    const base = imageQuery.allFile.edges.find(
+      (i) => i.node.base === img.fileName
+    );
+    if (preview) {
+      // hack to address gatsby transformer sharp only returning base64 as the src
+      return {
+        ...base.node.childImageSharp.resize,
+        ...base.node.childImageSharp.blur,
+        srcSet: `${base.node.childImageSharp.resize.src} 32w`,
+        sizes: "(max-width: 32px) 100vw, 32px",
+      };
+    } else {
+      return base.node.childImageSharp.fluid;
+    }
+  };
+
   const renderGalleryPreview = (img, index) => {
     // TODO: think about how to preview multi-img pics
     return (
-      <div onClick={() => onPreviewClick(index + 1)} key={img.name}>
-        {/* TODO: gatsby images */}
-        <GalleryPreview src={"/" + img.filePaths[0]} />
-      </div>
+      <PreviewContainer
+        onClick={() => onPreviewClick(index + 1)}
+        key={img.name}
+      >
+        <Img
+          className={"gallery-preview"}
+          fluid={getFluidImage(img, true)}
+          alt={img.name}
+        />
+        {img.filePaths.length > 1 && (
+          <MultiTag>
+            <span>
+              +{img.filePaths.length - 1} <MultiImage />
+            </span>
+          </MultiTag>
+        )}
+      </PreviewContainer>
     );
   };
 
@@ -191,13 +254,24 @@ const Gallery = ({ keyList, currentTheme }: Props) => {
     // TODO: add img grid styles here...
     // TODO: mayhaps layout tags...
     if (img.filePaths.length === 1) {
-      return "/" + img.filePaths[0];
+      return (
+        <img
+          src={getFluidImage(img).src}
+          srcSet={getFluidImage(img).srcSet}
+          alt={img.fileName}
+          key={img.filePaths[0]}
+        />
+      );
     } else if (img.filePaths.length === 2) {
       return (
         <div>
           <HorizontalImageContainer col={img.filePaths.length}>
-            {img.filePaths.map((path) => (
-              <img src={"/" + path} key={path} />
+            {img.filePaths.map((path, i) => (
+              <img
+                src={getFluidImage(img).src}
+                alt={`${img.fileName}-${i}`}
+                key={path}
+              />
             ))}
           </HorizontalImageContainer>
         </div>
@@ -205,8 +279,12 @@ const Gallery = ({ keyList, currentTheme }: Props) => {
     } else if (img.filePaths.length > 2) {
       return (
         <VerticalImageContainer row={img.filePaths.length}>
-          {img.filePaths.map((path) => (
-            <img src={"/" + path} key={path} />
+          {img.filePaths.map((path, i) => (
+            <img
+              src={"../images/" + path}
+              alt={`${img.fileName}-${i}`}
+              key={path}
+            />
           ))}
         </VerticalImageContainer>
       );
@@ -216,6 +294,7 @@ const Gallery = ({ keyList, currentTheme }: Props) => {
   };
 
   const getCaptions = (img) => {
+    // TODO: style this, or figure out where to move the captions (maybe as part of the pic)
     return (
       <div>
         <p>{img.comment}</p>
@@ -225,8 +304,13 @@ const Gallery = ({ keyList, currentTheme }: Props) => {
 
   const getAttributes = (img) => {
     return {
-      alt: img.name,
+      alt: img.fileName,
     };
+  };
+
+  // TODO: add styling to thumbnails
+  const getThumbnails = (img) => {
+    return getFluidImage(img, true).src;
   };
 
   return (
@@ -234,6 +318,7 @@ const Gallery = ({ keyList, currentTheme }: Props) => {
       <GalleryFilters currentTheme={currentTheme} filters={[]} />
       {displayedList.length > 0 && (
         <>
+          {/* TODO: probably add a max height with overflow */}
           <GalleryContainer>
             {displayedList.map((img, index) =>
               renderGalleryPreview(img, index)
@@ -245,7 +330,7 @@ const Gallery = ({ keyList, currentTheme }: Props) => {
             sources={displayedList.map((img) => renderLightboxImage(img))}
             captions={displayedList.map((img) => getCaptions(img))}
             customAttributes={displayedList.map((img) => getAttributes(img))}
-            thumbs={[null]}
+            thumbs={displayedList.map((img) => getThumbnails(img))}
             slide={lightboxController.slide}
             exitFullscreenOnClose
             showThumbsOnMount
