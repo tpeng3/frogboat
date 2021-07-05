@@ -1,28 +1,53 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { RouteComponentProps } from "@reach/router";
-import { ThemeTypes } from "@components/Layout";
+import { graphql } from "gatsby";
+import { CharacterDataProps } from "@util/types";
 import { SEO } from "@components/seo";
 import CharacterAbout from "@components/CharacterPage";
 import TabContainer, { tabTypes } from "@components/TabContainer";
+import { PageTransition } from "@components/StyledContainers";
 import content from "./content.yaml";
 
 const CHARA_KEY = "oc seven";
-const THEME_KEY = ThemeTypes.DFC;
 
-const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
-  const path = location.pathname;
+export default function OCPage(props: CharacterDataProps) {
+  const { data } = props;
   return (
-    <div>
+    <PageTransition>
+      {/* figure out SEO later, if not never */}
+      <SEO {...content[CHARA_KEY]} />
       <CharacterAbout {...content[CHARA_KEY]} />
       <hr />
       <TabContainer
-        currentTheme={THEME_KEY}
         keyName={CHARA_KEY}
         tabs={[tabTypes.RELATIONSHIPS, tabTypes.GALLERY, tabTypes.NOTES]}
+        imageData={data.allImageDataJson.nodes}
       />
-    </div>
+    </PageTransition>
   );
-};
+}
 
-export default OCPage;
+export const pageQuery = graphql`
+  query {
+    allImageDataJson(
+      filter: { tags: { elemMatch: { key: { eq: "oc seven" } } } }
+    ) {
+      nodes {
+        comment
+        date
+        fileName
+        filePaths
+        id
+        key
+        mimeType
+        name
+        order
+        tags {
+          color
+          key
+          name
+          type
+        }
+      }
+    }
+  }
+`;

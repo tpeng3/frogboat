@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
+import useSystemStore from "@store/system";
 import {
   motion,
   AnimatePresence,
@@ -55,7 +56,7 @@ const Container = styled(motion.div)<{ currentTheme: string }>`
   border-radius: 12px;
   color: ${COLORS.white};
   padding: 4rem 1rem;
-  /* min-height: 500px; */
+  min-height: 500px;
   ${media.laptop`
     padding: 2rem 4rem;
   `}
@@ -68,19 +69,14 @@ export enum tabTypes {
 }
 
 interface CharacterProps {
-  currentTheme: ThemeTypes;
   keyName: string;
   tabs: tabTypes[];
-  imageData?: any; // update later
+  imageData?: any; // TODO: update type later
 }
 
-const TabContainer = ({
-  currentTheme,
-  keyName,
-  tabs,
-  imageData,
-}: CharacterProps) => {
+const TabContainer = ({ keyName, tabs, imageData }: CharacterProps) => {
   const { isTablet } = useWindowSize();
+  const currentTheme = useSystemStore((state) => state.currentTheme);
   const [selectedTab, setSelectedTab] = useState<tabTypes>(
     tabTypes.RELATIONSHIPS
   );
@@ -118,18 +114,13 @@ const TabContainer = ({
       </ButtonContainer>
       <AnimateSharedLayout>
         <Container currentTheme={currentTheme} layout>
-          <AnimatePresence>
-            {/* <motion.div key={selectedTab} variants={containerVariants} custom={direction} initial="enter" animate="center" exit="exit"> */}
-            <motion.div
-              key={selectedTab}
-              layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              {getCurrentTab()}
-            </motion.div>
-          </AnimatePresence>
+          <motion.div
+            key={selectedTab}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.5 } }}
+          >
+            {getCurrentTab()}
+          </motion.div>
         </Container>
       </AnimateSharedLayout>
     </div>

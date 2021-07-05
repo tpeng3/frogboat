@@ -7,7 +7,7 @@ main:
     Active project to turn this into an interactive visual novel with 6 chapters. In the past, I had an hour long prologue demo done, but I'm revamping it.
 
 oc hotaru:
-  key: oc hotaru
+  keyName: oc hotaru
   title: Akesaki Hotaru (明幸ホタル)
   quote: >
     "Well, I have my poker chips on alien abductions. They've trapped us in this replica of a mansion in order to observe how we humans interact."
@@ -19,7 +19,7 @@ oc hotaru:
     - My mascot oc. If it wasn't obvious by the incredible amount of art I have. Hi I love them.
 
 oc kokoro:
-  key: oc kokoro
+  keyName: oc kokoro
   title: Masagami Kokoro (正上こころ)
   quote: >
     "A-aliens? Are you sure?"
@@ -30,7 +30,7 @@ oc kokoro:
     - Another aesthetic OC because she has a good color palette.
 
 oc marina:
-  key: oc marina
+  keyName: oc marina
   title: Tomimura Marina (富マリナ)
   quote: >
     "Forgive my pessimism but I believe our situation is quite serious."
@@ -42,7 +42,7 @@ oc marina:
     - Another self indulgent aesthetic oc _(:'3_
 
 oc tetsu:
-  key: oc tetsu
+  keyName: oc tetsu
   title: Watanabe Tetsuaki (渡辺鉄秋)
   quote: >
     "Well my gut says that she has good intentions, and you can trust my gut."
@@ -54,7 +54,7 @@ oc tetsu:
     - I know she has a fanbase among my friends for being ****.
 
 oc sachiko:
-  key: oc sachiko
+  keyName: oc sachiko
   title: Aya Sachiko (綾智子)
   quote: >
     "EYES ON ME! For I'm the one and only, Aya Sachiko~★"
@@ -65,7 +65,7 @@ oc sachiko:
     - I designed her with all my drawing weaknesses (glasses, hair, muscles, frilly outfits) in mind so this is my least favorite OC.
 
 oc jun:
-  key: oc jun
+  keyName: oc jun
   title: Kiyono Jun (清ノ淳)
   quote: >
     "Shut up."

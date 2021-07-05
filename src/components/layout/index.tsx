@@ -53,6 +53,7 @@ const Main = styled.main<{ currentTheme: string }>`
 const Container = styled(motion.div)`
   background-color: ${hexToRGBA(COLORS.GREY_DEFAULT, 0.8)};
   margin: 0 auto;
+  min-height: 500px;
   max-width: 1080px;
   padding: 2rem;
   border-radius: 5px;
@@ -129,11 +130,11 @@ const Layout = ({ location, children }: LayoutProps) => {
         <AnimateSharedLayout>
           {/* TODO: move opacity to text and delay on change so box is less awkward */}
           <Container
-            layout
-            transition={{ ease: "linear", stiffness: 0, velocity: 0 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          // layout
+          // transition={{ ease: "linear", stiffness: 0, velocity: 0 }}
+          // initial={{ opacity: 0 }}
+          // animate={{ opacity: 1, transition: { delay: 2, delayChildren: 1 } }}
+          // exit={{ opacity: 0 }}
           >
             {/* <CSSDebugger /> */}
             <main>{children}</main>

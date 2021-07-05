@@ -12,11 +12,7 @@ import useSystemStore from "@store/system";
 // TODO: we can import imageData for now but eventually move it to firebase and set it to the store
 // import imageData from "src/data/imageData.json";
 import "./lightbox.scss";
-import {
-  StaticImage,
-  GatsbyImage,
-  getImage,
-} from "gatsby-plugin-image";
+import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 import MultiImage from "@images/SVG/multi_image.svg";
@@ -111,6 +107,7 @@ const Gallery = (props: Props) => {
         edges {
           node {
             base
+            relativePath
             childImageSharp {
               fluid {
                 originalName
@@ -155,22 +152,25 @@ const Gallery = (props: Props) => {
         break;
       case "personal":
         filteredList = filteredList.filter((i) =>
-          i.tags.some((t) => t.includes("personal"))
+          i.tags.some(
+            (t) =>
+              !["externalart", "friendart", "commission"].includes(t.keyName)
+          )
         );
         break;
       case "friend":
         filteredList = filteredList.filter((i) =>
-          i.tags.some((t) => t.includes("friendart"))
+          i.tags.some((t) => t.key === "friendart")
         );
         break;
       case "reference":
         filteredList = filteredList.filter((i) =>
-          i.tags.some((t) => t.includes("reference"))
+          i.tags.some((t) => t.key === "reference")
         );
         break;
       case "commission":
         filteredList = filteredList.filter((i) =>
-          i.tags.some((t) => t.includes("commission"))
+          i.tags.some((t) => t.key === "commission")
         );
         break;
       default:
@@ -200,7 +200,7 @@ const Gallery = (props: Props) => {
 
     // update preview list + remount lightbox by updating its key
     updateDisplayedList(filteredList);
-    // setProductIndex(productIndex + 1);
+    setProductIndex(productIndex + 1);
   }, [filterType, sortType]);
 
   const onPreviewClick = (index) => {
@@ -210,33 +210,34 @@ const Gallery = (props: Props) => {
     });
   };
 
-  const getFluidImage = (img, preview = false) => {
+  const getFluidImage = (path, preview = false) => {
     const base = imageQuery.allFile.edges.find(
-      (i) => i.node.base === img.fileName
+      (i) => i.node.relativePath === path
     );
-    if (preview) {
-      // hack to address gatsby transformer sharp only returning base64 as the src
-      return {
-        ...base.node.childImageSharp.resize,
-        ...base.node.childImageSharp.blur,
-        srcSet: `${base.node.childImageSharp.resize.src} 32w`,
-        sizes: "(max-width: 32px) 100vw, 32px",
-      };
+    if (base) {
+      if (preview) {
+        // hack to address gatsby transformer sharp only returning base64 as the src
+        return {
+          ...base.node.childImageSharp.resize,
+          ...base.node.childImageSharp.blur,
+          srcSet: `${base.node.childImageSharp.resize.src} 32w`,
+          sizes: "(max-width: 32px) 100vw, 32px",
+        };
+      } else {
+        return base.node.childImageSharp.fluid;
+      }
     } else {
-      return base.node.childImageSharp.fluid;
+      console.log("couldn't find image", path);
     }
   };
 
   const renderGalleryPreview = (img, index) => {
     // TODO: think about how to preview multi-img pics
     return (
-      <PreviewContainer
-        onClick={() => onPreviewClick(index + 1)}
-        key={img.name}
-      >
+      <PreviewContainer onClick={() => onPreviewClick(index + 1)} key={img.key}>
         <Img
           className={"gallery-preview"}
-          fluid={getFluidImage(img, true)}
+          fluid={getFluidImage(img.filePaths[0], true)}
           alt={img.name}
         />
         {img.filePaths.length > 1 && (
@@ -256,8 +257,8 @@ const Gallery = (props: Props) => {
     if (img.filePaths.length === 1) {
       return (
         <img
-          src={getFluidImage(img).src}
-          srcSet={getFluidImage(img).srcSet}
+          src={getFluidImage(img.filePaths[0]).src}
+          srcSet={getFluidImage(img.filePaths[0]).srcSet}
           alt={img.fileName}
           key={img.filePaths[0]}
         />
@@ -268,7 +269,7 @@ const Gallery = (props: Props) => {
           <HorizontalImageContainer col={img.filePaths.length}>
             {img.filePaths.map((path, i) => (
               <img
-                src={getFluidImage(img).src}
+                src={getFluidImage(img.filePaths[i]).src}
                 alt={`${img.fileName}-${i}`}
                 key={path}
               />
@@ -281,7 +282,7 @@ const Gallery = (props: Props) => {
         <VerticalImageContainer row={img.filePaths.length}>
           {img.filePaths.map((path, i) => (
             <img
-              src={"../images/" + path}
+              src={getFluidImage(img.filePaths[i]).src}
               alt={`${img.fileName}-${i}`}
               key={path}
             />
@@ -310,13 +311,13 @@ const Gallery = (props: Props) => {
 
   // TODO: add styling to thumbnails
   const getThumbnails = (img) => {
-    return getFluidImage(img, true).src;
+    return getFluidImage(img.filePaths[0], true).src;
   };
 
   return (
     <div>
       <GalleryFilters currentTheme={currentTheme} filters={[]} />
-      {displayedList.length > 0 && (
+      {displayedList.length > 0 ? (
         <>
           {/* TODO: probably add a max height with overflow */}
           <GalleryContainer>
@@ -337,6 +338,8 @@ const Gallery = (props: Props) => {
             zoomIncrement={0.5}
           />
         </>
+      ) : (
+        <h5>No images found under this filter.</h5>
       )}
     </div>
   );

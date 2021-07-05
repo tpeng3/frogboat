@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { motion, Variants, AnimatePresence } from "framer-motion";
 import useSystemStore from "@store/system";
 import styled from "styled-components";
 import useWindowSize from "@util/screen";
-import Link from "@components/Link";
 import { hexToRGBA, media } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import FilterIcon from "@images/SVG/filter.svg";
@@ -11,29 +11,10 @@ import CloseIcon from "@images/SVG/close.svg";
 import { ThemeTypes } from "@components/Layout";
 import content from "./content.yaml";
 
-const MenuContainer = styled.div`
-  position: relative;
-  display: flex;
-  border-radius: 12px;
-  width: 100%;
-  background-color: ${hexToRGBA(COLORS.GREY_200, 0.2)};
-  padding: 1.4rem 2rem 2rem 2rem;
-`;
-
-const GalleryFiltersContainer = styled.div<{ open: boolean }>`
+const GalleryFiltersContainer = styled(motion.div)`
   margin-bottom: 2rem;
-  display: flex;
-  justify-content: flex-end;
-  /* height: ${(props) => (props.open ? "auto" : "40px")};
-  overflow: hidden;
-  transition: transform .3s cubic-bezier(0, .52, 0, 1); */
-  /* opacity: 0; */
-  overflow: hidden;
-  /* transition: all .3s cubic-bezier(0, .52, 0, 1); */
-  transition: all 1s ease-in;
-  ${MenuContainer} {
-    max-height: ${(props) => (props.open ? "500px" : "40px")};
-  }
+  position: relative;
+  min-height: 40px;
 `;
 
 const FilterButton = styled.button<{ currentTheme: ThemeTypes }>`
@@ -46,6 +27,8 @@ const FilterButton = styled.button<{ currentTheme: ThemeTypes }>`
   min-width: 5rem;
   color: ${(props) => props.theme[props.currentTheme].accentColor};
   padding: 0.2rem 1rem;
+  right: 0;
+  position: absolute;
   svg {
     height: 0.8rem;
     width: 1.2rem;
@@ -61,6 +44,16 @@ const FilterButton = styled.button<{ currentTheme: ThemeTypes }>`
   }
 `;
 
+const MenuContainer = styled(motion.div)`
+  position: relative;
+  display: flex;
+  border-radius: 12px;
+  width: 100%;
+  background-color: ${hexToRGBA(COLORS.GREY_200, 0.2)};
+  padding: 1.4rem 2rem 2rem 2rem;
+  overflow: hidden;
+`;
+
 const FilterTitle = styled.h5`
   margin: 0;
   padding-bottom: 5px;
@@ -74,9 +67,13 @@ const StyledCloseIcon = styled(CloseIcon)`
   height: 1rem;
   width: 1rem;
   cursor: pointer;
+  transition: 180ms transform ease-in-out;
+  &:hover {
+    transform: scale(1.25);
+  }
 `;
 
-const FilterOptions = styled.div`
+const FilterOptions = styled(motion.div)`
   display: grid;
   width: 100%;
   grid-template-columns: 3fr 2fr;
@@ -90,7 +87,7 @@ const FilterContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const RadioLabel = styled.label`
+const RadioLabel = styled(motion.label)`
   line-height: 1;
   display: flex;
   cursor: pointer;
@@ -149,6 +146,57 @@ const GalleryFilters = ({ currentTheme, filters }: Props) => {
 
   const [filterMenuOpened, toggleFilterMenu] = React.useState<boolean>(false);
 
+  const menuContainerVariants: Variants = {
+    open: {
+      height: "auto",
+      opacity: 1,
+      visibility: "visible",
+      transition: {
+        height: { stiffness: 1000, velocity: -100 },
+      },
+    },
+    closed: {
+      height: "10px",
+      opacity: 0,
+      transition: {
+        height: { stiffness: 1000 },
+      },
+      transitionEnd: {
+        visibility: "hidden",
+      },
+    },
+  };
+
+  const galleryFiltersVariants: Variants = {
+    open: {
+      transition: { delay: 0.5, staggerChildren: 0.07, delayChildren: 0.2 },
+    },
+    closed: {
+      transition: { staggerChildren: 0.05, staggerDirection: -1 },
+    },
+  };
+
+  const radioLabelVariants: Variants = {
+    open: {
+      y: 0,
+      opacity: 1,
+      visibility: "visible",
+      transition: {
+        ease: "easeIn",
+        y: { stiffness: 1000, velocity: 0 },
+      },
+    },
+    closed: {
+      y: -20,
+      opacity: 0,
+      visibility: "hidden",
+      transition: {
+        ease: "easeIn",
+        y: { stiffness: 1000 },
+      },
+    },
+  };
+
   const handleChange = (type: string) => {
     const filterList = filters ? [type, ...filters] : [type];
     updateActiveFilters(filterList);
@@ -156,8 +204,12 @@ const GalleryFilters = ({ currentTheme, filters }: Props) => {
   };
 
   return (
-    <GalleryFiltersContainer open={filterMenuOpened}>
-      {!filterMenuOpened ? (
+    <GalleryFiltersContainer
+      initial="closed"
+      animate={filterMenuOpened ? "open" : "closed"}
+      exit="closed"
+    >
+      {!filterMenuOpened && (
         <FilterButton
           currentTheme={currentTheme}
           onClick={() => toggleFilterMenu(true)}
@@ -165,56 +217,59 @@ const GalleryFilters = ({ currentTheme, filters }: Props) => {
           <FilterIcon />
           Filters
         </FilterButton>
-      ) : (
-        <MenuContainer>
-          {/* TODO: add a style that indicates default filters aren't on maybe? an "active" icon */}
-          <StyledCloseIcon
-            alt={"close icon"}
-            onClick={() => toggleFilterMenu(false)}
-          />
-          <FilterOptions>
-            <div>
-              <FilterTitle>Show only</FilterTitle>
-              <FilterContainer>
-                {content.filter.map((item) => (
-                  <RadioLabel key={item.value}>
+      )}
+      <AnimatePresence>
+        {filterMenuOpened && (
+          <MenuContainer variants={menuContainerVariants}>
+            {/* TODO: add a style that indicates default filters aren't on maybe? an "active" icon */}
+            <StyledCloseIcon
+              alt={"close icon"}
+              onClick={() => toggleFilterMenu(false)}
+            />
+            <FilterOptions variants={galleryFiltersVariants}>
+              <div>
+                <FilterTitle>Show only</FilterTitle>
+                <FilterContainer>
+                  {content.filter.map((item) => (
+                    <RadioLabel key={item.value} variants={radioLabelVariants}>
+                      <RadioInput>
+                        <input
+                          type="radio"
+                          name="filter"
+                          value={item.value}
+                          onChange={() => handleChange(item.value)}
+                          checked={filterType === item.value}
+                        />
+                        <RadioControl />
+                      </RadioInput>
+                      <span>{item.label}</span>
+                    </RadioLabel>
+                  ))}
+                </FilterContainer>
+              </div>
+              <div>
+                <FilterTitle>Sort by</FilterTitle>
+                {/* TODO: add reverse button icon */}
+                {content.sort.map((item) => (
+                  <RadioLabel key={item.value} variants={radioLabelVariants}>
                     <RadioInput>
                       <input
                         type="radio"
-                        name="filter"
+                        name="sort"
                         value={item.value}
-                        onChange={() => handleChange(item.value)}
-                        checked={filterType === item.value}
+                        onChange={() => updateSortType(item.value)}
+                        checked={sortType === item.value}
                       />
                       <RadioControl />
                     </RadioInput>
                     <span>{item.label}</span>
                   </RadioLabel>
                 ))}
-              </FilterContainer>
-            </div>
-            <div>
-              <FilterTitle>Sort by</FilterTitle>
-              {/* TODO: add reverse button icon */}
-              {content.sort.map((item) => (
-                <RadioLabel key={item.value}>
-                  <RadioInput>
-                    <input
-                      type="radio"
-                      name="sort"
-                      value={item.value}
-                      onChange={() => updateSortType(item.value)}
-                      checked={sortType === item.value}
-                    />
-                    <RadioControl />
-                  </RadioInput>
-                  <span>{item.label}</span>
-                </RadioLabel>
-              ))}
-            </div>
-          </FilterOptions>
-        </MenuContainer>
-      )}
+              </div>
+            </FilterOptions>
+          </MenuContainer>
+        )}
+      </AnimatePresence>
     </GalleryFiltersContainer>
   );
 };

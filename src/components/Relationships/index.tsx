@@ -120,7 +120,11 @@ const Relationships = ({ keyName }: CharacterProps) => {
       exit="exit"
     >
       {[1, 2, 3].map((chara, i) => (
-        <Testimony key={chara} custom={i} variants={testimonyVariants}>
+        <Testimony
+          key={`${chara}-${i}`}
+          custom={i}
+          variants={testimonyVariants}
+        >
           <Bubble>
             <PortraitIcon
               src={
