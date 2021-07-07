@@ -99,9 +99,7 @@ export enum ThemeTypes {
   HORO = "horo",
 }
 
-interface LayoutProps extends PageProps {}
-
-const Layout = ({ location, children }: LayoutProps) => {
+const Layout = ({ location, children }: PageProps) => {
   const darkMode = useSystemStore((state) => state.darkMode);
   const currentTheme = useSystemStore((state) => state.currentTheme);
   const setPreviousTheme = useSystemStore((state) => state.setPreviousTheme);

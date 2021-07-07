@@ -15,16 +15,16 @@ const GRADIENT_MAP = {
     ],
   },
   saq: {
-    backgroundColor: "#C48487",
+    backgroundColor: "#d18481",
     endGradient: [
       ["#FFE096", "0.00%"],
-      ["#E59D82", "15.00%"],
-      ["#E6918E", "80.00%"],
-      ["#441E5E", "100.00%"],
+      ["#E59D82", "25.00%"],
+      ["#d18481", "65.00%"],
+      ["#503f5c", "100.00%"],
     ],
   },
   dfc: {
-    backgroundColor: "#141725",
+    backgroundColor: "#5C88E0",
     endGradient: [
       ["#cbeaf1", "0.00%"],
       ["#86E3FF", "5.00%"],
@@ -33,7 +33,7 @@ const GRADIENT_MAP = {
     ],
   },
   onm: {
-    backgroundColor: "#141725",
+    backgroundColor: "#262539",
     endGradient: [
       ["#2F9A8C", "0.00%"],
       ["#235764", "50.00%"],
@@ -42,7 +42,7 @@ const GRADIENT_MAP = {
     ],
   },
   horo: {
-    backgroundColor: "#6F526B",
+    backgroundColor: "#2E2847",
     endGradient: [
       ["#6F526B", "0.00%"],
       ["#6F526B", "50.00%"],

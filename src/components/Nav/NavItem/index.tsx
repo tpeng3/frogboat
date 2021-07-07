@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "@components/Link";
 import { elevation } from "@util/helpers";
@@ -95,6 +95,7 @@ interface Props {
 
 export default function DropdownMenu(props: Props) {
   const { item, icon } = props;
+  const [subNavOpen, toggleSubNav] = useState<boolean>(false);
   // const darkMode = useSystemStore((state) => state.darkMode);
 
   const modalBackgroundVariants: Variants = {
@@ -116,7 +117,18 @@ export default function DropdownMenu(props: Props) {
   };
 
   return (
-    <NavItemWrapper initial="closed" whileHover="open">
+    <NavItemWrapper
+      initial="closed"
+      animate={subNavOpen ? "open" : "closed"}
+      onHoverStart={() => {
+        if (!subNavOpen) {
+          toggleSubNav(true);
+        }
+      }}
+      onHoverEnd={() => {
+        toggleSubNav(false);
+      }}
+    >
       <Link to={item.route}>
         <NavButton key={item.label} initial="default" whileHover="active">
           <ButtonSpan>
@@ -128,7 +140,11 @@ export default function DropdownMenu(props: Props) {
       {item.subItems && (
         <SubNavContainer variants={modalBackgroundVariants}>
           {item.subItems.map((i) => (
-            <Link to={i.route} key={i.label}>
+            <Link
+              to={i.route}
+              key={i.label}
+              extraAction={() => toggleSubNav(false)}
+            >
               <SubNavButton key={i.label} initial="default" whileHover="active">
                 <ButtonSpan>{i.label}</ButtonSpan>
               </SubNavButton>

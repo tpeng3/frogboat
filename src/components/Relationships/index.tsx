@@ -11,6 +11,7 @@ import useWindowSize from "@util/screen";
 import Link from "@components/Link";
 import { hexToRGBA, media } from "@util/helpers";
 import { COLORS } from "@util/constants";
+import content from "./content.yaml";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -36,6 +37,7 @@ const PortraitIcon = styled.img`
 const Description = styled.p`
   margin: 2rem;
   align-self: center;
+  flex: 1;
 `;
 
 const Bubble = styled.div`
@@ -50,7 +52,7 @@ const Bubble = styled.div`
   `}
 `;
 
-const Testimony = styled(motion.div)<{ currentTheme?: string }>`
+const Testimony = styled(motion.div)`
   display: flex;
   ${media.laptop`
     &:nth-child(2n) {
@@ -69,12 +71,13 @@ const Testimony = styled(motion.div)<{ currentTheme?: string }>`
   }
 `;
 
-interface CharacterProps {
+interface Props {
   keyName: string;
-  currentTheme?: string;
+  relationshipData: any;
 }
 
-const Relationships = ({ keyName }: CharacterProps) => {
+const Relationships = (props: Props) => {
+  const { keyName, relationshipData } = props;
   const { isTablet } = useWindowSize();
 
   const containerVariants: Variants = {
@@ -83,7 +86,6 @@ const Relationships = ({ keyName }: CharacterProps) => {
     },
   };
 
-  // TODO: maybe add the animation based on when user scrolls down as well
   const testimonyVariants: Variants = {
     enter: (order: number) => ({
       x: order % 2 === 0 ? -100 : 100,
@@ -101,49 +103,28 @@ const Relationships = ({ keyName }: CharacterProps) => {
         x: { type: "easeIn", stiffness: 1000, velocity: 0 },
       },
     },
-    // exit is not currently getting used
-    exit: {
-      x: 0,
-      opacity: 0,
-      visibility: "hidden",
-      transition: {
-        x: { stiffness: 1000 },
-      },
-    },
   };
 
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="enter"
-      animate="center"
-      exit="exit"
-    >
-      {[1, 2, 3].map((chara, i) => (
+    <motion.div variants={containerVariants} initial="enter" animate="center">
+      {relationshipData.map((chara, i) => (
         <Testimony
           key={`${chara}-${i}`}
           custom={i}
           variants={testimonyVariants}
         >
-          <Bubble>
-            <PortraitIcon
-              src={
-                "http://pestemon.weebly.com/uploads/2/8/6/2/28624773/editor/seeevevne.png"
-              }
-              alt={"aaa"}
-            />
-            <Link to={"/oc"}>
+          <Link to={content[chara.charKey].link}>
+            <Bubble>
+              <PortraitIcon
+                src={content[chara.charKey].icon}
+                alt={`${chara.charKey}-icon`}
+              />
               {/* <StyledIcon src={HomeIcon} alt={"home icon"} /> */}
-            </Link>
-            <Description>testt test aaaa</Description>
-          </Bubble>
+              <Description>{chara.testimony}</Description>
+            </Bubble>
+          </Link>
         </Testimony>
       ))}
-      <ButtonContainer>
-        {/* {tabs.map(tab =>
-          <TabButton onClick={() => setSelectedTab(tab)} key={tab} currentTheme={currentTheme} selected={selectedTab === tab}>{tab}</TabButton>
-        )} */}
-      </ButtonContainer>
     </motion.div>
   );
 };
