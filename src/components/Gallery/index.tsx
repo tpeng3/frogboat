@@ -56,7 +56,7 @@ const MultiTag = styled.div`
 
 const HorizontalImageContainer = styled.div<{ col: number }>`
   display: grid;
-  grid-template-columns: repeat(${(props) => props.col}, 1fr);
+  grid-template-columns: ${props => `repeat(${props.col}, 1fr)`};
   grid-gap: 15px;
 `;
 
@@ -65,7 +65,7 @@ const VerticalImageContainer = styled.div<{ row: number }>`
   flex-direction: row;
   ${media.desktop`
     display: grid;
-    grid-template-rows: repeat(${(props) => props.row}, 1fr);
+    grid-template-rows: ${props => `repeat(${props.row}, 1fr)`};
     grid-gap: 10px;
     min-width: 500px;
     overflow-y: auto;
@@ -109,9 +109,8 @@ const Gallery = (props: Props) => {
             base
             relativePath
             childImageSharp {
-              fluid {
-                originalName
-                ...GatsbyImageSharpFluid
+              original {
+                src
               }
               resize(height: 160, width: 160, fit: COVER, cropFocus: ENTROPY) {
                 src
@@ -224,7 +223,7 @@ const Gallery = (props: Props) => {
           sizes: "(max-width: 32px) 100vw, 32px",
         };
       } else {
-        return base.node.childImageSharp.fluid;
+        return base.node.childImageSharp.original;
       }
     } else {
       console.log("couldn't find image", path);
@@ -258,7 +257,7 @@ const Gallery = (props: Props) => {
       return (
         <img
           src={getFluidImage(img.filePaths[0]).src}
-          srcSet={getFluidImage(img.filePaths[0]).srcSet}
+          // srcSet={getFluidImage(img.filePaths[0]).srcSet}
           alt={img.fileName}
           key={img.filePaths[0]}
         />
@@ -339,8 +338,8 @@ const Gallery = (props: Props) => {
           />
         </>
       ) : (
-        <h5>No images found under this filter.</h5>
-      )}
+          <h5>No images found under this filter.</h5>
+        )}
     </div>
   );
 };
