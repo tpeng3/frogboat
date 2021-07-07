@@ -11,9 +11,11 @@ const NavButton = styled(motion.button).attrs({
   variants: {
     active: {
       backgroundColor: COLORS.GREY_HOVER,
+      scale: 1.1,
     },
     default: {
       backgroundColor: COLORS.GREY_DEFAULT,
+      scale: 1.0,
     },
   },
 })`

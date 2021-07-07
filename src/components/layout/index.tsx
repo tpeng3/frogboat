@@ -12,7 +12,6 @@ import { theme, GlobalStyles } from "src/styles";
 // Components
 import { CSSDebugger } from "../css-debugger";
 import Nav from "@components/Nav";
-// import Polka from "@images/SVG/polka.svg";
 import { hexToRGBA, elevation } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import BackgroundGradient from "@components/BackgroundGradient";
@@ -26,27 +25,15 @@ const Main = styled.main<{ currentTheme: string }>`
   position: relative;
   padding: 5rem 1rem;
   background-color: ${(props) =>
-    props.currentTheme
-      ? props.theme[props.currentTheme].backgroundColor
-      : props.theme.default.backgroundColor};
-  background-image: ${(props) =>
-    props.currentTheme
-      ? props.theme[props.currentTheme].backgroundGradient
-      : props.theme.default.backgroundColor};
+    props.theme[props.currentTheme].backgroundColor};
   h1,
   .accent {
-    color: ${(props) =>
-      props.currentTheme
-        ? props.theme[props.currentTheme].accentColor
-        : props.theme.default.accentColor};
+    color: ${(props) => props.theme[props.currentTheme].accentColor};
   }
   hr {
     border: none;
     border-top: 0.1em solid
-      ${(props) =>
-        props.currentTheme
-          ? props.theme[props.currentTheme].accentColor
-          : props.theme.default.accentColor};
+      ${(props) => props.theme[props.currentTheme].accentColor};
   }
 `;
 
@@ -126,14 +113,7 @@ const Layout = ({ location, children }: PageProps) => {
         <BackgroundTexture />
         <BackgroundTexture rotated />
         <AnimateSharedLayout>
-          {/* TODO: move opacity to text and delay on change so box is less awkward */}
-          <Container
-          // layout
-          // transition={{ ease: "linear", stiffness: 0, velocity: 0 }}
-          // initial={{ opacity: 0 }}
-          // animate={{ opacity: 1, transition: { delay: 2, delayChildren: 1 } }}
-          // exit={{ opacity: 0 }}
-          >
+          <Container>
             {/* <CSSDebugger /> */}
             <main>{children}</main>
           </Container>

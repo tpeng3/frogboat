@@ -9,7 +9,15 @@ import content from "./content.yaml";
 
 const CHARA_KEY = "oc kokoro";
 
-export default function OCPage(props: CharacterDataProps) {
+interface Props {
+  data: {
+    allImageDataJson: {
+      nodes: CharacterDataProps;
+    };
+  };
+}
+
+export default function OCPage(props: Props) {
   const { data } = props;
   return (
     <PageTransition>
@@ -20,6 +28,7 @@ export default function OCPage(props: CharacterDataProps) {
       <TabContainer
         keyName={CHARA_KEY}
         tabs={[tabTypes.RELATIONSHIPS, tabTypes.GALLERY, tabTypes.NOTES]}
+        relationshipData={content[CHARA_KEY].relationships}
         imageData={data.allImageDataJson.nodes}
       />
     </PageTransition>

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import useWindowSize from "@util/screen";
 import { media } from "@util/helpers";
+import { SlideFromRight } from "@components/StyledContainers";
 
 const Name = styled.h1`
   margin: 1rem 4rem;
@@ -75,7 +76,7 @@ const CharacterAbout = ({
   const { isTablet } = useWindowSize();
 
   return (
-    <div>
+    <SlideFromRight>
       <Name>{title}</Name>
       <hr />
       {isTablet ? (
@@ -95,7 +96,7 @@ const CharacterAbout = ({
           {mainImg && <MainImage src={mainImg} alt={`${title} image`} />}
         </AboutContainer>
       )}
-    </div>
+    </SlideFromRight>
   );
 };
 

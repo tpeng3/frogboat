@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { RouteComponentProps } from "@reach/router";
 import { SEO } from "@components/seo";
 import SocialLinks from "@components/SocialLinks";
+import { SlideFromRight } from "@components/StyledContainers";
 
 const AboutContainer = styled.div`
   margin: 2em 5em;
@@ -16,7 +17,7 @@ const AboutContainer = styled.div`
 const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   const path = location.pathname;
   return (
-    <div>
+    <SlideFromRight>
       <SEO
         title="About gatsby-starter-template-deluxe"
         description="Examples using the gatsby-starter-template-deluxe."
@@ -35,7 +36,7 @@ const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
       {/* there should be a carousel here... or just image */}
       <hr />
       {/* <DevNotes/> */}
-    </div>
+    </SlideFromRight>
   );
 };
 

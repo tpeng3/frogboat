@@ -20,6 +20,16 @@ oc quille:
 
       In contrast to the Witch of Words who made abundant use of her magic, Quille prefers to save his spells for special or emergency occasions. He worries for unexpected side effects due to the general lack of knowledge around Wordeating. When he does eat, his spells usually take the form of sweets.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/aqaqsq.png
+  relationships:
+    - charKey: oc quille
+      testimony: >
+        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+    - charKey: oc heidi
+      testimony: >
+        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+    - charKey: oc kane
+      testimony: >
+        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
   facts:
     - An only child
     - Linguistics major at the top university in Spadeus
@@ -38,6 +48,16 @@ oc seina:
 
       ​Seina's more selfless with her magic, thinking it's a gift meant to improve the lives of others- as mentioned by her beloved aunt. She wants to prove that wordeating isn't something unusual or scary like her parents believe. Her spells generally take form in hearty dishes (carbs) or a dish related to the person she helps out.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/seinaa.png
+  relationships:
+    - charKey: oc quille
+      testimony: >
+        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+    - charKey: oc heidi
+      testimony: >
+        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+    - charKey: oc kane
+      testimony: >
+        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
   facts:
     - An only child
     - Grew up in the countryside so she has a bit of an accent (which... I'm just really bad at writing...)
@@ -56,6 +76,16 @@ oc heidi:
 
       Quille was childhood friends with Heidi's older brother but the two are rather distant themselves. There's a bit of an awkward backstory involved.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newheadertest_1.png
+  relationships:
+    - charKey: oc quille
+      testimony: >
+        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+    - charKey: oc heidi
+      testimony: >
+        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+    - charKey: oc kane
+      testimony: >
+        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
   facts:
     - 15 years old, birthday is on December 26th (Capricorn)
     - 5'3" tall
@@ -75,6 +105,16 @@ oc kane:
 
     Kane met Heidi because he was friends with her brother and Quille, despite being a few years younger. Originally, Kane hated Heidi because she would constantly butt into their trio, but he eventually got use to it. He looks up to Quille quite a bit.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/914409.png
+  relationships:
+    - charKey: oc quille
+      testimony: >
+        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+    - charKey: oc heidi
+      testimony: >
+        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+    - charKey: oc kane
+      testimony: >
+        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
   facts:
     - Also 15 years old
     - His nickname from Heidi is "Kanny"

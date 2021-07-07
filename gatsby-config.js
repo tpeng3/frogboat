@@ -130,6 +130,6 @@ module.exports = {
       options: {
         component: path.join(__dirname, 'src/components/Layout')
       },
-    },
+    }
   ],
 };

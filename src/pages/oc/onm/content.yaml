@@ -73,6 +73,7 @@ oc marina:
       testimony: >
         "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
     - charKey: oc kokoro
+      testimony: >
         "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
     - charKey: oc tetsu
       testimony: >
@@ -103,6 +104,7 @@ oc tetsu:
       testimony: >
         "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
     - charKey: oc kokoro
+      testimony: >
         "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
     - charKey: oc sachiko
       testimony: >
@@ -133,6 +135,7 @@ oc sachiko:
       testimony: >
         "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
     - charKey: oc kokoro
+      testimony: >
         "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
     - charKey: oc jun
       testimony: >
@@ -151,18 +154,19 @@ oc jun:
   relationships:
     - charKey: oc hotaru
       testimony: >
-        "..."
+        No comment.
     - charKey: oc kokoro
-        "..."
+      testimony: >
+        No comment.
     - charKey: oc marina
       testimony: >
-        "..."
+        ...No comment.
     - charKey: oc tetsu
       testimony: >
-        "..."
+        Tetsu... 
     - charKey: oc sachiko
       testimony: >
-        "..........................................................................."
+        ... ................ ................. .............................................. [redacted].
   facts:
     - likes to write
     - rivals with Marina in terms of solving mysteries

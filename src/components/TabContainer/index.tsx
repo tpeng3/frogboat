@@ -9,7 +9,7 @@ import {
   AnimateSharedLayout,
 } from "framer-motion";
 import useWindowSize from "@util/screen";
-import { media } from "@util/helpers";
+import { media, hexToRGBA } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import { ThemeTypes } from "@components/Layout";
 import Relationships from "@components/Relationships";
@@ -44,7 +44,7 @@ const TabButton = styled.button<{ currentTheme: string; selected: boolean }>`
     background-color: ${(props) =>
       props.selected
         ? props.theme[props.currentTheme].primaryColor
-        : COLORS.GREY_HOVER};
+        : hexToRGBA(COLORS.GREY_HOVER, 0.7)};
   }
 `;
 

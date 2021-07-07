@@ -15,6 +15,19 @@ oc seven:
 
       Seven's generally a sarcastic, carefree boy who enjoys teasing his friends. Deep down, he cares more about other's well being than his own, and is quick to fake a smile or lie if the occasion calls for it. His good intentions to grin and bare all his troubles goes unappreciated by his honest friends.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/editor/seeevevne.png
+  relationships:
+    - charKey: oc aster
+      testimony: >
+        No comment.
+    - charKey: oc patti
+      testimony: >
+        No comment.
+    - charKey: oc curry
+      testimony: >
+        ...No comment.
+    - charKey: oc nova
+      testimony: >
+        Tetsu... 
   facts:
     - Bi and has a terrible crush on his best friend, Aster
     - Has a younger sister currently in middle school
@@ -35,6 +48,19 @@ oc aster:
 
       Intangibility is incredibly useful as a superpower, but Aster hates it because it tends to only act up when he feels negative emotions. The thought that the organization would try to weaponize his body dysphoria makes him sick.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/ez4xr-2uwae96dx.jpg
+  relationships:
+    - charKey: oc seven
+      testimony: >
+        No comment.
+    - charKey: oc patti
+      testimony: >
+        No comment.
+    - charKey: oc curry
+      testimony: >
+        ...No comment.
+    - charKey: oc nova
+      testimony: >
+        Tetsu... 
   facts:
     - my trans sonion
     - School-wise, he studies his butt off to maintain straight A's. Unfortunately, he comes in second when compared to the geniuses.
@@ -50,6 +76,19 @@ oc patti:
 
       Because of her straightforwardness and honesty, she really hates it when people complicate things. Her biggest pet peeve is when people like Seven try to hide something from her, especially because her power makes it obvious when he's lying. Coincidentally, she's pretty good at handling kids.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newcanvas1patjiati.png
+  relationships:
+    - charKey: oc seven
+      testimony: >
+        No comment.
+    - charKey: oc aster
+      testimony: >
+        No comment.
+    - charKey: oc curry
+      testimony: >
+        ...No comment.
+    - charKey: oc nova
+      testimony: >
+        Tetsu... 
   facts:
     - An only child living with a single mom.
     - The oldest out of the trio, and the tallest.
@@ -66,6 +105,19 @@ oc nova:
 
       Nova's gifted with the ability to manipulate gravity, making him a target for many hero associations. He hated the pressure and almost developed a mistrust for the hero industry. But after meeting Curry though, he decided to stay around.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/1437091470.png
+  relationships:
+    - charKey: oc seven
+      testimony: >
+        No comment.
+    - charKey: oc aster
+      testimony: >
+        No comment.
+    - charKey: oc patti
+      testimony: >
+        ...No comment.
+    - charKey: oc curry
+      testimony: >
+        Tetsu... 
   facts:
     - Likes space and kind of wants to be an astronaut
     - also likes ghosts or the undead, so kind of wants to become a supernatural investigator too
@@ -80,6 +132,19 @@ oc curry:
   description: >
     An energetic boy born with the ability the manipulate wind. The combination makes him quite troublesome and Curry enjoys making a mess wherever he goes. Whenever he gets bored, he also likes to pull pranks. He's best friends with Nova and they're both insufferable and inseparable.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/aejkl.png
+  relationships:
+    - charKey: oc seven
+      testimony: >
+        No comment.
+    - charKey: oc aster
+      testimony: >
+        No comment.
+    - charKey: oc patti
+      testimony: >
+        ...No comment.
+    - charKey: oc nova
+      testimony: >
+        Tetsu... 
   facts:
     - has a baby sister (yet to be born)
     - ...don't worry, that's not his real name.

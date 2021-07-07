@@ -37,7 +37,7 @@ export default function Link(props: Props) {
         setPreviousTheme(currentTheme);
         setCurrentTheme(ThemeTypes.DEFAULT);
       }
-    }, 100); // add buffer time for the fade transition from one page to finish
+    }, 500); // add buffer time for the fade transition from one page to finish
 
     if (extraAction) {
       extraAction();

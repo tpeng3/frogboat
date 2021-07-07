@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
+import useSystemStore from "@store/system";
 import {
   motion,
   AnimatePresence,
@@ -9,14 +10,9 @@ import {
 } from "framer-motion";
 import useWindowSize from "@util/screen";
 import Link from "@components/Link";
-import { hexToRGBA, media } from "@util/helpers";
+import { hexToRGBA, media, elevation } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import content from "./content.yaml";
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
 
 const PortraitIcon = styled.img`
   position: relative;
@@ -40,16 +36,23 @@ const Description = styled.p`
   flex: 1;
 `;
 
-const Bubble = styled.div`
+const Bubble = styled.div<{ currentTheme: string }>`
   display: flex;
   border-radius: 10px;
   width: 100%;
   background-color: ${hexToRGBA(COLORS.GREY_200, 0.2)};
+  transition: all 200ms ease;
   ${media.laptop`
     height: 150px;
     border-radius: 150px;
     width: 700px;
   `}
+  :hover {
+    background-color: ${(props) =>
+      props.theme[props.currentTheme].secondaryColor};
+    transform: scale(1.02);
+    ${(props) => elevation(1, props.theme[props.currentTheme].secondaryColor)};
+  }
 `;
 
 const Testimony = styled(motion.div)`
@@ -78,6 +81,7 @@ interface Props {
 
 const Relationships = (props: Props) => {
   const { keyName, relationshipData } = props;
+  const currentTheme = useSystemStore((state) => state.currentTheme);
   const { isTablet } = useWindowSize();
 
   const containerVariants: Variants = {
@@ -114,7 +118,7 @@ const Relationships = (props: Props) => {
           variants={testimonyVariants}
         >
           <Link to={content[chara.charKey].link}>
-            <Bubble>
+            <Bubble currentTheme={currentTheme}>
               <PortraitIcon
                 src={content[chara.charKey].icon}
                 alt={`${chara.charKey}-icon`}

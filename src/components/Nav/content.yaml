@@ -13,8 +13,8 @@ navItems:
         route: /oc/saq/quille
       - label: Heidi
         route: /oc/saq/heidi
-      - label: Kane
-        route: /oc/saq/kane
+      # - label: Kane
+      #   route: /oc/saq/kane
   - label: DFC
     route: /oc/dfc
     subItems:
@@ -43,9 +43,9 @@ navItems:
         route: /oc/onm/jun
       - label: Sachiko
         route: /oc/onm/sachiko
-      - label: Aogi
-        route: /oc/onm/aogi
-        secret: true
+      # - label: Aogi
+      #   route: /oc/onm/aogi
+      #   secret: true
   - label: HORO
     route: /oc/horo
   #   subItems:

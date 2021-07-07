@@ -1,4 +1,5 @@
 import React from "react";
+import { SlideFromRight } from "@components/StyledContainers";
 import styled from "styled-components";
 
 const Title = styled.h1`
@@ -30,7 +31,7 @@ interface CharacterProps {
 
 const CharacterAbout = ({ title, genre, description }: CharacterProps) => {
   return (
-    <div>
+    <SlideFromRight>
       <Title>{title}</Title>
       <Genre>
         <span className="accent">Genre:</span>&nbsp;{genre}
@@ -39,7 +40,7 @@ const CharacterAbout = ({ title, genre, description }: CharacterProps) => {
       <AboutContainer>
         <p>{description}</p>
       </AboutContainer>
-    </div>
+    </SlideFromRight>
   );
 };
 
