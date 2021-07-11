@@ -1,3 +1,5 @@
+import relationships from "@components/Relationships/content.yaml";
+
 export const breakpoints = {
   mobile: 370,
   tablet: 600,
@@ -19,6 +21,8 @@ export const COLORS = {
   black: "#000000",
   shadow: "#29282C",
   TEAL_500: "#73DFCB",
+  LINK: "#73DFCB",
+  LINK_ACTIVE: "#73DFCB",
 };
 
 export const TAG_COLORS = {
@@ -55,6 +59,22 @@ export const TYPE_NAMES = {
   6: "CHARACTER",
   7: "MEDIA",
   8: "OTHER",
+};
+
+export const GET_TAG_LINK = (tag) => {
+  switch (tag.type) {
+    case TAG_TYPE.PROJECT:
+      return `/oc/${tag.key}`;
+    case TAG_TYPE.CHARACTER:
+      if (tag.key in relationships) {
+        return relationships[tag.key].link;
+      } else {
+        return "/tina";
+      }
+    default:
+      // damn I think I need to add params in tina test gallery
+      return "/tina";
+  }
 };
 
 export const TAG_LIST = [

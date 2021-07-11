@@ -5,24 +5,20 @@ export interface RelationshipDataProps {
   }>;
 }
 
-export interface CharacterDataProps {
-  allImageDataJson: {
-    nodes: Array<{
-      comment: string;
-      date: Date;
-      fileName: string;
-      filePaths: string[];
-      id: string;
-      key: string;
-      mimeType: string;
-      name: string;
-      order: number;
-      tags: Array<{
-        color: string;
-        key: string;
-        name: string;
-        type: string;
-      }>;
-    }>;
-  };
+export interface imageDataProps {
+  comment: string;
+  date: Date;
+  fileName: string;
+  filePaths: string[];
+  id: string;
+  key: string;
+  mimeType: string;
+  name: string;
+  order: number;
+  tags: {
+    color: string;
+    key: string;
+    name: string;
+    type: string;
+  }[];
 }

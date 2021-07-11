@@ -14,7 +14,7 @@ import { COLORS } from "@util/constants";
 import { ThemeTypes } from "@components/Layout";
 import Relationships from "@components/Relationships";
 import Gallery from "@components/Gallery";
-import { CharacterDataProps, RelationshipDataProps } from "@util/types";
+import { imageDataProps, RelationshipDataProps } from "@util/types";
 
 const ButtonContainer = styled(motion.div)`
   display: flex;
@@ -73,16 +73,14 @@ interface CharacterProps {
   keyName: string;
   tabs: tabTypes[];
   relationshipData?: RelationshipDataProps; // if relationship
-  imageData?: CharacterDataProps; // if gallery
+  imageData?: imageDataProps[]; // if gallery
 }
 
 const TabContainer = (props: CharacterProps) => {
   const { keyName, tabs, imageData, relationshipData } = props;
   const { isTablet } = useWindowSize();
   const currentTheme = useSystemStore((state) => state.currentTheme);
-  const [selectedTab, setSelectedTab] = useState<tabTypes>(
-    tabTypes.RELATIONSHIPS
-  );
+  const [selectedTab, setSelectedTab] = useState<tabTypes>(tabTypes.GALLERY);
   const [direction, setDirection] = useState<number>(0);
 
   const handleTabChange = (tab: tabTypes, i: number) => {

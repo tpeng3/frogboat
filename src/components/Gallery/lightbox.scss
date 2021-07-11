@@ -1,3 +1,11 @@
+// // hide zoomin
+// .fslightbox-toolbar-button:nth-child(2) {
+//   display: none;
+// }
+// // hide zoomout
+// .fslightbox-toolbar-button:nth-child(3) {
+//   display: none;
+// }
 // hide slideshow
 .fslightbox-toolbar-button:nth-child(4) {
   display: none;
@@ -7,9 +15,38 @@
   display: none;
 }
 
-.fslightbox-source { // fix gatsby's image loading issue
+.fslightbox-container {
+  background: linear-gradient(rgba(30, 30, 30, 0.7), #000 1810%) !important;
+}
+
+.fslightbox-source {
+  // fix gatsby's image loading + needed for scrolling
   height: auto !important;
   max-height: 100vh !important;
+}
+
+.fslightbox-slide-number-container {
+  display: none !important;
+}
+
+.fslightbox-transform-transition {
+  // transform: none !important;
+}
+
+.fslightbox-thumb {
+  filter: brightness(70%);
+  transition: all 200ms ease;
+  &-active {
+    filter: brightness(100%);
+  }
+}
+
+.fslightbox-caption {
+  z-index: 5 !important; //temp
+  visibility: hidden !important;
+  &-active {
+    visibility: visible !important;
+  }
 }
 
 .gallery-preview {
@@ -18,4 +55,12 @@
   height: 100%;
   max-height: 160px;
   object-fit: cover;
+}
+
+.full-image {
+  max-height: 90vh;
+  max-width: 90vh;
+  img {
+    object-fit: contain !important;
+  }
 }

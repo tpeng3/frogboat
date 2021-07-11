@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { CharacterDataProps } from "@util/types";
+import { imageDataProps } from "@util/types";
 import { SEO } from "@components/seo";
 import CharacterAbout from "@components/CharacterPage";
 import TabContainer, { tabTypes } from "@components/TabContainer";
@@ -12,7 +12,7 @@ const CHARA_KEY = "oc seven";
 interface Props {
   data: {
     allImageDataJson: {
-      nodes: CharacterDataProps;
+      nodes: imageDataProps;
     };
   };
 }
@@ -27,7 +27,7 @@ export default function OCPage(props: Props) {
       <hr />
       <TabContainer
         keyName={CHARA_KEY}
-        tabs={[tabTypes.RELATIONSHIPS, tabTypes.GALLERY, tabTypes.NOTES]}
+        tabs={[tabTypes.GALLERY, tabTypes.RELATIONSHIPS, tabTypes.NOTES]}
         relationshipData={content[CHARA_KEY].relationships}
         imageData={data.allImageDataJson.nodes}
       />

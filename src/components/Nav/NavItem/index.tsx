@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "@components/Link";
-import { elevation } from "@util/helpers";
+import { elevation, hexToRGBA } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import { motion, Variants } from "framer-motion";
 
@@ -10,18 +10,18 @@ const NavItemWrapper = styled(motion.div)``;
 const NavButton = styled(motion.button).attrs({
   variants: {
     active: {
-      backgroundColor: COLORS.GREY_HOVER,
+      background: hexToRGBA(COLORS.GREY_HOVER, 1),
       scale: 1.1,
     },
     default: {
-      backgroundColor: COLORS.GREY_DEFAULT,
+      background: hexToRGBA(COLORS.GREY_DEFAULT, 0),
       scale: 1.0,
     },
   },
 })`
   border: none;
   cursor: pointer;
-  background-color: ${COLORS.GREY_DEFAULT};
+  background-color: "transparent";
   display: flex;
   justify-content: center;
   border-radius: 10px;

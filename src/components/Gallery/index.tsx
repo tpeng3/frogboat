@@ -1,85 +1,32 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import useWindowSize from "@util/screen";
 import GalleryFilters from "@components/GalleryFilters";
 import { ThemeTypes } from "@components/Layout";
 import Link from "@components/Link";
 import { hexToRGBA, media } from "@util/helpers";
-import { COLORS, TAG_TYPE } from "@util/constants";
+import { COLORS, TAG_TYPE, GET_TAG_LINK } from "@util/constants";
+import { imageDataProps } from "@util/types";
 import FsLightbox from "fslightbox-react";
 import useSystemStore from "@store/system";
-// TODO: we can import imageData for now but eventually move it to firebase and set it to the store
-// import imageData from "src/data/imageData.json";
 import "./lightbox.scss";
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, withArtDirection } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
 import MultiImage from "@images/SVG/multi_image.svg";
-
-const GalleryContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 10px;
-  row-gap: 10px;
-`;
-
-const PreviewContainer = styled.div`
-  width: 100%;
-  max-height: 160px;
-  object-fit: cover;
-  filter: brightness(80%);
-  transition: all 200ms ease;
-  :hover {
-    filter: brightness(100%);
-    cursor: pointer;
-  }
-`;
-
-const MultiTag = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background-color: ${hexToRGBA(COLORS.GREY_DEFAULT, 0.7)};
-  padding-left: 0.3rem;
-  border-radius: 5px 0 0 0;
-  span {
-    display: flex;
-    align-items: center;
-  }
-  svg {
-    width: 1rem;
-    height: 1rem;
-    margin: 0.3rem;
-  }
-`;
-
-const HorizontalImageContainer = styled.div<{ col: number }>`
-  display: grid;
-  grid-template-columns: ${props => `repeat(${props.col}, 1fr)`};
-  grid-gap: 15px;
-`;
-
-const VerticalImageContainer = styled.div<{ row: number }>`
-  display: flex;
-  flex-direction: row;
-  ${media.desktop`
-    display: grid;
-    grid-template-rows: ${props => `repeat(${props.row}, 1fr)`};
-    grid-gap: 10px;
-    min-width: 500px;
-    overflow-y: auto;
-    ::-webkit-scrollbar {
-      display: none;
-    }
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  `}
-`;
-
+import {
+  GalleryContainer,
+  PreviewContainer,
+  MultiTag,
+  HorizontalImageContainer,
+  VerticalImageContainer,
+  CaptionBox,
+  SingleImageContainer,
+  TagList,
+  TagSpan,
+} from "./styles";
 // TODO: add image container for grid and 1v3 twitter esque styled
 interface Props {
-  imageData?: any; // TODO: fix later
+  imageData: imageDataProps[];
 }
 
 const Gallery = (props: Props) => {
@@ -93,8 +40,9 @@ const Gallery = (props: Props) => {
     toggler: false,
     slide: 1,
   });
-  const [displayedList, updateDisplayedList] = useState([]);
+  const [displayedList, updateDisplayedList] = useState<imageDataProps[]>([]);
   const [productIndex, setProductIndex] = useState(0);
+  const lightboxRef = useRef<any>(null);
 
   const imageQuery = useStaticQuery(graphql`
     query ImagesQuery {
@@ -109,23 +57,17 @@ const Gallery = (props: Props) => {
             base
             relativePath
             childImageSharp {
-              original {
-                src
-              }
-              resize(height: 160, width: 160, fit: COVER, cropFocus: ENTROPY) {
-                src
-                aspectRatio
-                originalName
-              }
-              blur: resize(
-                height: 160
+              full: gatsbyImageData(
+                layout: CONSTRAINED
+                placeholder: NONE
+                transformOptions: { fit: CONTAIN }
+              )
+              gatsbyImageData(
+                layout: CONSTRAINED
                 width: 160
-                fit: COVER
-                cropFocus: ENTROPY
-                base64: true
-              ) {
-                base64: src
-              }
+                height: 160
+                transformOptions: { cropFocus: ENTROPY }
+              )
             }
           }
         }
@@ -137,13 +79,18 @@ const Gallery = (props: Props) => {
   useEffect(() => {
     const stopWheelZoom = (e) => e.stopImmediatePropagation();
     window.addEventListener("wheel", stopWheelZoom, true);
-
-    return () => window.removeEventListener("wheel", stopWheelZoom);
+    return () => {
+      window.removeEventListener("wheel", stopWheelZoom);
+      // make sure lightbox styles reset on unmount
+      document.children[0].classList.remove("fslightbox-open");
+      document.body.style.marginRight = "0";
+    };
   }, []);
 
   // update imageData based on filter menu
   useEffect(() => {
     let filteredList = imageData;
+    console.log(filteredList);
 
     // filter next by filter options
     switch (filterType) {
@@ -152,8 +99,7 @@ const Gallery = (props: Props) => {
       case "personal":
         filteredList = filteredList.filter((i) =>
           i.tags.some(
-            (t) =>
-              !["externalart", "friendart", "commission"].includes(t.keyName)
+            (t) => !["externalart", "friendart", "commission"].includes(t.key)
           )
         );
         break;
@@ -202,6 +148,10 @@ const Gallery = (props: Props) => {
     setProductIndex(productIndex + 1);
   }, [filterType, sortType]);
 
+  const hasTag = (img, tagKey) => {
+    return img.tags.some((t) => t.key === tagKey);
+  };
+
   const onPreviewClick = (index) => {
     setLightboxController({
       toggler: !lightboxController.toggler,
@@ -215,15 +165,9 @@ const Gallery = (props: Props) => {
     );
     if (base) {
       if (preview) {
-        // hack to address gatsby transformer sharp only returning base64 as the src
-        return {
-          ...base.node.childImageSharp.resize,
-          ...base.node.childImageSharp.blur,
-          srcSet: `${base.node.childImageSharp.resize.src} 32w`,
-          sizes: "(max-width: 32px) 100vw, 32px",
-        };
+        return base.node.childImageSharp.gatsbyImageData;
       } else {
-        return base.node.childImageSharp.original;
+        return base.node.childImageSharp.full;
       }
     } else {
       console.log("couldn't find image", path);
@@ -231,12 +175,11 @@ const Gallery = (props: Props) => {
   };
 
   const renderGalleryPreview = (img, index) => {
-    // TODO: think about how to preview multi-img pics
     return (
       <PreviewContainer onClick={() => onPreviewClick(index + 1)} key={img.key}>
-        <Img
+        <GatsbyImage
           className={"gallery-preview"}
-          fluid={getFluidImage(img.filePaths[0], true)}
+          image={getFluidImage(img.filePaths[0], true)}
           alt={img.name}
         />
         {img.filePaths.length > 1 && (
@@ -251,42 +194,42 @@ const Gallery = (props: Props) => {
   };
 
   const renderLightboxImage = (img) => {
-    // TODO: add img grid styles here...
     // TODO: mayhaps layout tags...
-    if (img.filePaths.length === 1) {
+    if (img.filePaths.length > 2 || hasTag(img, "comic")) {
       return (
-        <img
-          src={getFluidImage(img.filePaths[0]).src}
-          // srcSet={getFluidImage(img.filePaths[0]).srcSet}
-          alt={img.fileName}
-          key={img.filePaths[0]}
-        />
+        <VerticalImageContainer row={img.filePaths.length}>
+          {img.filePaths.map((path, i) => (
+            <GatsbyImage
+              image={getFluidImage(img.filePaths[i])}
+              alt={img.name}
+              key={path}
+            />
+          ))}
+        </VerticalImageContainer>
+      );
+    } else if (img.filePaths.length === 1) {
+      return (
+        <SingleImageContainer>
+          <GatsbyImage
+            image={getFluidImage(img.filePaths[0])}
+            alt={img.name}
+            className={"full-image"}
+          />
+        </SingleImageContainer>
       );
     } else if (img.filePaths.length === 2) {
       return (
         <div>
           <HorizontalImageContainer col={img.filePaths.length}>
             {img.filePaths.map((path, i) => (
-              <img
-                src={getFluidImage(img.filePaths[i]).src}
-                alt={`${img.fileName}-${i}`}
+              <GatsbyImage
+                image={getFluidImage(img.filePaths[i])}
+                alt={img.name}
                 key={path}
               />
             ))}
           </HorizontalImageContainer>
         </div>
-      );
-    } else if (img.filePaths.length > 2) {
-      return (
-        <VerticalImageContainer row={img.filePaths.length}>
-          {img.filePaths.map((path, i) => (
-            <img
-              src={getFluidImage(img.filePaths[i]).src}
-              alt={`${img.fileName}-${i}`}
-              key={path}
-            />
-          ))}
-        </VerticalImageContainer>
       );
     } else {
       return <div />;
@@ -294,23 +237,54 @@ const Gallery = (props: Props) => {
   };
 
   const getCaptions = (img) => {
-    // TODO: style this, or figure out where to move the captions (maybe as part of the pic)
+    const d = new Date(img.date);
+    const addLeadingZero = (value) => ("0" + value).slice(-2);
+    const prettyDate = `${addLeadingZero(d.getMonth() + 1)}.${addLeadingZero(
+      d.getDate()
+    )}.${d.getFullYear()}`;
+
+    // I'm not smart enough to figure out a cleaner regex and solution
+    const comment: any = [];
+    const matches = img.comment.split(/(\[([^\[]+)\])(\(.*\))/gm);
+    if (matches) {
+      for (let i = 0; i < matches?.length; i++) {
+        if (i + 2 <= matches.length) {
+          const text = /\[([^\[]+)\]\((.*)\)/.exec(matches[i] + matches[i + 2]);
+          if (text && text.length > 1) {
+            if (text[2].startsWith("/")) {
+              comment.push(<Link to={text[2]}>{text[1]}</Link>);
+            } else {
+              comment.push(
+                <a href={text[2]} target="_blank" rel="noopener noreferrer">
+                  {text[1]}
+                </a>
+              );
+            }
+            i += 2;
+          } else {
+            comment.push(matches[i]);
+          }
+        } else {
+          comment.push(matches[i]);
+        }
+      }
+    }
+
     return (
-      <div>
-        <p>{img.comment}</p>
-      </div>
+      <CaptionBox>
+        <h2>{prettyDate}</h2>
+        <p>{comment}</p>
+        <TagList>
+          {img.tags.map((t) => (
+            <Link to={GET_TAG_LINK(t)}>
+              <TagSpan key={t.name} tagColor={t.color}>
+                {t.name}
+              </TagSpan>
+            </Link>
+          ))}
+        </TagList>
+      </CaptionBox>
     );
-  };
-
-  const getAttributes = (img) => {
-    return {
-      alt: img.fileName,
-    };
-  };
-
-  // TODO: add styling to thumbnails
-  const getThumbnails = (img) => {
-    return getFluidImage(img.filePaths[0], true).src;
   };
 
   return (
@@ -318,7 +292,6 @@ const Gallery = (props: Props) => {
       <GalleryFilters currentTheme={currentTheme} filters={[]} />
       {displayedList.length > 0 ? (
         <>
-          {/* TODO: probably add a max height with overflow */}
           <GalleryContainer>
             {displayedList.map((img, index) =>
               renderGalleryPreview(img, index)
@@ -326,20 +299,21 @@ const Gallery = (props: Props) => {
           </GalleryContainer>
           <FsLightbox
             key={productIndex}
+            ref={lightboxRef}
             toggler={lightboxController.toggler}
             sources={displayedList.map((img) => renderLightboxImage(img))}
+            thumbs={displayedList.map(
+              (img) => getFluidImage(img.filePaths[0], true).images.fallback.src
+            )}
             captions={displayedList.map((img) => getCaptions(img))}
-            customAttributes={displayedList.map((img) => getAttributes(img))}
-            thumbs={displayedList.map((img) => getThumbnails(img))}
             slide={lightboxController.slide}
             exitFullscreenOnClose
-            showThumbsOnMount
             zoomIncrement={0.5}
           />
         </>
       ) : (
-          <h5>No images found under this filter.</h5>
-        )}
+        <h5>No images found under this filter.</h5>
+      )}
     </div>
   );
 };

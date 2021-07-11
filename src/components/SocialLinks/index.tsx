@@ -35,16 +35,32 @@ const StyledLink = styled.a`
 const SocialLinks = () => {
   return (
     <LinkContainer>
-      <StyledLink href="https://twitter.com/shuttlefrog">
+      <StyledLink
+        href="https://twitter.com/shuttlefrog"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <TwitterIcon alt={"twitter icon"} />
       </StyledLink>
-      <StyledLink href="https://shuttlefrog.itch.io/">
+      <StyledLink
+        href="https://shuttlefrog.itch.io/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <ItchIcon alt={"itch icon"} />
       </StyledLink>
-      <StyledLink href="https://github.com/tpeng3">
+      <StyledLink
+        href="https://github.com/tpeng3"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <GithubIcon alt={"github icon"} />
       </StyledLink>
-      <StyledLink href="mailto:hanmorinn@gmail.com">
+      <StyledLink
+        href="mailto:hanmorinn@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <MailIcon alt={"mail icon"} />
       </StyledLink>
     </LinkContainer>

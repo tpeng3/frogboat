@@ -9,6 +9,8 @@ const GlobalStyles = createGlobalStyle`
   }
   html {
     font-family: "Cabin";
+    // to override lightbox's stupid bug
+    /* overflow: auto !important; */
   }
   h1, h2, h3, h4, h5, h6, span, p {
     color: ${COLORS.white}
