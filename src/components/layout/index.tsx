@@ -10,15 +10,28 @@ import useSystemStore from "@store/system";
 import { useStaticQuery, graphql, PageProps } from "gatsby";
 import { theme, GlobalStyles } from "src/styles";
 // Components
-import { CSSDebugger } from "../css-debugger";
+// import { CSSDebugger } from "../css-debugger";
 import Nav from "@components/Nav";
 import { hexToRGBA, elevation } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import BackgroundGradient from "@components/BackgroundGradient";
+import PasswordScreen from "@components/PasswordScreen";
 
 const HeaderImage = styled.div`
-  background-color: #fff;
+  background-color: #000;
+  background-image: url("https://pbs.twimg.com/profile_banners/2777423928/1613272393/1500x500");
+  background-size: cover;
+  background-position: center;
   height: 150px;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(2px); /* apply the blur */
+    pointer-events: none; /* make the overlay click-through */
+  }
 `;
 
 const Main = styled.main<{ currentTheme: string }>`
@@ -91,10 +104,12 @@ const Layout = ({ location, children }: PageProps) => {
   const currentTheme = useSystemStore((state) => state.currentTheme);
   const setPreviousTheme = useSystemStore((state) => state.setPreviousTheme);
   const setCurrentTheme = useSystemStore((state) => state.setCurrentTheme);
+  const isLocked = useSystemStore((state) => state.isLocked);
 
   useEffect(() => {
     const pathList = location.pathname.split("/");
     const pageTheme = pathList.length > 2 ? pathList[2] : "";
+    // TODO: figure out how to not cause background color blink, after password screen is saved with cache
     if (
       Object.values(ThemeTypes).includes(ThemeTypes[pageTheme.toUpperCase()])
     ) {
@@ -103,23 +118,41 @@ const Layout = ({ location, children }: PageProps) => {
     }
   }, []);
 
+  const isPublic = () => {
+    // TODO: make this more generic later
+    const pathList = location.pathname;
+    const PUBLIC_PAGES = ["/oceptember"];
+    return PUBLIC_PAGES.includes(pathList);
+  };
+
   return (
     <ThemeProvider theme={theme()}>
       <GlobalStyles />
-      <HeaderImage />
-      <Nav />
-      <Main currentTheme={currentTheme}>
-        <BackgroundGradient />
-        <BackgroundTexture />
-        <BackgroundTexture rotated />
-        <AnimateSharedLayout>
-          <Container>
-            {/* <CSSDebugger /> */}
-            <main>{children}</main>
-          </Container>
-        </AnimateSharedLayout>
-      </Main>
-      <Footer />
+      {!isPublic() ? (
+        isLocked ? (
+          // TODO: change OC Layout to a layout case controller
+          <PasswordScreen />
+        ) : (
+          <>
+            <HeaderImage />
+            <Nav />
+            <Main currentTheme={currentTheme}>
+              <BackgroundGradient />
+              <BackgroundTexture />
+              <BackgroundTexture rotated />
+              <AnimateSharedLayout>
+                <Container>
+                  {/* <CSSDebugger /> */}
+                  <main>{children}</main>
+                </Container>
+              </AnimateSharedLayout>
+            </Main>
+            <Footer />
+          </>
+        )
+      ) : (
+        <main>{children}</main>
+      )}
     </ThemeProvider>
   );
 };

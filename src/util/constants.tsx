@@ -1,5 +1,7 @@
 import relationships from "@components/Relationships/content.yaml";
 
+export const LILYPAD = "HOTATO";
+
 export const breakpoints = {
   mobile: 370,
   tablet: 600,
@@ -13,14 +15,16 @@ export const COLORS = {
   GREY_HOVER: "#3B3A3C",
   GREY_1000: "#1A1A1A",
   GREY_800: "#1D1D1D",
-  GREY_300: "##555555",
+  GREY_300: "#555555",
   GREY_200: "#55535A",
   GREY_100: "#696969",
-  GREY_50: "#F3F3F3",
+  GREY_50: "#c2c2c2",
+  WHITE_50: "#F3F3F3",
   white: "#FFFFFF",
   black: "#000000",
   shadow: "#29282C",
   TEAL_500: "#73DFCB",
+  TEAL_600: "#549287",
   LINK: "#73DFCB",
   LINK_ACTIVE: "#73DFCB",
 };

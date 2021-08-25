@@ -14,6 +14,7 @@ import { COLORS } from "@util/constants";
 import { ThemeTypes } from "@components/Layout";
 import Relationships from "@components/Relationships";
 import Gallery from "@components/Gallery";
+import Notes from "@components/Notes";
 import { imageDataProps, RelationshipDataProps } from "@util/types";
 
 const ButtonContainer = styled(motion.div)`
@@ -74,10 +75,11 @@ interface CharacterProps {
   tabs: tabTypes[];
   relationshipData?: RelationshipDataProps; // if relationship
   imageData?: imageDataProps[]; // if gallery
+  otherData?: any; // if notes
 }
 
 const TabContainer = (props: CharacterProps) => {
-  const { keyName, tabs, imageData, relationshipData } = props;
+  const { keyName, tabs, imageData, relationshipData, otherData } = props;
   const { isTablet } = useWindowSize();
   const currentTheme = useSystemStore((state) => state.currentTheme);
   const [selectedTab, setSelectedTab] = useState<tabTypes>(tabTypes.GALLERY);
@@ -92,15 +94,17 @@ const TabContainer = (props: CharacterProps) => {
     switch (selectedTab) {
       case tabTypes.RELATIONSHIPS:
         return (
-          <Relationships
-            keyName={keyName}
-            relationshipData={relationshipData}
-          />
+          relationshipData && (
+            <Relationships
+              keyName={keyName}
+              relationshipData={relationshipData}
+            />
+          )
         );
       case tabTypes.GALLERY:
-        return <Gallery imageData={imageData} />;
+        return imageData && <Gallery imageData={imageData} />;
       case tabTypes.NOTES:
-        return `notes`;
+        return otherData && <Notes otherData={otherData} />;
     }
   };
 

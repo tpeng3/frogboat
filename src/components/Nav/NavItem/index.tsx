@@ -7,7 +7,7 @@ import { motion, Variants } from "framer-motion";
 
 const NavItemWrapper = styled(motion.div)``;
 
-const NavButton = styled(motion.button).attrs({
+const NavButton = styled(motion.div).attrs({
   variants: {
     active: {
       background: hexToRGBA(COLORS.GREY_HOVER, 1),
@@ -21,7 +21,7 @@ const NavButton = styled(motion.button).attrs({
 })`
   border: none;
   cursor: pointer;
-  background-color: "transparent";
+  background-color: transparent;
   display: flex;
   justify-content: center;
   border-radius: 10px;
@@ -45,7 +45,7 @@ const SubNavContainer = styled(motion.div)`
   ${elevation(2)}
 `;
 
-const SubNavButton = styled(motion.button).attrs({
+const SubNavButton = styled(motion.div).attrs({
   variants: {
     active: {
       backgroundColor: COLORS.GREY_HOVER,

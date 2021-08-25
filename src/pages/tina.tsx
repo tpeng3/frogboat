@@ -14,7 +14,6 @@ interface Props {
 
 export function TestPage(props: Props) {
   const { data } = props;
-  console.log(data);
   return (
     <SlideFromRight>
       <Gallery imageData={data.allImageDataJson.nodes} />
@@ -23,6 +22,8 @@ export function TestPage(props: Props) {
 }
 
 export default TestPage;
+
+// {regex: "/(?:art|doodles)/"}}}}
 
 export const pageQuery = graphql`
   query {

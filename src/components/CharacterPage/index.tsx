@@ -3,6 +3,7 @@ import styled from "styled-components";
 import useWindowSize from "@util/screen";
 import { media } from "@util/helpers";
 import { SlideFromRight } from "@components/StyledContainers";
+import Secret, { REDACTED_STR } from "./secret";
 
 const Name = styled.h1`
   margin: 1rem 4rem;
@@ -13,7 +14,6 @@ const AboutContainer = styled.div`
   display: flex;
   flex-direction: column;
   p {
-    margin-bottom: 2rem;
     white-space: pre-line;
     text-align: left;
     ${media.laptop`
@@ -22,6 +22,7 @@ const AboutContainer = styled.div`
   }
   ${media.laptop`
     flex-direction: row;
+    margin-bottom: 2rem;
   `}
 `;
 
@@ -86,12 +87,14 @@ const CharacterAbout = ({
             <Quote className="accent">{quote}</Quote>
           </AboutDescription>
           <p>{description}</p>
+          {description === REDACTED_STR && <Secret format={title} />}
         </AboutContainer>
       ) : (
         <AboutContainer>
           <AboutDescription>
             <Quote className="accent">{quote}</Quote>
-            <p>{description}</p>
+            <p>{!description.includes(REDACTED_STR) && description}</p>
+            {description.includes(REDACTED_STR) && <Secret format={title} />}
           </AboutDescription>
           {mainImg && <MainImage src={mainImg} alt={`${title} image`} />}
         </AboutContainer>

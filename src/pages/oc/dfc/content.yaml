@@ -1,33 +1,33 @@
 main:
   title: Dragonfly Club
   genre: Action, Sci-Fi, Slice of Life, Comedy
-  description: >-
-    Australia's always been known for its weird, deadly animals so no one was truly surprised on the day giant monsters burst out from the sea, space, and gaps of time. Rather, why not capitalize on it? And thus, the monster hunting superhero industry was born. This story is centered around a group of superpowered kids growing up in alternate Sydney learning to deal with adolescence, and ins and outs of the hero industry.
+  description: |
+    Australia's always been known for its weird, deadly animals so no one was truly surprised on the day giant monsters burst out from the sea, space, and gaps of time. Rather, why not capitalize on it? And thus, the monster hunting hero industry was born. This story is centered around a group of superpowered kids growing up in alternate Sydney learning to deal with adolescence, and ins and outs of their society.
 
-      I like to imagine this project as a short collection of nonlinear stories, or just a 4koma, but right now it's shelved for other priorities. But TLDR, the project where I channel "lost teens trying to fight in the world of hypercapitalism"
+    I like to imagine this project as a short collection of nonlinear stories, or just a 4koma, but right now it's shelved for other priorities. But TLDR, the project where I channel "lost teens struggling in a world of hypercapitalism"
 
 oc seven:
   title: Seven
   quote: >
     "How lucky of me to own a superpower."
-  description: >-
+  description: |
     Growing up, he dreamed of becoming a superhero that will put bad guys in their place. Too bad when the time came, he found out his superpower is to manipulate luck- a power that's far too self-serving and unpredictable to give him a good reputation in the hero industry. But if you ever want to bankrupt a casino, you found the right guy.
 
-      Seven's generally a sarcastic, carefree boy who enjoys teasing his friends. Deep down, he cares more about other's well being than his own, and is quick to fake a smile or lie if the occasion calls for it. His good intentions to grin and bare all his troubles goes unappreciated by his honest friends.
+    Outwardly, Seven's a laidback boy who enjoys cringe culture and finds humor in irony. Deep down, he cares more about other's well being than his own, and is quick to fake a smile or lie if the occasion calls for it. His good intentions to grin and bare all his troubles goes unappreciated by his honest friends. Seven's also got a heavy case of imposter syndrome, believing to owe success to his luck, rather than any effort made on his part.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/editor/seeevevne.png
   relationships:
     - charKey: oc aster
-      testimony: >
-        No comment.
+      testimony: |
+        "Oh you mean my dumb, apathetic, selfish, impractical, two-faced bastard of a best friend? Yes, I care about him."
     - charKey: oc patti
       testimony: >
-        No comment.
+        "Stupid Sev... He cares too much about us and too little of himself. I bet his dream is to die a matyr but that's the last thing that'll happen if I have any say in it."
     - charKey: oc curry
       testimony: >
-        ...No comment.
+        "Seven's weird! None of my pranks ever work on him and when I ask, he just laughs! Is this part of his luck thing?"
     - charKey: oc nova
       testimony: >
-        Tetsu... 
+        "Actually I've heard about Seven before I joined the Dragonfly division. He's banned from a lot of places by the government but I didn't expect the guy in person to be so... easygoing."
   facts:
     - Bi and has a terrible crush on his best friend, Aster
     - Has a younger sister currently in middle school
@@ -41,26 +41,26 @@ oc aster:
   title: Aster
   quote: >
     "Don't you think superheroes are kinda overrated? Not that my opinion matters..."
-  description: >
-    He never wanted to be a superhero. For one thing, he's not about to risk his life for some stranger. It's a lot more lucrative to become a business major and work with the companies that provide equipment to heroes instead. But for now, Aster will spend his time half stuck to a wall until he can control his intangibility powers.
+  description: |
+    He never wanted to be a superhero. For one thing, he's not about to risk his life for some stranger. It's a lot more lucrative to work in tech with the companies that provide equipment to heroes instead. But for now, Aster will spend his time half stuck to a wall until he can control his intangibility powers.
 
-      Aster has pretty low self-esteem and holds a bad impression of superheroes, thinking they're often too weak and trivial. Despite that, he's in a program for heroes to help him control his powers. Though a hard worker, it's often hard to take him seriously. For one thing, he really does try too hard to act "cool".
+    Aster has pretty low self-esteem and holds a bad impression of superheroes, thinking they're often too weak and trivial. Despite that, he's in a program for heroes to help him control his powers. Though a hard worker, it's often hard to take him seriously. For one thing, he really does try too hard to act "cool".
 
-      Intangibility is incredibly useful as a superpower, but Aster hates it because it tends to only act up when he feels negative emotions. The thought that the organization would try to weaponize his body dysphoria makes him sick.
+    Intangibility is incredibly useful as a superpower, but Aster hates it because it tends to only act up when he feels negative emotions. The thought that the organization would try to weaponize his body dysphoria makes him sick.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/ez4xr-2uwae96dx.jpg
   relationships:
     - charKey: oc seven
       testimony: >
-        No comment.
+        I know my best friend complains about the hero job, but it's hard to hide that heart of gold. He actually works the hardest out of all of us. It's why I like him so m- Oh sorry, I almost started to ramble.
     - charKey: oc patti
       testimony: >
-        No comment.
+        Man, it's annoying to always be the go-to person when someone's trying to look for my invisible best friend. Our freaky situation means I always know what that guy is thinking, but well... He isn't the worst person to be around.
     - charKey: oc curry
       testimony: >
-        ...No comment.
+        That stuck up glasses guy? Boo, he's no fun.
     - charKey: oc nova
       testimony: >
-        Tetsu... 
+        Curry doesn't like how Aster always nags at us, but I think he's okay. He helps us with homework!
   facts:
     - my trans sonion
     - School-wise, he studies his butt off to maintain straight A's. Unfortunately, he comes in second when compared to the geniuses.
@@ -71,59 +71,30 @@ oc patti:
   title: Patti
   quote: >
     "Yeah my superpower is 'bout empathy but I'd rather have you feel my fist."
-  description: >
+  description: |
     A hot-headed girl whose superpower clashes with her personality. She hasn't mastered controlling it, so she often get headaches leaving her fairly volatile. Despite all this, Patti aims to get into the hero industry. She likes the idea of beating up irritating guys.
 
-      Because of her straightforwardness and honesty, she really hates it when people complicate things. Her biggest pet peeve is when people like Seven try to hide something from her, especially because her power makes it obvious when he's lying. Coincidentally, she's pretty good at handling kids.
+    Because of her straightforwardness and honesty, she really hates it when people complicate things with deception. Her biggest pet peeve is when people like Seven try to hide something from her, especially because her power makes it obvious when he's lying. Coincidentally, she's pretty good at handling kids.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newcanvas1patjiati.png
   relationships:
     - charKey: oc seven
       testimony: >
-        No comment.
+        "Patti carries the entire team's mental well being on her very broad shoulders. My best friend that I trust with my life, but definitely, *definitely* never get caught lying to her. Haha..."
     - charKey: oc aster
       testimony: >
-        No comment.
+        I feel like I've known Patti since forever, she's kind of like a sister to me- wait don't tell her that I said that!
     - charKey: oc curry
       testimony: >
-        ...No comment.
+        I love Patti, she's so cool!
     - charKey: oc nova
       testimony: >
-        Tetsu... 
+        Patti
   facts:
     - An only child living with a single mom.
     - The oldest out of the trio, and the tallest.
     - Schoolwise, she's a bit of a delinquent and occasionally skips classes. She once got held back a year. Overall though, Patti has decent grades and excels in Science and PE.
     - in a long distance relationship with another girl, who's also in the hero industry.
     - Please have Patti punch me. Thank you.
-
-oc nova:
-  title: Agent Pooplord
-  quote: >
-    "I'm pretty sure there's some child labor laws in violation just by my presence here."
-  description: >
-    He's not a shy kid, but his lack of social skills makes him hard to approach. It doesn't help when he has such a cheeky tongue. However, he's a sweet boy when he opens up to others.
-
-      Nova's gifted with the ability to manipulate gravity, making him a target for many hero associations. He hated the pressure and almost developed a mistrust for the hero industry. But after meeting Curry though, he decided to stay around.
-  mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/1437091470.png
-  relationships:
-    - charKey: oc seven
-      testimony: >
-        No comment.
-    - charKey: oc aster
-      testimony: >
-        No comment.
-    - charKey: oc patti
-      testimony: >
-        ...No comment.
-    - charKey: oc curry
-      testimony: >
-        Tetsu... 
-  facts:
-    - Likes space and kind of wants to be an astronaut
-    - also likes ghosts or the undead, so kind of wants to become a supernatural investigator too
-    - Can't stand spicy food
-    - he/they pronouns (still exploring because they're young and because he can)
-    - A fav oc because precocious kids are super great. Also his actual name is Agent Pooplord.
 
 oc curry:
   title: Captain Snifflebutt
@@ -138,14 +109,43 @@ oc curry:
         No comment.
     - charKey: oc aster
       testimony: >
-        No comment.
+        "Oh look, it's Brat #1. No I'm not being petty when I call him by what he is: a brat that went wild with pranks in the quarters until Patti finally stopped him!"
     - charKey: oc patti
       testimony: >
-        ...No comment.
+        "It's been livelier since Curry joined us."
     - charKey: oc nova
       testimony: >
-        Tetsu... 
+        "My partner-in-crime, Captain Snifflebutt. we're inseperable!"
   facts:
     - has a baby sister (yet to be born)
     - ...don't worry, that's not his real name.
     - His real name is Captain Snifflebutt (I'm kidding but actually that's how this oc came to be)
+
+oc nova:
+  title: Agent Pooplord
+  quote: >
+    "I'm pretty sure there's some child labor laws in violation just by my presence here."
+  description: |
+    He's not a shy kid, but his lack of social skills makes him hard to approach. It doesn't help when he has such a cheeky tongue. However, he's a sweet boy when he opens up to others.
+
+    Nova's gifted with the ability to manipulate gravity, making him a target for many hero associations. He hated the pressure and almost developed a mistrust for the hero industry. But after meeting Curry though, he decided to stay around.
+  mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/1437091470.png
+  relationships:
+    - charKey: oc seven
+      testimony: >
+        "He must have had it hard to give that up and join our humble team."
+    - charKey: oc aster
+      testimony: >
+        "Brat #2- well Nova's a good kid but I can't fathom why he made such a big fuss to the higher-ups just to bring Curry on our team."
+    - charKey: oc patti
+      testimony: >
+        ""
+    - charKey: oc curry
+      testimony: >
+        ""
+  facts:
+    - Likes space and kind of wants to be an astronaut
+    - also likes ghosts or the undead, so kind of wants to become a supernatural investigator too
+    - Can't stand spicy food
+    - he/they pronouns (still exploring because they're young and because he can)
+    - A fav oc because precocious kids are super endearing. Also his actual name is Agent Pooplord.

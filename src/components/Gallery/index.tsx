@@ -49,7 +49,7 @@ const Gallery = (props: Props) => {
       allFile(
         filter: {
           extension: { regex: "/(jpg)|(png)|(jpeg)/" }
-          relativeDirectory: { eq: "uploads" }
+          relativeDirectory: { regex: "/uploads/" }
         }
       ) {
         edges {
@@ -276,11 +276,12 @@ const Gallery = (props: Props) => {
         <p>{comment}</p>
         <TagList>
           {img.tags.map((t) => (
-            <Link to={GET_TAG_LINK(t)}>
+            // <Link to={GET_TAG_LINK(t)}>
+            <a>
               <TagSpan key={t.name} tagColor={t.color}>
                 {t.name}
               </TagSpan>
-            </Link>
+            </a>
           ))}
         </TagList>
       </CaptionBox>
@@ -307,6 +308,7 @@ const Gallery = (props: Props) => {
             )}
             captions={displayedList.map((img) => getCaptions(img))}
             slide={lightboxController.slide}
+            slideChangeAnimation="scale-in"
             exitFullscreenOnClose
             zoomIncrement={0.5}
           />

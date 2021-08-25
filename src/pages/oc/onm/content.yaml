@@ -1,34 +1,35 @@
 main:
   title: One Night Murder
   genre: Mystery, Supernatural, Romance(?)
-  description: >
-    One day, Hotaru wakes up in an unknown mansion with five other girls. None of them claim to know what's going on but everyone's bent on trying to leave. But it's too bad Hotaru's got a knack for unlucky timings because there's a dead body on the floor and Hotaru's holding the knife.
+  description: |
+    One day, Hotaru wakes up in an unknown mansion with five other girls. None of them claim to know what's going on but everyone's bent on trying to leave. It's too bad Hotaru's got a knack for unlucky timings because suddenly there's a dead body on the floor and they're holding the knife.
 
-    Active project to turn this into an interactive visual novel with 6 chapters. In the past, I had an hour long prologue demo done, but I'm revamping it.
+    Active project to turn this into an adventure visual novel with 6 chapters. In the past, I had an hour long prologue demo done, but I've been revamping it.
 
 oc hotaru:
   keyName: oc hotaru
   title: Akesaki Hotaru (明幸ホタル)
   quote: >
     "Well, I have my poker chips on alien abductions. They've trapped us in this replica of a mansion in order to observe how we humans interact."
-  description: this dumb kid
+  description: >
+    [the following content is unavailable to the public]
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/ey-wr-qxgaecbt6_orig.jpg
   relationships:
     - charKey: oc kokoro
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Hocchan's a funny friend! I don't always understand what they're saying... But it's cute when they get all excited about... what was it... Aliens?"
     - charKey: oc marina
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "What's my impression of Hotaru? If I squin- Ehem, disregard their childish conduct, we can... likely bond over our mutual fondness for a good mystery."
     - charKey: oc tetsu
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "First thought: "The hell's a kid doin' here?" Imagine my surprise that they're only a year younger! Can't help but want to look out for 'em though."
     - charKey: oc sachiko
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Soooo silly~ Their thoughts show up exactly on their face. It's fun to poke at their stupidity~"
     - charKey: oc jun
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "..."
   facts:
     - Birthday is July 20th (Cancer), which just so happens to be when the murder mystery takes place
     - Just finished their first year in college (English major)
@@ -39,24 +40,25 @@ oc kokoro:
   title: Masagami Kokoro (正上こころ)
   quote: >
     "A-aliens? Are you sure?"
-  description: she's uwu
+  description: >
+    [the following content is unavailable to the public]
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newheader_1.png
   relationships:
     - charKey: oc hotaru
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was charmed by my cool demeanor?"
     - charKey: oc marina
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Kokoro's a really sweet girl. Bright and optimistic, I'm really saved by her presence admist this dreary situation."
     - charKey: oc tetsu
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Haha, I joked with Hotaru that outta 'veryone here, Kokoro was my type. Well, despite lookin' scared outta her wits, she still tries to look out for 'veryone. She's strong, I respect that."
     - charKey: oc sachiko
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Sweet. Sweet Kokoron. Everybody loves Kokoron."
     - charKey: oc jun
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "..."
   facts:
     - a bit gullible but tries her best
     - Another aesthetic OC because she has a good color palette.
@@ -66,24 +68,25 @@ oc marina:
   title: Tomimura Marina (富マリナ)
   quote: >
     "Forgive my pessimism but I believe our situation is quite serious."
-  description: she can step on me
+  description: >
+    [the following content is unavailable to the public]
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newheadertest_1.png
   relationships:
     - charKey: oc hotaru
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Queen... Goddess... Never thought I'd meet my soulmate during an alien abduction... I wouldn't say this out loud but I hope she can step on m-"
     - charKey: oc kokoro
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Marina's good at solving mysteries so she's been the most eager on getting to the bottom of our situation. I want to support her however I can!"
     - charKey: oc tetsu
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Miss leader's doing a fine job leading the team and all... I just have my own methods I'd like to follow, don't hate me alright?"
     - charKey: oc sachiko
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Oh? Did Miss Goody-two-shoes provide another strongly worded complaint for me to trash?"
     - charKey: oc jun
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "..."
   facts:
     - She likes jazz music, can play the saxophone
     - 6 foot trans queen
@@ -94,24 +97,25 @@ oc tetsu:
   title: Watanabe Tetsuaki (渡辺鉄秋)
   quote: >
     "Well my gut says that she has good intentions, and you can trust my gut."
-  description: smart jock
+  description: >
+    [the following content is unavailable to the public]
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newheadertest2_2.png
   relationships:
     - charKey: oc hotaru
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Probably one of the chillest people I know. I respect Tetsu a lot but the fact she wears a SHIRT shirt drives me insane."
     - charKey: oc marina
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Although Tetsu is quite friendly and easygoing, there seems to be an invisible wall whenever we speak in regards to personal life."
     - charKey: oc kokoro
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "I don't know much about Tecchan but she smiles a lot and likes to give out head pats."
     - charKey: oc sachiko
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Welllll, I'm ALWAYS nice to a fan~"
     - charKey: oc jun
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "...Tetsu..."
   facts:
     - Family runs an okonomiyaki restaraunt
     - was the libero for her volleyball team in high school
@@ -122,24 +126,25 @@ oc sachiko:
   title: Aya Sachiko (綾智子)
   quote: >
     "EYES ON ME! For I'm the one and only, Aya Sachiko~★"
-  description: mmm don't trust her
+  description: >
+    [the following content is unavailable to the public]
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/oh.jpg
   relationships:
     - charKey: oc hotaru
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Ah, the Devil's spawn... Sachiko was put on Earth to inflict misery on all mortals and even Satan doesn't want her back."
     - charKey: oc marina
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "It's not polite of me to gossip, but Sachiko is quite skilled with all the methods of vexing oneself- that is to say: she's insufferable."
     - charKey: oc tetsu
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "I know somma the others' a bit wary of Sachiko 'cause of the way she presents 'erself. I keep my distance."
     - charKey: oc kokoro
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "Sacchi likes to talk about herself a lot! But she doesn't look very happy when anyone else speaks."
     - charKey: oc jun
       testimony: >
-        "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
+        "... ................ ................. .............................................."
   facts:
     - she's an idol... yeah
     - I designed her with all my drawing weaknesses (glasses, hair, muscles, frilly outfits) in mind so this is my least favorite OC.
@@ -149,24 +154,25 @@ oc jun:
   title: Kiyono Jun (清ノ淳)
   quote: >
     "Shut up."
-  description: she has more than one brain cell
+  description: >
+    [the following content is unavailable to the public]
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/junwh_2.png
   relationships:
     - charKey: oc hotaru
       testimony: >
-        No comment.
+        "That girl is so suspicious, I don't think she even spoke a word since we met. What's her deal?"
     - charKey: oc kokoro
       testimony: >
-        No comment.
+        "Um... Junny's a very quiet person."
     - charKey: oc marina
       testimony: >
-        ...No comment.
+        "I get the impression that Jun is one with a keen mind, but she seems to find comfort more in the corners of the house than by our sides."
     - charKey: oc tetsu
       testimony: >
-        Tetsu... 
+        "Haha sorry, no comment. I don't think Jun'll like me talkin' about her. Well, she has her reasons."
     - charKey: oc sachiko
       testimony: >
-        ... ................ ................. .............................................. [redacted].
+        "Jun~ Junny~ Jun~ It seems I've caught her reticent attention. I wouldn't mind a chance to pry open her thoughts given the chance~"
   facts:
     - likes to write
     - rivals with Marina in terms of solving mysteries

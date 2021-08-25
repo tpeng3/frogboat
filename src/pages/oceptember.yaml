@@ -1,0 +1,91 @@
+prompts:
+  - label: Favorite OC
+    description:
+    custom: False
+  - label: Shafted OC
+    description:
+    custom: False
+  - label: Initial designs
+    description:
+    custom: False
+  - label: About the OC's world
+    description:
+    custom: False
+  - label: Regrets
+    description:
+    custom: False
+  - label: Pet peeves
+    description:
+    custom: False
+  - label: Obscure fact
+    description:
+    custom: False
+  - label: Friends
+    description:
+    custom: False
+  - label: Enemies
+    description:
+    custom: False
+  - label: (Found) Family
+    description:
+    custom: False
+  - label: Casual setting
+    description:
+    custom: False
+  - label: Formal setting
+    description:
+    custom: False
+  - label: Timeskip
+    description:
+    custom: False
+  - label: Cooking
+    description:
+    custom: False
+  - label: Dancing
+    description:
+    custom: False
+  - label: Getting hurt
+    description:
+    custom: False
+  - label: Personality/ Palette swap
+    description:
+    custom: False
+  - label: In another style
+    description:
+    custom: False
+  - label: Memes
+    description:
+    custom: False
+  - label: Eyes closed
+    description:
+    custom: False
+  - label: OC Crossover
+    description:
+    custom: False
+  - label: In a mainstream series
+    description:
+    custom: False
+  - label: OTP
+    description:
+    custom: False
+  - label: Crackship
+    description:
+    custom: False
+  - label: Merch ideas
+    description:
+    custom: False
+  - label: Motivations
+    description:
+    custom: False
+  - label: Inspirations
+    description:
+    custom: False
+  - label: OC meets creator
+    description:
+    custom: False
+  - label: Vtuber / Streamer AU
+    description:
+    custom: False
+  - label: AMV song choice
+    description:
+    custom: False

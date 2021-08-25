@@ -11,7 +11,7 @@ import NavItem from "./NavItem";
 import MobileNav from "./MobileNav";
 import content from "./content.yaml";
 
-const NAVICON_MAP = {
+export const NAVICON_MAP = {
   home: HomeIcon,
 };
 
@@ -83,14 +83,15 @@ const Nav = () => {
             <NavButton onClick={() => toggleMobileNav(true)}>
               <MenuIcon alt={"menu icon"} />
             </NavButton>
-            <SettingsButton />
+            {/* <SettingsButton /> */}
+            <div />
           </NavContainer>
           <StyledDrawer
             anchor={"left"}
             open={mobileNavOpened}
             onClose={() => toggleMobileNav(false)}
           >
-            <MobileNav />
+            <MobileNav toggleMobileNav={toggleMobileNav} />
           </StyledDrawer>
         </>
       ) : (
@@ -104,7 +105,8 @@ const Nav = () => {
               />
             );
           })}
-          <SettingsButton />
+          {/* <SettingsButton /> */}
+          <div />
         </NavContainer>
       )}
       <SettingsModal />

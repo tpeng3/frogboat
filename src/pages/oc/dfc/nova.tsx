@@ -29,6 +29,7 @@ export default function OCPage(props: Props) {
         keyName={CHARA_KEY}
         tabs={[tabTypes.GALLERY, tabTypes.RELATIONSHIPS, tabTypes.NOTES]}
         relationshipData={content[CHARA_KEY].relationships}
+        otherData={content[CHARA_KEY].facts}
         imageData={data.allImageDataJson.nodes}
       />
     </PageTransition>

@@ -2,7 +2,7 @@ import { COLORS } from "@util/constants";
 
 export default {
   default: {
-    primaryColor: COLORS.GREY_50,
+    primaryColor: COLORS.WHITE_50,
     secondaryColor: COLORS.GREY_100,
     accentColor: COLORS.TEAL_500,
     backgroundColor: COLORS.GREY_HOVER,

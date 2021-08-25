@@ -43,7 +43,7 @@
 
 .fslightbox-caption {
   z-index: 5 !important; //temp
-  visibility: hidden !important;
+  visibility: visible !important;
   &-active {
     visibility: visible !important;
   }

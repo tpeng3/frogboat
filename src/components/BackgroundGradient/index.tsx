@@ -106,7 +106,7 @@ export default function BackgroundGradient(props) {
   };
 
   return (
-    <MotionSvg animate={currentTheme}>
+    <MotionSvg animate={currentTheme} initial={false}>
       <defs>
         <linearGradient id="linear" x1="100%" y1="0%" x2="100%" y2="100%">
           {/* We're only doing four gradient stops for now, just to see how it looks */}
