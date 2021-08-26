@@ -1,91 +1,94 @@
 prompts:
   - label: Favorite OC
-    description:
+    description: '' 
     custom: False
   - label: Shafted OC
-    description:
+    description: An OC that deserves more love, whether it's because they were forgotten or unlikeable.
     custom: False
   - label: Initial designs
-    description:
+    description: ''
     custom: False
   - label: About the OC's world
-    description:
+    description: ''
     custom: False
   - label: Regrets
-    description:
+    description: This could be used to describe a character's regret or your personal grievances as a creator.
     custom: False
   - label: Pet peeves
-    description:
+    description: This could be used to describe a character's pet peeves or your own vexations as a creator.
     custom: False
   - label: Obscure fact
-    description:
+    description: ''
     custom: False
   - label: Friends
-    description:
+    description: ''
     custom: False
   - label: Enemies
-    description:
+    description: ''
     custom: False
   - label: (Found) Family
-    description:
+    description: ''
     custom: False
   - label: Casual setting
-    description:
+    description: ''
     custom: False
-  - label: Formal setting
-    description:
+  - label: Serious setting
+    description: ''
     custom: False
   - label: Timeskip
-    description:
+    description: ''
     custom: False
   - label: Cooking
-    description:
+    description: ''
     custom: False
   - label: Dancing
-    description:
+    description: ''
     custom: False
   - label: Getting hurt
-    description:
+    description: ''
     custom: False
   - label: Personality/ Palette swap
-    description:
+    description: Can either alter the personality or the color scheme of an OC's design.
     custom: False
   - label: In another style
-    description:
+    description: ''
     custom: False
   - label: Memes
-    description:
+    description: ''
     custom: False
   - label: Eyes closed
-    description:
+    description: ''
     custom: False
   - label: OC Crossover
-    description:
+    description: ''
     custom: False
-  - label: In a mainstream series
-    description:
+  - label: Fashion magazine
+    description: ''
     custom: False
   - label: OTP
-    description:
+    description: ''
     custom: False
   - label: Crackship
-    description:
+    description: ''
     custom: False
   - label: Merch ideas
-    description:
+    description: |
+      Possible suggestions: sticker sheets, plushies, stationery, charms, weird idol merch, etc. Maybe even use this prompt as an opportunity to make the merch a reality!
     custom: False
   - label: Motivations
-    description:
+    description: |
+      Can be used to describe a character's plot motivations or your own motivations (ex: "Why are you invested in OCs?")
     custom: False
   - label: Inspirations
-    description:
+    description: |
+      What were your influences/inspirations for creating OCs (ex: self inserts, created from games like FFXIV/DND, you read a work and really, Really wanted to create something similar, you have a favorite artist, etc.)
     custom: False
   - label: OC meets creator
-    description:
+    description: ''
     custom: False
   - label: Vtuber / Streamer AU
-    description:
+    description: One idea would be to create a fake stream setup with an OC playing a video game or making a vlog
     custom: False
   - label: AMV song choice
-    description:
+    description: What's a song you can imagine your OCs starring in (anime opening/ending styled or if there was a promotional trailer)
     custom: False

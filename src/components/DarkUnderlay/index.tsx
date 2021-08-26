@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { COLORS } from "@util/constants";
 
-const Underlay = styled.div<{ showDark: boolean }>`
+const Underlay = styled.div<{ showDark: number }>`
   background-color: ${COLORS.black};
   position: fixed;
   height: 100vh;
@@ -13,7 +13,7 @@ const Underlay = styled.div<{ showDark: boolean }>`
   top: 0;
   opacity: 0;
   z-index: 90;
-  ${(props) => props.showDark && "opacity: 0.8;"}
+  opacity: ${(props) => props.showDark ? props.showDark : 0};
 `;
 
 interface Props {
