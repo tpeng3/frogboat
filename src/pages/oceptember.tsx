@@ -1,38 +1,81 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { motion, useAnimation, Variants } from "framer-motion";
 import { COLORS, LILYPAD } from "@util/constants";
-import { shuffle } from "@util/helpers";
+import { shuffle, hexToRGBA } from "@util/helpers";
 import useSystemStore from "@store/system";
 import TextField from "@material-ui/core/TextField";
 import { PromptModal } from "@components/OCeptember/PromptModal";
 import { AnimationDefinition } from "framer-motion/types/render/VisualElement/utils/animation";
 import TemplateImage from "src/images/canvas.png";
 import InfoImage from "src/images/canvas-front.png";
+import DownloadIcon from '@images/SVG/download.svg';
+import { useDimensions } from "@util/screen";
 import content from "./oceptember.yaml"; // TODO: move this to a yaml folder... maybe
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    overflow: hidden;
+  }
+`
+
 const Overlay = styled(motion.div)`
-  background-color: ${COLORS.TEAL_500};
+  background-color: #dac8bf;
   width: 100vw;
   height: 100vh;
 `;
 
-const ButtonContainer = styled.div`
-  margin: auto;
+const TemplateContainer = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
+  align-items: center;
+`;
+
+const CanvasPlaceholder = styled.div<{ width: number, height: number }>`
+  width: ${(props) => props.width}px;
+  height: ${(props) => props.height}px;
 `;
 
 const CanvasContainer = styled(motion.div)`
   display: flex;
-  justify-content: center;
   position: relative;
+  justify-content: center;
   canvas, img {
-    width: 400px;
+    width: 500px;
   }
 `;
 
 const InfoContainer = styled(motion.div)`
   position: absolute;
+`;
+
+const ButtonContainer = styled.div`
+  margin-left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+const StyledButton = styled.button`
+  background-color: ${hexToRGBA('#635353', .10)};
+  color: #535353;
+  border: 1px solid #e7e4d8;
+  border-radius: 5px;
+  padding: 8px;
+  min-width: 140px;
+  transition: all 200ms ease;
+  svg {
+    width: 10px;
+    margin-left: 3px;
+    fill: #635353;
+  }
+  :hover {
+    cursor: pointer;
+    background-color: ${hexToRGBA('#e7e4d8', .50)};
+  }
 `;
 
 export default function App() {
@@ -41,6 +84,7 @@ export default function App() {
   const [promptOpen, togglePrompt] = useState(false);
   const [showInfo, toggleInfo] = useState(true);
   const canvasAnimationControls = useAnimation();
+  const { width, height } = useDimensions(canvasRef);
 
   useEffect(() => {
     updateTemplate();
@@ -55,13 +99,8 @@ export default function App() {
     },
   };
 
-  const showCard: AnimationDefinition = {
-    rotateY: 180
-  }
-
   const flipCard = () => {
     toggleInfo(!showInfo);
-    // updateTemplate()
   }
 
   const handleCanvasComplete = () => {
@@ -122,14 +161,14 @@ export default function App() {
     ctx.lineTo(cx, cy - outerRadius)
     ctx.closePath();
     ctx.lineWidth = 5;
-    ctx.fillStyle = '#33879239';
+    ctx.fillStyle = 'rgba(51, 135, 146, 0.2)';
     ctx.fill();
   }
 
   const updateTemplate = () => {
     canvasAnimationControls.set({
       opacity: 0,
-      translateY: 150
+      translateY: 100,
     });
     canvasAnimationControls.start(showCanvas);
     const ctx = canvasRef.current && canvasRef.current.getContext('2d');
@@ -142,9 +181,9 @@ export default function App() {
 
         // fill template with prompts
         const shuffled = shuffle(promptList);
-        const X_PADDING = 190.2, Y_PADDING = 190, X_START = 162, Y_START = 220;
+        const X_PADDING = 187.5, Y_PADDING = 188, X_START = 165, Y_START = 238;
         const MAX_WIDTH = 100, LINE_HEIGHT = 22;
-        ctx.font = '24px Asap';
+        ctx.font = '24px Open Sans';
         ctx.textAlign = 'center';
         let x = X_START, y = Y_START; // starting positions
         ctx.textBaseline = 'middle';
@@ -155,10 +194,10 @@ export default function App() {
           }
           // add a watermark for custom prompts
           if (prompt.custom) {
-            drawStar(ctx, x, y + 12, 5, 80, 50);
+            drawStar(ctx, x, y + 14, 5, 70, 40);
           }
           // add text
-          ctx.fillStyle = '#338792';
+          ctx.fillStyle = '#506F76';
           wrapText(ctx, prompt.label, x, y, MAX_WIDTH, LINE_HEIGHT);
           x += X_PADDING;
         })
@@ -179,18 +218,14 @@ export default function App() {
   }
 
   return (
-    <div>
-      <Overlay>
-        <ButtonContainer>
-          <button onClick={updateTemplate}>Redraw</button>
-          <button onClick={() => togglePrompt(true)}>Edit Prompts</button>
-          <button onClick={downloadCard}>Download Card</button>
-          <button onClick={flipCard}>View Info</button>
-        </ButtonContainer>
+    <Overlay>
+      <GlobalStyle />
+      <TemplateContainer>
         <CanvasContainer
           animate={canvasAnimationControls}
           onAnimationComplete={() => handleCanvasComplete()}
         >
+          <CanvasPlaceholder width={width} height={height} />
           <InfoContainer
             initial={false}
             animate={{ rotateY: showInfo ? -90 : 0 }}
@@ -212,8 +247,14 @@ export default function App() {
             <img src={InfoImage} />
           </InfoContainer>
         </CanvasContainer>
-      </Overlay>
+        <ButtonContainer>
+          <StyledButton onClick={flipCard}>Flip Card</StyledButton>
+          <StyledButton onClick={() => togglePrompt(true)}>Edit Prompts</StyledButton>
+          <StyledButton onClick={updateTemplate}>Draw a New Card</StyledButton>
+          <StyledButton onClick={downloadCard}>Download <DownloadIcon /></StyledButton>
+        </ButtonContainer>
+      </TemplateContainer>
       <PromptModal defaultPrompts={content.prompts} promptList={promptList} updatePromptList={updatePromptList} open={promptOpen} togglePrompt={togglePrompt} />
-    </div>
+    </Overlay>
   );
 }

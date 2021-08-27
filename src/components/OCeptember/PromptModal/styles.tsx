@@ -41,7 +41,10 @@ export const ModalItems = styled(motion.div)`
 `;
 
 export const StyledTextField = styled(TextField)`
-  max-width: 85%;
+  max-width: 80%;
+  ${media.desktop`
+    max-width: 85%;
+  `}
 `;
 
 export const StyledIconButton = styled(IconButton) <{ iconcolor: string }>`
@@ -93,3 +96,33 @@ export const PromptTooltip = withStyles({
     border: '1px solid #dadde9',
   },
 })(Tooltip);
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+`;
+
+export const ModalButton = styled.button`
+  background-color: ${hexToRGBA('#635353', .10)};
+  color: #535353;
+  border: 1px solid #e7e4d8;
+  border-radius: 5px;
+  padding: 8px;
+  min-width: 140px;
+  transition: all 200ms ease;
+  svg {
+    width: 10px;
+    margin-left: 3px;
+    fill: #635353;
+  }
+  :hover {
+    cursor: pointer;
+    background-color: ${hexToRGBA('#e7e4d8', .50)};
+  }
+`;
+
+export const Footnote = styled.span`
+  color: #535353;
+  font-size: 13px;
+`;

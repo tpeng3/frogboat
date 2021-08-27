@@ -120,7 +120,8 @@ module.exports = {
       options: {
         fonts: [
           `Asap`,
-          `Cabin`
+          `Cabin`,
+          `Open Sans`
         ],
         display: 'swap'
       }

@@ -13,7 +13,10 @@ import {
   StyledTextField,
   StyledIconButton,
   StyledForm,
-  PromptTooltip
+  PromptTooltip,
+  ModalButton,
+  ButtonsContainer,
+  Footnote
 } from "./styles";
 
 interface PromptProps {
@@ -128,16 +131,24 @@ export const PromptModal = (props: Props) => {
                 </StyledIconButton>
               </div>
             ))}
+            <button>
+              <StyledIconButton iconcolor={COLORS.TEAL_500} onClick={() => addPrompt()}>
+                <CloseIcon />
+              </StyledIconButton>
+              Add another prompt
+            </button>
+            <Footnote>
+              Custom prompts are marked with a star background so that I'm not responsible for any text overflow bugs and boxes that say <i>poopoopeepee</i>. Also note there's a max length limit of 32 characters!
+            </Footnote>
           </StyledForm>
-          <div>
-            <StyledIconButton iconcolor={COLORS.TEAL_500} onClick={() => addPrompt()}>
-              <CloseIcon />
-            </StyledIconButton>
-            Add another prompt
-          </div>
-          <button onClick={() => resetPrompts()}>
-            Reset Prompts to Default
-          </button>
+          <ButtonsContainer>
+            <ModalButton onClick={() => resetPrompts()}>
+              Reset Prompts to Default
+          </ModalButton>
+            <ModalButton onClick={() => togglePrompt(false)}>
+              Close
+          </ModalButton>
+          </ButtonsContainer>
         </ModalItems>
       </ModalContainer>
     </>
