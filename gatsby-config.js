@@ -3,7 +3,7 @@ const siteDescription = "Shuttlefrog";
 const siteAuthor = "@shuttlefrog";
 const siteUrl = "https://shuttlefrog.com";
 const siteImage = `${siteUrl}/icons/icon_512x512.png`;
-const siteKeywords = [];
+const siteKeywords = ["react"];
 
 // gatsby-config.js
 const path = require('path')
