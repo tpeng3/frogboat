@@ -70,3 +70,4 @@ public
 # image files (will be grabbed from a link later)
 src/images/uploads/*
 static/uploads/*
+yarn.lock

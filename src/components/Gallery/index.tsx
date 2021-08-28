@@ -315,8 +315,8 @@ const Gallery = (props: Props) => {
           />
         </>
       ) : (
-          <h5>No images found under this filter.</h5>
-        )}
+        <h5>No images found under this filter.</h5>
+      )}
     </div>
   );
 };

@@ -1,10 +1,10 @@
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 import styled from "styled-components";
 import { COLORS } from "@util/constants";
 import { hexToRGBA, media, elevation, font } from "@util/helpers";
 import { motion } from "framer-motion";
 import TextField from "@material-ui/core/TextField";
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from "@material-ui/core/Tooltip";
 import { IconButton } from "@material-ui/core";
 
 const MODAL_ZINDEX = 99;
@@ -42,7 +42,7 @@ export const ModalItems = styled(motion.div)`
 export const StyledTextField = styled(TextField)`
   width: 100%;
   .MuiInputBase-root.Mui-disabled {
-    background-color: ${hexToRGBA('#635353', .10)};
+    background-color: ${hexToRGBA("#635353", 0.1)};
     color: #535353;
   }
   .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
@@ -51,12 +51,13 @@ export const StyledTextField = styled(TextField)`
   .MuiFormLabel-root.Mui-focused {
     color: #535353;
   }
-  .MuiOutlinedInput-root:hover:not(.Mui-disabled) .MuiOutlinedInput-notchedOutline {
-    background-color: ${hexToRGBA('#6bb4aa', .15)};
+  .MuiOutlinedInput-root:hover:not(.Mui-disabled)
+    .MuiOutlinedInput-notchedOutline {
+    background-color: ${hexToRGBA("#6bb4aa", 0.15)};
   }
 `;
 
-export const StyledIconButton = styled(IconButton) <{ iconcolor: string }>`
+export const StyledIconButton = styled(IconButton)<{ iconcolor: string }>`
   && {
     margin-left: 12px;
     margin-top: 6px;
@@ -65,7 +66,7 @@ export const StyledIconButton = styled(IconButton) <{ iconcolor: string }>`
       width: 1rem;
     }
     path {
-      fill: ${props => props.iconcolor} !important;
+      fill: ${(props) => props.iconcolor} !important;
     }
   }
 `;
@@ -89,7 +90,7 @@ export const AddButton = styled.div`
   }
   :hover {
     cursor: pointer;
-    background-color: ${hexToRGBA('#6bb4aa', .15)};
+    background-color: ${hexToRGBA("#6bb4aa", 0.15)};
   }
 `;
 
@@ -121,13 +122,13 @@ export const StyledForm = styled.form`
 
 export const PromptTooltip = withStyles({
   tooltip: {
-    backgroundColor: '#fffae7',
-    borderRadius: '5px',
-    color: '#535353',
+    backgroundColor: "#fffae7",
+    borderRadius: "5px",
+    color: "#535353",
     maxWidth: 220,
-    padding: '12px',
+    padding: "12px",
     fontSize: 12,
-    boxShadow: '0 1px 2px 0 #53535333'
+    boxShadow: "0 1px 2px 0 #53535333",
   },
 })(Tooltip);
 
@@ -154,7 +155,7 @@ export const ModalButton = styled.button`
   }
   :hover {
     cursor: pointer;
-    background-color: ${hexToRGBA('#e7e4d8', .50)};
+    background-color: ${hexToRGBA("#e7e4d8", 0.5)};
   }
 `;
 

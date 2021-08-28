@@ -9,7 +9,7 @@ import { PromptModal } from "@components/OCeptember/PromptModal";
 import { AnimationDefinition } from "framer-motion/types/render/VisualElement/utils/animation";
 import TemplateImage from "src/images/canvas.png";
 import InfoImage from "src/images/canvas-front.png";
-import DownloadIcon from '@images/SVG/download.svg';
+import DownloadIcon from "@images/SVG/download.svg";
 import { useDimensions } from "@util/screen";
 import content from "./oceptember.yaml"; // TODO: move this to a yaml folder... maybe
 
@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
       overflow: hidden;
     `}
   }
-`
+`;
 
 const Overlay = styled(motion.div)`
   background-color: #dac8bf;
@@ -41,7 +41,7 @@ const TemplateContainer = styled.div`
   `}
 `;
 
-const CanvasPlaceholder = styled.div<{ width: number, height: number }>`
+const CanvasPlaceholder = styled.div<{ width: number; height: number }>`
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
 `;
@@ -50,7 +50,8 @@ const CanvasContainer = styled(motion.div)`
   display: flex;
   position: relative;
   justify-content: center;
-  canvas, img {
+  canvas,
+  img {
     width: 100vw;
     ${media.tablet`
       width: 500px;
@@ -77,7 +78,7 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledButton = styled.button`
-  background-color: ${hexToRGBA('#635353', .10)};
+  background-color: ${hexToRGBA("#635353", 0.1)};
   color: #535353;
   border: 1px solid #e7e4d8;
   border-radius: 5px;
@@ -92,7 +93,7 @@ const StyledButton = styled.button`
   }
   :hover {
     cursor: pointer;
-    background-color: ${hexToRGBA('#e7e4d8', .50)};
+    background-color: ${hexToRGBA("#e7e4d8", 0.5)};
     transform: scale(1.1);
   }
 `;
@@ -120,7 +121,7 @@ export default function App() {
 
   const flipCard = () => {
     toggleInfo(!showInfo);
-  }
+  };
 
   const handleCanvasComplete = () => {
     canvasAnimationControls.stop();
@@ -128,61 +129,60 @@ export default function App() {
       rotateY: 0,
     });
     canvasAnimationControls.start(showCanvas);
-  }
+  };
 
   const wrapText = (context, text, x, y, maxWidth, lineHeight) => {
-    const words = text.split(' ');
-    let line = '';
+    const words = text.split(" ");
+    let line = "";
     let finalLines: any = [];
 
     for (let n = 0; n < words.length; n++) {
-      const testLine = line + words[n] + ' ';
+      const testLine = line + words[n] + " ";
       const metrics = context.measureText(testLine);
       const testWidth = metrics.width;
       if (testWidth > maxWidth && n > 0) {
-        finalLines.push({ line, x, y })
-        line = words[n] + ' ';
+        finalLines.push({ line, x, y });
+        line = words[n] + " ";
         y += lineHeight;
-      }
-      else {
+      } else {
         line = testLine;
       }
     }
 
     // adjust y for aligning vertically center
     finalLines.forEach((line, i) => {
-      const newY = line.y - ((finalLines.length - i) * lineHeight / 2);
+      const newY = line.y - ((finalLines.length - i) * lineHeight) / 2;
       context.fillText(line.line, line.x, newY);
     });
 
     context.fillText(line, x, y);
-  }
+  };
 
   const drawStar = (ctx, cx, cy, spikes, outerRadius, innerRadius) => {
-    var rot = Math.PI / 2 * 3;
+    var rot = (Math.PI / 2) * 3;
     var x = cx;
     var y = cy;
     var step = Math.PI / spikes;
 
     ctx.beginPath();
-    ctx.moveTo(cx, cy - outerRadius)
+    ctx.moveTo(cx, cy - outerRadius);
     for (let i = 0; i < spikes; i++) {
       x = cx + Math.cos(rot) * outerRadius;
       y = cy + Math.sin(rot) * outerRadius;
-      ctx.lineTo(x, y)
-      rot += step
+      ctx.lineTo(x, y);
+      rot += step;
 
       x = cx + Math.cos(rot) * innerRadius;
       y = cy + Math.sin(rot) * innerRadius;
-      ctx.lineTo(x, y)
-      rot += step
+      ctx.lineTo(x, y);
+      rot += step;
     }
-    ctx.lineTo(cx, cy - outerRadius)
+    ctx.lineTo(cx, cy - outerRadius);
     ctx.closePath();
     ctx.lineWidth = 5;
-    ctx.fillStyle = 'rgba(51, 135, 146, 0.2)';
+    ctx.fillStyle = "rgba(51, 135, 146, 0.2)";
     ctx.fill();
-  }
+  };
 
   const updateTemplate = () => {
     canvasAnimationControls.set({
@@ -190,7 +190,7 @@ export default function App() {
       translateY: 100,
     });
     canvasAnimationControls.start(showCanvas);
-    const ctx = canvasRef.current && canvasRef.current.getContext('2d');
+    const ctx = canvasRef.current && canvasRef.current.getContext("2d");
     if (ctx) {
       const template = new Image();
 
@@ -200,12 +200,17 @@ export default function App() {
 
         // fill template with prompts
         const shuffled = shuffle(promptList);
-        const X_PADDING = 187.5, Y_PADDING = 188, X_START = 165, Y_START = 238;
-        const MAX_WIDTH = 100, LINE_HEIGHT = 22;
-        ctx.font = '24px Open Sans';
-        ctx.textAlign = 'center';
-        let x = X_START, y = Y_START; // starting positions
-        ctx.textBaseline = 'middle';
+        const X_PADDING = 187.5,
+          Y_PADDING = 188,
+          X_START = 165,
+          Y_START = 238;
+        const MAX_WIDTH = 100,
+          LINE_HEIGHT = 22;
+        ctx.font = "24px Open Sans";
+        ctx.textAlign = "center";
+        let x = X_START,
+          y = Y_START; // starting positions
+        ctx.textBaseline = "middle";
         shuffled.slice(0, 30).forEach((prompt, i) => {
           if (i !== 0 && i % 5 === 0) {
             y += Y_PADDING;
@@ -216,10 +221,10 @@ export default function App() {
             drawStar(ctx, x, y + 14, 5, 70, 40);
           }
           // add text
-          ctx.fillStyle = '#506F76';
+          ctx.fillStyle = "#506F76";
           wrapText(ctx, prompt.label, x, y, MAX_WIDTH, LINE_HEIGHT);
           x += X_PADDING;
-        })
+        });
       };
 
       template.src = TemplateImage;
@@ -229,12 +234,12 @@ export default function App() {
   const downloadCard = () => {
     if (canvasRef.current) {
       const img = canvasRef.current.toDataURL("image/png");
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.download = "2021OCeptemberBingo.png";
       link.href = img;
       link.click();
     }
-  }
+  };
 
   return (
     <Overlay>
@@ -255,12 +260,14 @@ export default function App() {
           </InfoContainer>
           <InfoContainer
             initial={false}
-            animate={showInfo ?
-              {
-                rotateY: 0,
-              } : {
-                rotateY: -90,
-              }
+            animate={
+              showInfo
+                ? {
+                    rotateY: 0,
+                  }
+                : {
+                    rotateY: -90,
+                  }
             }
             transition={{ duration: 1, delay: showInfo ? 1 : 0 }}
           >
@@ -268,13 +275,25 @@ export default function App() {
           </InfoContainer>
         </CanvasContainer>
         <ButtonContainer>
-          <StyledButton onClick={flipCard}>{showInfo ? "View Bingo" : "View Info"}</StyledButton>
-          <StyledButton onClick={() => togglePrompt(true)}>Edit Prompts</StyledButton>
+          <StyledButton onClick={flipCard}>
+            {showInfo ? "View Bingo" : "View Info"}
+          </StyledButton>
+          <StyledButton onClick={() => togglePrompt(true)}>
+            Edit Prompts
+          </StyledButton>
           <StyledButton onClick={updateTemplate}>Draw a New Card</StyledButton>
-          <StyledButton onClick={downloadCard}>Download <DownloadIcon /></StyledButton>
+          <StyledButton onClick={downloadCard}>
+            Download <DownloadIcon />
+          </StyledButton>
         </ButtonContainer>
       </TemplateContainer>
-      <PromptModal defaultPrompts={content.prompts} promptList={promptList} updatePromptList={updatePromptList} open={promptOpen} togglePrompt={togglePrompt} />
+      <PromptModal
+        defaultPrompts={content.prompts}
+        promptList={promptList}
+        updatePromptList={updatePromptList}
+        open={promptOpen}
+        togglePrompt={togglePrompt}
+      />
     </Overlay>
   );
 }

@@ -13,7 +13,7 @@ const Underlay = styled.div<{ showDark: number }>`
   top: 0;
   opacity: 0;
   z-index: 90;
-  opacity: ${(props) => props.showDark ? props.showDark : 0};
+  opacity: ${(props) => (props.showDark ? props.showDark : 0)};
 `;
 
 interface Props {
