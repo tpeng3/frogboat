@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { GithubIcon } from "../github-icon";
 import { useTheme } from "../../styles";
 
 const StyledFooter = styled.footer`

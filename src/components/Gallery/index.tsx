@@ -44,36 +44,37 @@ const Gallery = (props: Props) => {
   const [productIndex, setProductIndex] = useState(0);
   const lightboxRef = useRef<any>(null);
 
-  const imageQuery = useStaticQuery(graphql`
-    query ImagesQuery {
-      allFile(
-        filter: {
-          extension: { regex: "/(jpg)|(png)|(jpeg)/" }
-          relativeDirectory: { regex: "/uploads/" }
-        }
-      ) {
-        edges {
-          node {
-            base
-            relativePath
-            childImageSharp {
-              full: gatsbyImageData(
-                layout: CONSTRAINED
-                placeholder: NONE
-                transformOptions: { fit: CONTAIN }
-              )
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 160
-                height: 160
-                transformOptions: { cropFocus: ENTROPY }
-              )
-            }
-          }
-        }
-      }
-    }
-  `);
+  const imageQuery = {};
+  // const imageQuery = useStaticQuery(graphql`
+  //   query ImagesQuery {
+  //     allFile(
+  //       filter: {
+  //         extension: { regex: "/(jpg)|(png)|(jpeg)/" }
+  //         relativeDirectory: { regex: "/uploads/" }
+  //       }
+  //     ) {
+  //       edges {
+  //         node {
+  //           base
+  //           relativePath
+  //           childImageSharp {
+  //             full: gatsbyImageData(
+  //               layout: CONSTRAINED
+  //               placeholder: NONE
+  //               transformOptions: { fit: CONTAIN }
+  //             )
+  //             gatsbyImageData(
+  //               layout: CONSTRAINED
+  //               width: 160
+  //               height: 160
+  //               transformOptions: { cropFocus: ENTROPY }
+  //             )
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
 
   // hacky fix to disable wheel scrolling in the lightbox
   useEffect(() => {
@@ -314,8 +315,8 @@ const Gallery = (props: Props) => {
           />
         </>
       ) : (
-        <h5>No images found under this filter.</h5>
-      )}
+          <h5>No images found under this filter.</h5>
+        )}
     </div>
   );
 };
