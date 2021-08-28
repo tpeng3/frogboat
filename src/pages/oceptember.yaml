@@ -81,14 +81,14 @@ prompts:
     custom: False
   - label: Inspirations
     description: |
-      What were your influences/inspirations for creating OCs (ex: self inserts, created from games like FFXIV/DND, you read a work and really, Really wanted to create something similar, you have a favorite artist, etc.)
+      What were your influences/ inspirations for creating OCs (ex: self inserts, created from games like FFXIV/DND, you read a work and really, Really wanted to create something similar, you have a favorite artist, etc.)
     custom: False
   - label: OC meets creator
     description: ''
     custom: False
-  - label: Vtuber / Streamer AU
+  - label: Vtuber/ Streamer AU
     description: One idea would be to create a fake stream setup with an OC playing a video game or making a vlog
     custom: False
   - label: AMV song choice
-    description: What's a song you can imagine your OCs starring in (anime opening/ending styled or if there was a promotional trailer)
+    description: What's a song you can imagine your OCs starring in (anime opening/ ending styled or if there was a promotional trailer)
     custom: False

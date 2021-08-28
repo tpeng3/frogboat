@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { motion, useAnimation, Variants } from "framer-motion";
 import { COLORS, LILYPAD } from "@util/constants";
-import { shuffle, hexToRGBA } from "@util/helpers";
+import { shuffle, hexToRGBA, media } from "@util/helpers";
 import useSystemStore from "@store/system";
 import TextField from "@material-ui/core/TextField";
 import { PromptModal } from "@components/OCeptember/PromptModal";
@@ -15,7 +15,10 @@ import content from "./oceptember.yaml"; // TODO: move this to a yaml folder... 
 
 const GlobalStyle = createGlobalStyle`
   body {
-    overflow: hidden;
+    overflow: auto;
+    ${media.tablet`
+      overflow: hidden;
+    `}
   }
 `
 
@@ -32,6 +35,10 @@ const TemplateContainer = styled.div`
   transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
+  flex-direction: column;
+  ${media.laptop`
+    flex-direction: row;
+  `}
 `;
 
 const CanvasPlaceholder = styled.div<{ width: number, height: number }>`
@@ -44,7 +51,10 @@ const CanvasContainer = styled(motion.div)`
   position: relative;
   justify-content: center;
   canvas, img {
-    width: 500px;
+    width: 100vw;
+    ${media.tablet`
+      width: 500px;
+    `}
   }
 `;
 
@@ -53,10 +63,17 @@ const InfoContainer = styled(motion.div)`
 `;
 
 const ButtonContainer = styled.div`
-  margin-left: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  margin-top: 32px;
+  ${media.tablet`
+    margin-left: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  `}
 `;
 
 const StyledButton = styled.button`
@@ -67,6 +84,7 @@ const StyledButton = styled.button`
   padding: 8px;
   min-width: 140px;
   transition: all 200ms ease;
+  align-self: center;
   svg {
     width: 10px;
     margin-left: 3px;
@@ -75,6 +93,7 @@ const StyledButton = styled.button`
   :hover {
     cursor: pointer;
     background-color: ${hexToRGBA('#e7e4d8', .50)};
+    transform: scale(1.1);
   }
 `;
 
@@ -248,7 +267,7 @@ export default function App() {
           </InfoContainer>
         </CanvasContainer>
         <ButtonContainer>
-          <StyledButton onClick={flipCard}>Flip Card</StyledButton>
+          <StyledButton onClick={flipCard}>{showInfo ? "View Bingo" : "View Info"}</StyledButton>
           <StyledButton onClick={() => togglePrompt(true)}>Edit Prompts</StyledButton>
           <StyledButton onClick={updateTemplate}>Draw a New Card</StyledButton>
           <StyledButton onClick={downloadCard}>Download <DownloadIcon /></StyledButton>

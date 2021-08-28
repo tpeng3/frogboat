@@ -21,13 +21,12 @@ export const Title = styled(motion.h2)`
 export const ModalContainer = styled(motion.nav)`
   background-color: ${COLORS.white};
   border-radius: 10px;
-  position: absolute;
+  position: fixed;
   top: 64px;
   left: 0;
   right: 0;
   margin: auto;
   max-width: 500px;
-  max-height: 500px;
   z-index: ${MODAL_ZINDEX};
 `;
 
@@ -41,10 +40,20 @@ export const ModalItems = styled(motion.div)`
 `;
 
 export const StyledTextField = styled(TextField)`
-  max-width: 80%;
-  ${media.desktop`
-    max-width: 85%;
-  `}
+  width: 100%;
+  .MuiInputBase-root.Mui-disabled {
+    background-color: ${hexToRGBA('#635353', .10)};
+    color: #535353;
+  }
+  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #6bb4aa;
+  }
+  .MuiFormLabel-root.Mui-focused {
+    color: #535353;
+  }
+  .MuiOutlinedInput-root:hover:not(.Mui-disabled) .MuiOutlinedInput-notchedOutline {
+    background-color: ${hexToRGBA('#6bb4aa', .15)};
+  }
 `;
 
 export const StyledIconButton = styled(IconButton) <{ iconcolor: string }>`
@@ -61,17 +70,41 @@ export const StyledIconButton = styled(IconButton) <{ iconcolor: string }>`
   }
 `;
 
+export const AddButton = styled.div`
+  width: 100%;
+  text-align: center;
+  color: #535353;
+  border: 1px solid #535353;
+  border-radius: 5px;
+  padding: 8px;
+  min-width: 140px;
+  transition: all 200ms ease;
+  svg {
+    width: 12px;
+    margin-right: 8px;
+    transform: rotate(45deg);
+    path {
+      fill: #535353 !important;
+    }
+  }
+  :hover {
+    cursor: pointer;
+    background-color: ${hexToRGBA('#6bb4aa', .15)};
+  }
+`;
+
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  max-height: 300px;
-  overflow-y: scroll;
-  padding: 10px 0;
+  overflow-y: auto;
+  padding-top: 10px;
   padding-bottom: 50px;
+  padding-right: 10px;
   ${StyledTextField} {
     margin-bottom: 10px;
     margin-right: 10px;
   }
+  max-height: 50vh;
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -88,12 +121,13 @@ export const StyledForm = styled.form`
 
 export const PromptTooltip = withStyles({
   tooltip: {
-    backgroundColor: '#f5f5f9',
+    backgroundColor: '#fffae7',
     borderRadius: '5px',
-    color: 'rgba(0, 0, 0, 0.87)',
+    color: '#535353',
     maxWidth: 220,
+    padding: '12px',
     fontSize: 12,
-    border: '1px solid #dadde9',
+    boxShadow: '0 1px 2px 0 #53535333'
   },
 })(Tooltip);
 
@@ -104,13 +138,15 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const ModalButton = styled.button`
-  background-color: ${hexToRGBA('#635353', .10)};
   color: #535353;
-  border: 1px solid #e7e4d8;
+  background-color: transparent;
   border-radius: 5px;
-  padding: 8px;
-  min-width: 140px;
+  padding: 6px;
+  min-width: 80px;
   transition: all 200ms ease;
+  border: none;
+  text-align: center;
+  ${font("1rem", "1rem", "500", "1.25px")};
   svg {
     width: 10px;
     margin-left: 3px;

@@ -1,10 +1,9 @@
-const siteTitle = "frogboat";
-const siteDescription =
-  "A Gatsby starter with TypeScript, Storybook, Styled Components, Framer Motion, Jest, and more.";
-const siteAuthor = "@gojutin";
-const siteUrl = "https://gatsby-starter-typescript-deluxe.netlify.com";
+const siteTitle = "shuttlefrog";
+const siteDescription = "Shuttlefrog";
+const siteAuthor = "@shuttlefrog";
+const siteUrl = "https://shuttlefrog.com";
 const siteImage = `${siteUrl}/icons/icon_512x512.png`;
-const siteKeywords = ["gatsby", "typescript", "starter", "javascript", "react"];
+const siteKeywords = [];
 
 // gatsby-config.js
 const path = require('path')
@@ -77,8 +76,8 @@ module.exports = {
         short_name: siteTitle,
         description: siteDescription,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#73DFCB`,
+        theme_color: `#73DFCB`,
         display: `minimal-ui`,
         icon: "src/images/icon.png",
         icons: [
