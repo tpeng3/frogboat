@@ -121,7 +121,7 @@ const Layout = ({ location, children }: PageProps) => {
   const isPublic = () => {
     // TODO: make this more generic later
     const pathList = location.pathname;
-    const PUBLIC_PAGES = ["/oceptember"];
+    const PUBLIC_PAGES = ["/oceptember", "/oceptember/"];
     return PUBLIC_PAGES.includes(pathList);
   };
 
@@ -133,26 +133,26 @@ const Layout = ({ location, children }: PageProps) => {
           // TODO: change OC Layout to a layout case controller
           <PasswordScreen />
         ) : (
-          <>
-            <HeaderImage />
-            <Nav />
-            <Main currentTheme={currentTheme}>
-              <BackgroundGradient />
-              <BackgroundTexture />
-              <BackgroundTexture rotated />
-              <AnimateSharedLayout>
-                <Container>
-                  {/* <CSSDebugger /> */}
-                  <main>{children}</main>
-                </Container>
-              </AnimateSharedLayout>
-            </Main>
-            <Footer />
-          </>
-        )
+            <>
+              <HeaderImage />
+              <Nav />
+              <Main currentTheme={currentTheme}>
+                <BackgroundGradient />
+                <BackgroundTexture />
+                <BackgroundTexture rotated />
+                <AnimateSharedLayout>
+                  <Container>
+                    {/* <CSSDebugger /> */}
+                    <main>{children}</main>
+                  </Container>
+                </AnimateSharedLayout>
+              </Main>
+              <Footer />
+            </>
+          )
       ) : (
-        <main>{children}</main>
-      )}
+          <main>{children}</main>
+        )}
     </ThemeProvider>
   );
 };
