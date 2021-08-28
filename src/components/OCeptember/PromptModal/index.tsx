@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import { COLORS } from "@util/constants";
 import { Variants, AnimatePresence } from "framer-motion";
@@ -32,11 +32,13 @@ interface Props {
   updatePromptList: Function;
   open: boolean;
   togglePrompt: Function;
+  updateTemplate: Function;
 }
 
 export const PromptModal = (props: Props) => {
-  const { defaultPrompts, promptList, updatePromptList, open, togglePrompt } =
+  const { defaultPrompts, promptList, updatePromptList, open, togglePrompt, updateTemplate } =
     props;
+  const [editted, toggleEditted] = useState(false);
 
   const modalVariants: Variants = {
     open: {
@@ -71,9 +73,14 @@ export const PromptModal = (props: Props) => {
       return index == i ? custom : prompt;
     });
     updatePromptList(updatedPrompts);
+    toggleEditted(true);
   };
 
   const handleClick = () => {
+    if (editted) {
+      updateTemplate();
+      toggleEditted(false);
+    }
     togglePrompt(false);
   };
 
@@ -84,15 +91,18 @@ export const PromptModal = (props: Props) => {
       custom: true,
     };
     updatePromptList([...promptList, custom]);
+    toggleEditted(true);
   };
 
   const deletePrompt = (i) => {
     const updatedPrompts = promptList.filter((_, index) => i !== index);
     updatePromptList([...updatedPrompts]);
+    toggleEditted(true);
   };
 
   const resetPrompts = () => {
     updatePromptList(defaultPrompts);
+    toggleEditted(true);
   };
 
   return (
@@ -163,9 +173,9 @@ export const PromptModal = (props: Props) => {
                   Reset to Default
                 </ModalButton>
               ) : (
-                <div />
-              )}
-              <ModalButton onClick={() => togglePrompt(false)}>
+                  <div />
+                )}
+              <ModalButton onClick={handleClick}>
                 Close
               </ModalButton>
             </ButtonsContainer>

@@ -32,7 +32,6 @@ const Footer: React.FC = () => {
         />
       </StyledSvg>
       <FooterContainer>
-        <GithubIcon />
       </FooterContainer>
     </StyledFooter>
   );

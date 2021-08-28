@@ -52,9 +52,14 @@ const CanvasContainer = styled(motion.div)`
   justify-content: center;
   canvas,
   img {
-    width: 100vw;
+    max-width: 100vw;
     ${media.tablet`
-      width: 500px;
+      max-width: 500px;
+      max-height: calc(100vh - 64px);
+    `}
+    ${media.laptop`
+      max-width: max(500px, 40vw);
+      max-height: calc(100vh - 64px);
     `}
   }
 `;
@@ -85,7 +90,10 @@ const StyledButton = styled.button`
   padding: 8px;
   min-width: 140px;
   transition: all 200ms ease;
+  display: flex;
   align-self: center;
+  align-items: center;
+  justify-content: center;
   svg {
     width: 10px;
     margin-left: 3px;
@@ -206,7 +214,7 @@ export default function App() {
           Y_START = 238;
         const MAX_WIDTH = 100,
           LINE_HEIGHT = 22;
-        ctx.font = "24px Open Sans";
+        ctx.font = "bold 24px Open Sans";
         ctx.textAlign = "center";
         let x = X_START,
           y = Y_START; // starting positions
@@ -221,7 +229,7 @@ export default function App() {
             drawStar(ctx, x, y + 14, 5, 70, 40);
           }
           // add text
-          ctx.fillStyle = "#506F76";
+          ctx.fillStyle = "#475d62";
           wrapText(ctx, prompt.label, x, y, MAX_WIDTH, LINE_HEIGHT);
           x += X_PADDING;
         });
@@ -254,7 +262,7 @@ export default function App() {
           <InfoContainer
             initial={false}
             animate={{ rotateY: showInfo ? -90 : 0 }}
-            transition={{ duration: 1, delay: showInfo ? 0 : 1 }}
+            transition={{ duration: 0.6, delay: showInfo ? 0 : 0.6 }}
           >
             <canvas ref={canvasRef} width="1080" height="1350"></canvas>
           </InfoContainer>
@@ -263,13 +271,13 @@ export default function App() {
             animate={
               showInfo
                 ? {
-                    rotateY: 0,
-                  }
+                  rotateY: 0,
+                }
                 : {
-                    rotateY: -90,
-                  }
+                  rotateY: -90,
+                }
             }
-            transition={{ duration: 1, delay: showInfo ? 1 : 0 }}
+            transition={{ duration: 0.6, delay: showInfo ? 0.6 : 0 }}
           >
             <img src={InfoImage} />
           </InfoContainer>
@@ -278,10 +286,10 @@ export default function App() {
           <StyledButton onClick={flipCard}>
             {showInfo ? "View Bingo" : "View Info"}
           </StyledButton>
+          <StyledButton onClick={updateTemplate}>Draw a New Card</StyledButton>
           <StyledButton onClick={() => togglePrompt(true)}>
             Edit Prompts
           </StyledButton>
-          <StyledButton onClick={updateTemplate}>Draw a New Card</StyledButton>
           <StyledButton onClick={downloadCard}>
             Download <DownloadIcon />
           </StyledButton>
@@ -293,6 +301,7 @@ export default function App() {
         updatePromptList={updatePromptList}
         open={promptOpen}
         togglePrompt={togglePrompt}
+        updateTemplate={updateTemplate}
       />
     </Overlay>
   );
