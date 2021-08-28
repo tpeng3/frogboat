@@ -1,0 +1,2 @@
+(self.webpackChunkgatsby_starter_typescript_deluxe=self.webpackChunkgatsby_starter_typescript_deluxe||[]).push([[797],{2060:function(e,t,a){"use strict";a.r(t),a.d(t,{TestPage:function(){return u}});var r=a(7294),n=a(1547),s=a(1250);function u(e){var t=e.data;return r.createElement(n.H,null,r.createElement(s.Z,{imageData:t.allImageDataJson.nodes}))}t.default=u}}]);
+//# sourceMappingURL=component---src-pages-tina-tsx-1a02890bd35bbd2cd6b6.js.map

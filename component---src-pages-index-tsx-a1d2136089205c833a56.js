@@ -1,0 +1,2 @@
+(self.webpackChunkgatsby_starter_typescript_deluxe=self.webpackChunkgatsby_starter_typescript_deluxe||[]).push([[691],{5391:function(e,t,n){"use strict";n.r(t),n.d(t,{default:function(){return c}});var u=n(7294),r=n(5444);function c(){return(0,u.useEffect)((function(){(0,r.navigate)("/oc/")}),[]),u.createElement("div",null)}}}]);
+//# sourceMappingURL=component---src-pages-index-tsx-a1d2136089205c833a56.js.map
