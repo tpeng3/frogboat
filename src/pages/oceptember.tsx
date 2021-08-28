@@ -106,7 +106,10 @@ export default function App() {
   const { width, height } = useDimensions(canvasRef);
 
   useEffect(() => {
-    updateTemplate();
+    // hack to draw after custom fonts loaded (it's fine since we show front card)
+    setTimeout(() => {
+      updateTemplate();
+    }, 100);
   }, []);
 
   const showCanvas: AnimationDefinition = {
