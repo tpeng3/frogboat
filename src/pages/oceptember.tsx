@@ -106,10 +106,7 @@ export default function App() {
   const { width, height } = useDimensions(canvasRef);
 
   useEffect(() => {
-    // hack to draw after custom fonts loaded (it's fine since we show front card)
-    setTimeout(() => {
-      updateTemplate();
-    }, 100);
+    updateTemplate();
   }, []);
 
   const showCanvas: AnimationDefinition = {
@@ -242,6 +239,7 @@ export default function App() {
   return (
     <Overlay>
       <GlobalStyle />
+      <div style={{ fontFamily: "Open Sans", opacity: 0 } as const}>.</div>
       <TemplateContainer>
         <CanvasContainer
           animate={canvasAnimationControls}
