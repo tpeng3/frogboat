@@ -30,12 +30,14 @@ const StyledDrawer = styled(Drawer)`
 const NavContainer = styled.div`
   position: relative;
   z-index: 1;
-  background-color: ${hexToRGBA(COLORS.GREY_DEFAULT, 0.9)};
+  /* background-color: ${hexToRGBA(COLORS.GREY_DEFAULT, 0.9)}; */
+  background-color: ${COLORS.GREY_DEFAULT};
   width: 100%;
-  height: 64px;
+  height: 48px;
   display: flex;
   align-items: center;
-  padding: 0 32px 0 12px;
+  padding: 0 32px 0 20px;
+  gap: .5rem;
   ${elevation(5)};
   ${media.desktop`
     background-color: ${COLORS.GREY_DEFAULT};
@@ -55,11 +57,11 @@ const NavButton = styled.button`
   display: flex;
   justify-content: center;
   border-radius: 10px;
-  padding: 8px 12px;
-  min-width: 80px;
+  padding: 4px;
+  min-width: 64px;
   svg {
-    height: 24px;
-    width: 20px;
+    height: 20px;
+    width: 16px;
     display: initial;
     vertical-align: sub;
     margin-right: 5px;

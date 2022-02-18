@@ -25,11 +25,11 @@ const NavButton = styled(motion.div).attrs({
   display: flex;
   justify-content: center;
   border-radius: 10px;
-  padding: 8px 12px;
-  min-width: 80px;
+  padding: 4px;
+  min-width: 64px;
   svg {
-    height: 24px;
-    width: 20px;
+    height: 20px;
+    width: 16px;
     display: initial;
     vertical-align: sub;
     margin-right: 5px;

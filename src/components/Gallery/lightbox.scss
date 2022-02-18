@@ -30,13 +30,14 @@
 }
 
 .fslightbox-transform-transition {
-  // transform: none !important;
+  transform: none !important;
 }
 
 .fslightbox-thumb {
   filter: brightness(70%);
   transition: all 200ms ease;
   &-active {
+    z-index: 51;
     filter: brightness(100%);
   }
 }
@@ -45,6 +46,7 @@
   z-index: 5 !important; //temp
   visibility: visible !important;
   &-active {
+    z-index: 51 !important; //temp
     visibility: visible !important;
   }
 }

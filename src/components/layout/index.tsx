@@ -22,7 +22,7 @@ const HeaderImage = styled.div`
   background-image: url("https://pbs.twimg.com/profile_banners/2777423928/1613272393/1500x500");
   background-size: cover;
   background-position: center;
-  height: 150px;
+  height: 100px;
   position: relative;
   &::after {
     content: "";
@@ -36,7 +36,7 @@ const HeaderImage = styled.div`
 
 const Main = styled.main<{ currentTheme: string }>`
   position: relative;
-  padding: 5rem 1rem;
+  padding: 2rem 1rem 5rem 1rem;
   background-color: ${(props) =>
     props.theme[props.currentTheme].backgroundColor};
   h1,
@@ -54,6 +54,7 @@ const Container = styled(motion.div)`
   background-color: ${hexToRGBA(COLORS.GREY_DEFAULT, 0.8)};
   margin: 0 auto;
   min-height: 500px;
+  width: 90%;
   max-width: 1080px;
   padding: 2rem;
   border-radius: 5px;
@@ -147,7 +148,7 @@ const Layout = ({ location, children }: PageProps) => {
                 </Container>
               </AnimateSharedLayout>
             </Main>
-            <Footer />
+            {/* <Footer /> */}
           </>
         )
       ) : (

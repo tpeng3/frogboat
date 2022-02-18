@@ -160,28 +160,33 @@ const Gallery = (props: Props) => {
     });
   };
 
-  const getFluidImage = (path, preview = false) => {
-    const base = imageQuery.allFile.edges.find(
-      (i) => i.node.relativePath === path
-    );
-    if (base) {
-      if (preview) {
-        return base.node.childImageSharp.gatsbyImageData;
-      } else {
-        return base.node.childImageSharp.full;
-      }
-    } else {
-      console.log("couldn't find image", path);
-    }
-  };
+  // const getFluidImage = (path, preview = false) => {
+  //   const base = imageQuery.allFile.edges.find(
+  //     (i) => i.node.relativePath === path
+  //   );
+  //   if (base) {
+  //     if (preview) {
+  //       return base.node.childImageSharp.gatsbyImageData;
+  //     } else {
+  //       return base.node.childImageSharp.full;
+  //     }
+  //   } else {
+  //     console.log("couldn't find image", path);
+  //   }
+  // };
 
   const renderGalleryPreview = (img, index) => {
     return (
       <PreviewContainer onClick={() => onPreviewClick(index + 1)} key={img.key}>
-        <GatsbyImage
+        {/* <GatsbyImage
           className={"gallery-preview"}
           image={getFluidImage(img.filePaths[0], true)}
           alt={img.name}
+        /> */}
+        <img 
+        className={"gallery-preview"}
+        src={`/${img.filePaths[0]}`}
+        alt={img.name}
         />
         {img.filePaths.length > 1 && (
           <MultiTag>
@@ -200,8 +205,8 @@ const Gallery = (props: Props) => {
       return (
         <VerticalImageContainer row={img.filePaths.length}>
           {img.filePaths.map((path, i) => (
-            <GatsbyImage
-              image={getFluidImage(img.filePaths[i])}
+            <img
+              src={`/${img.filePaths[i]}`}
               alt={img.name}
               key={path}
             />
@@ -211,8 +216,8 @@ const Gallery = (props: Props) => {
     } else if (img.filePaths.length === 1) {
       return (
         <SingleImageContainer>
-          <GatsbyImage
-            image={getFluidImage(img.filePaths[0])}
+          <img
+            src={`/${img.filePaths[0]}`}
             alt={img.name}
             className={"full-image"}
           />
@@ -223,8 +228,8 @@ const Gallery = (props: Props) => {
         <div>
           <HorizontalImageContainer col={img.filePaths.length}>
             {img.filePaths.map((path, i) => (
-              <GatsbyImage
-                image={getFluidImage(img.filePaths[i])}
+              <img
+                src={`/${img.filePaths[i]}`}
                 alt={img.name}
                 key={path}
               />
@@ -305,11 +310,11 @@ const Gallery = (props: Props) => {
             toggler={lightboxController.toggler}
             sources={displayedList.map((img) => renderLightboxImage(img))}
             thumbs={displayedList.map(
-              (img) => getFluidImage(img.filePaths[0], true).images.fallback.src
+              (img) => `/${img.filePaths[0]}`
             )}
             captions={displayedList.map((img) => getCaptions(img))}
             slide={lightboxController.slide}
-            slideChangeAnimation="scale-in"
+            slideChangeAnimation="fade"
             exitFullscreenOnClose
             zoomIncrement={0.5}
           />

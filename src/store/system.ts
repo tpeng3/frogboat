@@ -9,10 +9,10 @@ interface SystemState {
 
 const initialState = {
   darkMode: true,
-  isLocked: true, // TODO: true
+  isLocked: false, // TODO: true
   activeFilters: [],
-  filterType: "all",
-  sortType: "popularity",
+  filterType: "reference",
+  sortType: "created",
   showSettingsModal: false,
   prevTheme: "default",
   currentTheme: "default",

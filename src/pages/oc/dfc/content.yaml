@@ -51,7 +51,7 @@ oc aster:
   relationships:
     - charKey: oc seven
       testimony: >
-        I know my best friend complains about the hero job, but it's hard to hide that heart of gold. He actually works the hardest out of all of us. It's why I like him so m- Oh sorry, I almost started to ramble.
+        I know my best friend complains about the hero job, but it's hard to hide that heart of gold. He actually works the hardest out of all of us. It's why I like him so m- Oh, ignore me just now.
     - charKey: oc patti
       testimony: >
         Man, it's annoying to always be the go-to person when someone's trying to look for my invisible best friend. Our freaky situation means I always know what that guy is thinking, but well... He isn't the worst person to be around.
@@ -63,18 +63,18 @@ oc aster:
         Curry doesn't like how Aster always nags at us, but I think he's okay. He helps us with homework!
   facts:
     - my trans sonion
-    - School-wise, he studies his butt off to maintain straight A's. Unfortunately, he comes in second when compared to the geniuses.
+    - School-wise, he studies his butt off to maintain straight A's. Unfortunately, he comes in second when compared to the naturally gifted.
     - Likes "anti-hero" stories thinking that they're "less cliche". Aster is very much an edgy hipster.
     - Characters that are hard workers but nothing ever goes their way... grab my heart very easily.
 
 oc patti:
   title: Patti
   quote: >
-    "Yeah my superpower is 'bout empathy but I'd rather have you feel my fist."
+    "Yeah so what if I'm an empath? I'd rather have you feel my fist."
   description: |
     A hot-headed girl whose superpower clashes with her personality. She hasn't mastered controlling it, so she often get headaches leaving her fairly volatile. Despite all this, Patti aims to get into the hero industry. She likes the idea of beating up irritating guys.
 
-    Because of her straightforwardness and honesty, she really hates it when people complicate things with deception. Her biggest pet peeve is when people like Seven try to hide something from her, especially because her power makes it obvious when he's lying. Coincidentally, she's pretty good at handling kids.
+    Because of her straightforward and honest personality, she despises people who complicates situations with deception. Her biggest pet peeve is when people like Seven try to hide something from her, especially because her power makes it obvious when he's lying. Coincidentally, she's pretty good at handling kids.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newcanvas1patjiati.png
   relationships:
     - charKey: oc seven
@@ -85,7 +85,7 @@ oc patti:
         I feel like I've known Patti since forever, she's kind of like a sister to me- wait don't tell her that I said that!
     - charKey: oc curry
       testimony: >
-        I love Patti, she's so cool!
+        Patti's cool!
     - charKey: oc nova
       testimony: >
         Patti
@@ -101,7 +101,7 @@ oc curry:
   quote: >
     "It's fun to go fast, it's all like FWOOOOH and WAHHHHH!"
   description: >
-    An energetic boy born with the ability the manipulate wind. The combination makes him quite troublesome and Curry enjoys making a mess wherever he goes. Whenever he gets bored, he also likes to pull pranks. He's best friends with Nova and they're both insufferable and inseparable.
+    An energetic boy with the ability to manipulate wind. The combination makes him quite troublesome and Curry enjoys making a mess wherever he goes. He's best friends with Nova and together, they're insufferable and inseparable.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/aejkl.png
   relationships:
     - charKey: oc seven
@@ -124,7 +124,7 @@ oc curry:
 oc nova:
   title: Agent Pooplord
   quote: >
-    "I'm pretty sure there's some child labor laws in violation just by my presence here."
+    "The fact that I've been brought to this facility means I'm pretttty sure there's some child labor laws in violation."
   description: |
     He's not a shy kid, but his lack of social skills makes him hard to approach. It doesn't help when he has such a cheeky tongue. However, he's a sweet boy when he opens up to others.
 

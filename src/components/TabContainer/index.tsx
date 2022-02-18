@@ -59,6 +59,13 @@ const Container = styled(motion.div)<{ currentTheme: string }>`
   color: ${COLORS.white};
   padding: 4rem 1rem;
   min-height: 500px;
+  max-height: 640px;
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; // IE and Edge
+  scrollbar-width: none; // Firefox
   ${media.laptop`
     padding: 2rem 4rem;
   `}

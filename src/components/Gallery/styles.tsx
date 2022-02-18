@@ -89,6 +89,9 @@ export const CaptionBox = styled.div`
       color: ${COLORS.LINK_ACTIVE};
     }
   }
+  p > a {
+    text-decoration: underline;
+  }
   h2 {
     ${font("1.4rem", "2rem", "500", "0.1rem")}
   }

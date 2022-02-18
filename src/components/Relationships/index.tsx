@@ -14,6 +14,11 @@ import { hexToRGBA, media, elevation } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import content from "./content.yaml";
 
+const StyledDiv = styled.div`
+  max-width: 800px;
+  margin: auto;
+`;
+
 const PortraitIcon = styled.img`
   position: relative;
   height: 100px;
@@ -25,8 +30,8 @@ const PortraitIcon = styled.img`
   background-color: ${COLORS.white};
   ${media.laptop`
     position: initial;
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
   `}
 `;
 
@@ -43,9 +48,9 @@ const Bubble = styled.div<{ currentTheme: string }>`
   background-color: ${hexToRGBA(COLORS.GREY_200, 0.2)};
   transition: all 200ms ease;
   ${media.laptop`
-    height: 150px;
-    border-radius: 150px;
-    width: 700px;
+    height: 100px;
+    border-radius: 9999px;
+    width: 100%;
   `}
   :hover {
     background-color: ${(props) =>
@@ -57,9 +62,14 @@ const Bubble = styled.div<{ currentTheme: string }>`
 
 const Testimony = styled(motion.div)`
   display: flex;
+  max-width: 800px;
+  margin-right: 100px;
+  margin-left: 0;
   ${media.laptop`
     &:nth-child(2n) {
       justify-content: flex-end;
+      margin-left: 100px;
+      margin-right: 0;
       ${Bubble} {
         flex-direction: row-reverse;
       }
@@ -69,7 +79,7 @@ const Testimony = styled(motion.div)`
   &:not(:last-child) {
     margin-bottom: 6rem;
     ${media.laptop`
-      margin-bottom: 2rem;
+      margin-bottom: 1.05rem;
     `}
   }
 `;
@@ -111,6 +121,7 @@ const Relationships = (props: Props) => {
 
   return (
     <motion.div variants={containerVariants} initial="enter" animate="center">
+      <StyledDiv>
       {relationshipData.map((chara, i) => (
         <Testimony
           key={`${chara}-${i}`}
@@ -129,6 +140,7 @@ const Relationships = (props: Props) => {
           </Link>
         </Testimony>
       ))}
+      </StyledDiv>
     </motion.div>
   );
 };

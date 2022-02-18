@@ -12,7 +12,7 @@ const Overlay = styled(motion.div)`
   background-color: ${COLORS.TEAL_500};
   width: 100vw;
   height: 100vh;
-  z-index: 10000;
+  z-index: 100;
 `;
 
 const IconContainer = styled.div`
