@@ -1,13 +1,13 @@
 import React from "react";
 import { SlideFromRight } from "@components/StyledContainers";
 import styled from "styled-components";
+import { media } from "@util/helpers";
 
 const Title = styled.h1`
   text-align: center;
 `;
 
 const AboutContainer = styled.div`
-  margin: 2rem 4rem;
   display: flex;
   flex-direction: column;
   p {
@@ -15,6 +15,10 @@ const AboutContainer = styled.div`
     white-space: pre-line;
     text-align: left;
   }
+  margin: 2rem 0rem;
+  ${media.desktop`
+    margin: 2rem 4rem;
+  `}
 `;
 
 const Genre = styled.span`

@@ -75,40 +75,47 @@ export default function Secret({ format }: Props) {
     "ア",
   ];
 
-  // useEffect(() => {
-  //   if (!redactionComplete) {
-  //     const anim = setInterval(() => setTotalTime(totalTime => totalTime + ANIM_INTERVAL), ANIM_INTERVAL);
-  //     setAnimRef(animRef);
-  //     return () => {
-  //       clearInterval(anim);
-  //     }
-  //   }
-  //   return
-  // }, []);
+  useEffect(() => {
+    if (!redactionComplete) {
+      const anim = setInterval(
+        () => setTotalTime((totalTime) => totalTime + ANIM_INTERVAL),
+        ANIM_INTERVAL
+      );
+      setAnimRef(animRef);
+      return () => {
+        clearInterval(anim);
+      };
+    }
+    return;
+  }, []);
 
-  // useEffect(() => {
-  //   if (totalTime < 1800 - 60) {
-  //     const newList = stringList.map((str) => {
-  //       const newStr = str.map(char => {
-  //         if (char == "█") {
-  //           return "█";
-  //         }
-  //         return Math.random() < 0.3 ? "█" : WEIGHTS[Math.floor(Math.random() * WEIGHTS.length)];
-  //       })
-  //       return newStr;
-  //     })
-  //     setStringList(newList);
-  //   } else {
-  //     setStringList(getStringArrays(true));
-  //     setRedactedComplete(true);
-  //     animRef && clearInterval(animRef);
-  //   }
-  // }, [totalTime]);
+  useEffect(() => {
+    if (totalTime < 1800 - 60) {
+      const newList = stringList.map((str) => {
+        const newStr = str.map((char) => {
+          if (char == "█") {
+            return "█";
+          }
+          return Math.random() < 0.3
+            ? "█"
+            : WEIGHTS[Math.floor(Math.random() * WEIGHTS.length)];
+        });
+        return newStr;
+      });
+      setStringList(newList);
+    } else {
+      setStringList(getStringArrays(true));
+      setRedactedComplete(true);
+      animRef && clearInterval(animRef);
+    }
+  }, [totalTime]);
 
   return (
     <RedactedString>
       <p>
-        {/* {stringList.map(str => str.join("") + (str.length % 10 !== 0 ? "　" : `\n\n`))} */}
+        {stringList.map(
+          (str) => str.join("") + (str.length % 10 !== 0 ? "　" : `\n\n`)
+        )}
       </p>
     </RedactedString>
   );

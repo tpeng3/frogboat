@@ -6,11 +6,14 @@ import { SlideFromRight } from "@components/StyledContainers";
 import Secret, { REDACTED_STR } from "./secret";
 
 const Name = styled.h1`
-  margin: 1rem 4rem;
+  margin: 1rem 0rem;
+  ${media.laptop`
+    margin: 1rem 4rem;
+  `}
 `;
 
 const AboutContainer = styled.div`
-  margin: 2rem 4rem;
+  margin: 1rem 0rem;
   display: flex;
   flex-direction: column;
   p {
@@ -21,6 +24,7 @@ const AboutContainer = styled.div`
     `}
   }
   ${media.laptop`
+    margin: 2rem 4rem;
     flex-direction: row;
     margin-bottom: 2rem;
   `}

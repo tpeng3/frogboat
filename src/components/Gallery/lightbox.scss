@@ -11,58 +11,59 @@
   display: none;
 }
 // hide fullscreen
-.fslightbox-toolbar-button:nth-child(5) {
-  display: none;
-}
+// .fslightbox-toolbar-button:nth-child(5) {
+//   display: none;
+// }
 
-.fslightbox-container {
-  background: linear-gradient(rgba(30, 30, 30, 0.7), #000 1810%) !important;
-}
+// .fslightbox-container {
+//   background: linear-gradient(rgba(30, 30, 30, 0.7), #000 1810%) !important;
+// }
 
-.fslightbox-source {
-  // fix gatsby's image loading + needed for scrolling
-  height: auto !important;
-  max-height: 100vh !important;
-}
+// .fslightbox-source {
+//   // fix gatsby's image loading + needed for scrolling
+//   height: auto !important;
+//   max-height: 100vh !important;
+// }
 
 .fslightbox-slide-number-container {
   display: none !important;
 }
 
-.fslightbox-transform-transition {
-  transform: none !important;
-}
+// .fslightbox-transform-transition {
+//   transform: none !important;
+// }
 
 .fslightbox-thumb {
   filter: brightness(70%);
-  transition: all 200ms ease;
   &-active {
-    z-index: 51;
     filter: brightness(100%);
   }
 }
 
-.fslightbox-caption {
-  z-index: 5 !important; //temp
-  visibility: visible !important;
-  &-active {
-    z-index: 51 !important; //temp
-    visibility: visible !important;
-  }
-}
+// .fslightbox-caption {
+//   z-index: 5 !important; //temp
+//   display: none !important;
+//   &-active {
+//     z-index: 51 !important; //temp
+//     // visibility: visible !important;
+//     display: block !important;
+//   }
+// }
 
 .gallery-preview {
   border-radius: 5px;
   width: 100%;
   height: 100%;
-  max-height: 160px;
+  height: 160px;
   object-fit: cover;
 }
 
-.full-image {
-  max-height: 90vh;
-  max-width: 90vh;
-  img {
-    object-fit: contain !important;
-  }
-}
+// .full-image {
+//   img {
+//     object-fit: contain !important;
+//   }
+//   @media screen and (min-width: 800px) {
+//     max-height: 90vh;
+//     max-width: 90vh;
+//   }
+// }

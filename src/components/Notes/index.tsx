@@ -28,13 +28,15 @@ export default function Notes(props: Props) {
     <div>
       <TriviaContainer>
         <h5>Trivia</h5>
+        <ul>
         {otherData.map((fact, i) =>
           i === otherData.length - 1 ? (
-            <li className="accent">{fact}</li>
+            <li key={i} className="accent">{fact}</li>
           ) : (
-            <li>{fact}</li>
+            <li key={i}>{fact}</li>
           )
         )}
+        </ul>
       </TriviaContainer>
     </div>
   );

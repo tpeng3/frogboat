@@ -10,8 +10,6 @@ import { imageDataProps } from "@util/types";
 import FsLightbox from "fslightbox-react";
 import useSystemStore from "@store/system";
 import "./lightbox.scss";
-import { GatsbyImage, withArtDirection } from "gatsby-plugin-image";
-import { useStaticQuery, graphql } from "gatsby";
 import MultiImage from "@images/SVG/multi_image.svg";
 import {
   GalleryContainer,
@@ -44,38 +42,6 @@ const Gallery = (props: Props) => {
   const [productIndex, setProductIndex] = useState(0);
   const lightboxRef = useRef<any>(null);
 
-  const imageQuery = {};
-  // const imageQuery = useStaticQuery(graphql`
-  //   query ImagesQuery {
-  //     allFile(
-  //       filter: {
-  //         extension: { regex: "/(jpg)|(png)|(jpeg)/" }
-  //         relativeDirectory: { regex: "/uploads/" }
-  //       }
-  //     ) {
-  //       edges {
-  //         node {
-  //           base
-  //           relativePath
-  //           childImageSharp {
-  //             full: gatsbyImageData(
-  //               layout: CONSTRAINED
-  //               placeholder: NONE
-  //               transformOptions: { fit: CONTAIN }
-  //             )
-  //             gatsbyImageData(
-  //               layout: CONSTRAINED
-  //               width: 160
-  //               height: 160
-  //               transformOptions: { cropFocus: ENTROPY }
-  //             )
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
-
   // hacky fix to disable wheel scrolling in the lightbox
   useEffect(() => {
     const stopWheelZoom = (e) => e.stopImmediatePropagation();
@@ -91,17 +57,19 @@ const Gallery = (props: Props) => {
   // update imageData based on filter menu
   useEffect(() => {
     let filteredList = imageData;
-    console.log(filteredList);
-
     // filter next by filter options
     switch (filterType) {
       case "all":
+        filteredList = filteredList.filter(
+          (i) => !i.tags.some((t) => ["spoiler", "hidden"].includes(t.key))
+        );
         break;
       case "personal":
-        filteredList = filteredList.filter((i) =>
-          i.tags.some(
-            (t) => !["externalart", "friendart", "commission"].includes(t.key)
-          )
+        filteredList = filteredList.filter(
+          (i) =>
+            !i.tags.some((t) =>
+              ["externalart", "friendart", "commission"].includes(t.key)
+            )
         );
         break;
       case "friend":
@@ -160,33 +128,15 @@ const Gallery = (props: Props) => {
     });
   };
 
-  // const getFluidImage = (path, preview = false) => {
-  //   const base = imageQuery.allFile.edges.find(
-  //     (i) => i.node.relativePath === path
-  //   );
-  //   if (base) {
-  //     if (preview) {
-  //       return base.node.childImageSharp.gatsbyImageData;
-  //     } else {
-  //       return base.node.childImageSharp.full;
-  //     }
-  //   } else {
-  //     console.log("couldn't find image", path);
-  //   }
-  // };
-
   const renderGalleryPreview = (img, index) => {
     return (
       <PreviewContainer onClick={() => onPreviewClick(index + 1)} key={img.key}>
-        {/* <GatsbyImage
+        <img
           className={"gallery-preview"}
-          image={getFluidImage(img.filePaths[0], true)}
+          src={`/${img.filePaths[0]}`}
           alt={img.name}
-        /> */}
-        <img 
-        className={"gallery-preview"}
-        src={`/${img.filePaths[0]}`}
-        alt={img.name}
+          key={img.key}
+          loading="lazy"
         />
         {img.filePaths.length > 1 && (
           <MultiTag>
@@ -205,11 +155,7 @@ const Gallery = (props: Props) => {
       return (
         <VerticalImageContainer row={img.filePaths.length}>
           {img.filePaths.map((path, i) => (
-            <img
-              src={`/${img.filePaths[i]}`}
-              alt={img.name}
-              key={path}
-            />
+            <img src={`/${img.filePaths[i]}`} alt={img.name} key={path} />
           ))}
         </VerticalImageContainer>
       );
@@ -228,11 +174,7 @@ const Gallery = (props: Props) => {
         <div>
           <HorizontalImageContainer col={img.filePaths.length}>
             {img.filePaths.map((path, i) => (
-              <img
-                src={`/${img.filePaths[i]}`}
-                alt={img.name}
-                key={path}
-              />
+              <img src={`/${img.filePaths[i]}`} alt={img.name} key={path} />
             ))}
           </HorizontalImageContainer>
         </div>
@@ -276,17 +218,38 @@ const Gallery = (props: Props) => {
       }
     }
 
+    // move this out later
+    enum TAG_TYPE {
+      SORTED,
+      UTIL,
+      PERSONAL,
+      DEV,
+      ART,
+      PROJECT,
+      CHARACTER,
+      MEDIA,
+      OTHER,
+      LAYOUT,
+    }
+
+    const PUBLIC_TYPES = [
+      TAG_TYPE.DEV,
+      TAG_TYPE.ART,
+      TAG_TYPE.PROJECT,
+      TAG_TYPE.CHARACTER,
+      TAG_TYPE.MEDIA,
+    ];
+    const publicTags = img.tags.filter((t) => PUBLIC_TYPES.includes(t.type));
+    // const publicTags = img.tags;
     return (
       <CaptionBox>
         <h2>{prettyDate}</h2>
         <p>{comment}</p>
         <TagList>
-          {img.tags.map((t) => (
+          {publicTags.map((t) => (
             // <Link to={GET_TAG_LINK(t)}>
-            <a>
-              <TagSpan key={t.name} tagColor={t.color}>
-                {t.name}
-              </TagSpan>
+            <a key={t.name}>
+              <TagSpan tagColor={t.color}>{t.name}</TagSpan>
             </a>
           ))}
         </TagList>
@@ -309,9 +272,7 @@ const Gallery = (props: Props) => {
             ref={lightboxRef}
             toggler={lightboxController.toggler}
             sources={displayedList.map((img) => renderLightboxImage(img))}
-            thumbs={displayedList.map(
-              (img) => `/${img.filePaths[0]}`
-            )}
+            thumbs={displayedList.map((img) => `/${img.filePaths[0]}`)}
             captions={displayedList.map((img) => getCaptions(img))}
             slide={lightboxController.slide}
             slideChangeAnimation="fade"

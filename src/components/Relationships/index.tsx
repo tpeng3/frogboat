@@ -20,13 +20,13 @@ const StyledDiv = styled.div`
 `;
 
 const PortraitIcon = styled.img`
-  position: relative;
+  position: absolute;
   height: 100px;
   width: 100px;
   border-radius: 100%;
   object-fit: cover;
   top: -50px;
-  right: -20px;
+  left: 20px;
   background-color: ${COLORS.white};
   ${media.laptop`
     position: initial;
@@ -36,18 +36,24 @@ const PortraitIcon = styled.img`
 `;
 
 const Description = styled.p`
-  margin: 2rem;
+  margin: 3.5rem 1rem 1rem 1.5rem;
   align-self: center;
   flex: 1;
+  ${media.laptop`
+    margin: 2rem;
+  `}
 `;
 
 const Bubble = styled.div<{ currentTheme: string }>`
   display: flex;
+  flex-direction: column;
   border-radius: 10px;
   width: 100%;
   background-color: ${hexToRGBA(COLORS.GREY_200, 0.2)};
   transition: all 200ms ease;
+  position: relative;
   ${media.laptop`
+    flex-direction: row;
     height: 100px;
     border-radius: 9999px;
     width: 100%;
@@ -63,9 +69,12 @@ const Bubble = styled.div<{ currentTheme: string }>`
 const Testimony = styled(motion.div)`
   display: flex;
   max-width: 800px;
-  margin-right: 100px;
   margin-left: 0;
+  a {
+    width: 100%;
+  }
   ${media.laptop`
+    margin-right: 100px;
     &:nth-child(2n) {
       justify-content: flex-end;
       margin-left: 100px;
@@ -76,11 +85,14 @@ const Testimony = styled(motion.div)`
     }
   `}
 
-  &:not(:last-child) {
-    margin-bottom: 6rem;
+  margin-top: 5rem;
+  ${media.laptop`
+    margin-top: 1.05rem;
+  `}
+  &:first-child {
     ${media.laptop`
-      margin-bottom: 1.05rem;
-    `}
+    margin-top: 0rem;
+  `}
   }
 `;
 
@@ -122,24 +134,24 @@ const Relationships = (props: Props) => {
   return (
     <motion.div variants={containerVariants} initial="enter" animate="center">
       <StyledDiv>
-      {relationshipData.map((chara, i) => (
-        <Testimony
-          key={`${chara}-${i}`}
-          custom={i}
-          variants={testimonyVariants}
-        >
-          <Link to={content[chara.charKey].link}>
-            <Bubble currentTheme={currentTheme}>
-              <PortraitIcon
-                src={content[chara.charKey].icon}
-                alt={`${chara.charKey}-icon`}
-              />
-              {/* <StyledIcon src={HomeIcon} alt={"home icon"} /> */}
-              <Description>{chara.testimony}</Description>
-            </Bubble>
-          </Link>
-        </Testimony>
-      ))}
+        {relationshipData.map((chara, i) => (
+          <Testimony
+            key={`${chara}-${i}`}
+            custom={i}
+            variants={testimonyVariants}
+          >
+            <Link to={content[chara.charKey].link}>
+              <Bubble currentTheme={currentTheme}>
+                <PortraitIcon
+                  src={content[chara.charKey].icon}
+                  alt={`${chara.charKey}-icon`}
+                />
+                {/* <StyledIcon src={HomeIcon} alt={"home icon"} /> */}
+                <Description>{chara.testimony}</Description>
+              </Bubble>
+            </Link>
+          </Testimony>
+        ))}
       </StyledDiv>
     </motion.div>
   );

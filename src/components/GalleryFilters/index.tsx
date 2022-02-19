@@ -12,9 +12,12 @@ import { ThemeTypes } from "@components/Layout";
 import content from "./content.yaml";
 
 const GalleryFiltersContainer = styled(motion.div)`
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   position: relative;
   min-height: 40px;
+  ${media.laptop`
+  margin-bottom: 2rem;
+  `}
 `;
 
 const FilterButton = styled.button<{ currentTheme: ThemeTypes }>`
@@ -50,8 +53,11 @@ const MenuContainer = styled(motion.div)`
   border-radius: 12px;
   width: 100%;
   background-color: ${hexToRGBA(COLORS.GREY_200, 0.2)};
-  padding: 1.4rem 2rem 2rem 2rem;
   overflow: hidden;
+  padding: 1rem;
+  ${media.laptop`
+    padding: 1.4rem 2rem 2rem 2rem;
+  `}
 `;
 
 const FilterTitle = styled.h5`
@@ -76,15 +82,22 @@ const StyledCloseIcon = styled(CloseIcon)`
 const FilterOptions = styled(motion.div)`
   display: grid;
   width: 100%;
-  grid-template-columns: 3fr 2fr;
+  gap: 24px;
+  grid-template-columns: 1fr;
+  flex-direction: column;
+  ${media.laptop`
+    grid-template-columns: 3fr 2fr;
+  `}
 `;
 
 const FilterContainer = styled.div`
-  height: 6rem;
   margin-right: 6rem;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  ${media.laptop`
+    height: 6rem;
+  `}
 `;
 
 const RadioLabel = styled(motion.label)`

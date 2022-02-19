@@ -12,7 +12,7 @@ import { theme, GlobalStyles } from "src/styles";
 // Components
 // import { CSSDebugger } from "../css-debugger";
 import Nav from "@components/Nav";
-import { hexToRGBA, elevation } from "@util/helpers";
+import { hexToRGBA, elevation, media } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import BackgroundGradient from "@components/BackgroundGradient";
 import PasswordScreen from "@components/PasswordScreen";
@@ -29,7 +29,7 @@ const HeaderImage = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(2px); /* apply the blur */
+    backdrop-filter: blur(1.5px); /* apply the blur */
     pointer-events: none; /* make the overlay click-through */
   }
 `;
@@ -54,18 +54,15 @@ const Container = styled(motion.div)`
   background-color: ${hexToRGBA(COLORS.GREY_DEFAULT, 0.8)};
   margin: 0 auto;
   min-height: 500px;
-  width: 90%;
   max-width: 1080px;
   padding: 2rem;
   border-radius: 5px;
   position: relative;
   ${elevation(2, "#000000")}
-`;
-
-const Footer = styled.div`
-  background-color: ${COLORS.GREY_1000};
-  height: 200px;
-  position: relative;
+  width: 100%;
+  /* ${media.desktop`
+    width: 90%;
+  `} */
 `;
 
 const BackgroundTexture = styled.div<{ rotated?: boolean }>`

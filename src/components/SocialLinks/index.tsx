@@ -8,6 +8,7 @@ import MailIcon from "@images/SVG/mail.svg";
 const LinkContainer = styled.div`
   margin: auto;
   display: flex;
+  gap: 0.5rem;
   justify-content: space-evenly;
   width: 200px;
 `;
@@ -18,15 +19,9 @@ const StyledLink = styled.a`
     transition: transform 125ms; // on hover
     transform: translateY(-0.6em);
   }
-  &:not(:last-child) {
-    margin-right: 12px;
-    svg {
-      margin-right: 6px;
-    }
-  }
   svg {
-    height: 1.6em;
-    width: 1.6em;
+    height: 1.25rem;
+    width: 1.25rem;
     display: initial;
     vertical-align: sub;
   }

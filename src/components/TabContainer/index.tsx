@@ -20,10 +20,13 @@ import { imageDataProps, RelationshipDataProps } from "@util/types";
 const ButtonContainer = styled(motion.div)`
   display: flex;
   flex-direction: row;
-  margin: 2rem 4rem 0rem 4rem;
   justify-content: center;
+  width: 90%;
+  margin: auto;
   ${media.laptop`
     justify-content: flex-start;
+    width: auto;
+    margin: 2rem 4rem 0rem 4rem;
   `}
 `;
 
@@ -37,7 +40,6 @@ const TabButton = styled.button<{ currentTheme: string; selected: boolean }>`
   display: flex;
   justify-content: center;
   border-radius: 6px 6px 0 0;
-  min-width: 8rem;
   color: ${COLORS.white};
   padding: 0.2rem 1rem;
   text-transform: capitalize;
@@ -47,6 +49,11 @@ const TabButton = styled.button<{ currentTheme: string; selected: boolean }>`
         ? props.theme[props.currentTheme].primaryColor
         : hexToRGBA(COLORS.GREY_HOVER, 0.7)};
   }
+  width: 100%;
+  ${media.laptop`
+    width: auto;
+    min-width: 8rem;
+  `}
 `;
 
 const Container = styled(motion.div)<{ currentTheme: string }>`
@@ -57,17 +64,17 @@ const Container = styled(motion.div)<{ currentTheme: string }>`
         : props.theme.default.secondaryColor};
   border-radius: 12px;
   color: ${COLORS.white};
-  padding: 4rem 1rem;
   min-height: 500px;
-  max-height: 640px;
-  overflow-y: auto;
   ::-webkit-scrollbar {
     display: none;
   }
   -ms-overflow-style: none; // IE and Edge
   scrollbar-width: none; // Firefox
+  padding: 1rem 1rem;
   ${media.laptop`
     padding: 2rem 4rem;
+    overflow-y: auto;
+    max-height: 640px;
   `}
 `;
 
@@ -125,7 +132,7 @@ const TabContainer = (props: CharacterProps) => {
             currentTheme={currentTheme}
             selected={selectedTab === tab}
           >
-            {tabTypes[tab].toLowerCase()}
+            {!isTablet ? tabTypes[tab].toLowerCase() : tabTypes[tab].charAt(0)}
           </TabButton>
         ))}
       </ButtonContainer>

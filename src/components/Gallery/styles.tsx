@@ -4,14 +4,20 @@ import { COLORS, TAG_TYPE } from "@util/constants";
 
 export const GalleryContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 10px;
   row-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  ${media.tablet`
+    grid-template-columns: repeat(3, 1fr);
+  `}
+  ${media.desktop`
+    grid-template-columns: repeat(4, 1fr);
+  `}
 `;
 
 export const PreviewContainer = styled.div`
   width: 100%;
-  max-height: 160px;
+  height: 160px;
   object-fit: cover;
   filter: brightness(80%);
   transition: all 200ms ease;
@@ -51,18 +57,19 @@ export const VerticalImageContainer = styled.div<{ row: number }>`
   display: grid;
   grid-template-rows: auto;
   grid-gap: 10px;
-  max-width: 500px;
+  /* min-width: 500px; */
+  height: 90vh !important;
   overflow-y: auto;
   ::-webkit-scrollbar {
     display: none;
   }
   -ms-overflow-style: none; // IE and Edge
   scrollbar-width: none; // Firefox
-  .gatsby-image-wrapper {
-    img {
-      height: auto !important;
-    }
-  }
+   @media screen and (min-width: 800px) { // laptop
+     /* max-height: 90vh; */
+     height: auto;
+     max-width: 500px;
+   }
 `;
 
 export const TagSpan = styled.span<{ tagColor: string }>`
@@ -80,8 +87,6 @@ export const TagList = styled.div`
 
 export const CaptionBox = styled.div`
   font-family: "Asap";
-  max-width: 800px;
-  padding-bottom: 1rem;
   a {
     color: ${COLORS.LINK};
     text-decoration: none;
