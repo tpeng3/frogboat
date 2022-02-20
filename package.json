@@ -29,7 +29,7 @@
     "deploy": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --prefix-paths && gh-pages -d public"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.4",
+    "@mui/material": "^5.4.2",
     "framer-motion": "^2.9.4",
     "fslightbox-react": "file:fslightbox-react-pro-1.5.0.tgz",
     "gatsby": "^3.8.0",

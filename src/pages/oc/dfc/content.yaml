@@ -95,13 +95,13 @@ oc patti:
         "Patti carries the entire team's mental well-being on her very broad shoulders. My best friend that I trust with my life, but definitely, try not to get caught lying to her. Haha..."
     - charKey: oc aster
       testimony: >
-        I feel like I've known Patti since forever, she's kind of like a sister to me- wait don't tell her that I said that!
+        "I feel like I've known Patti since forever, she's kind of like a sister to me- wait don't tell her that I said that!"
     - charKey: oc curry
       testimony: >
-        Patti's cool!
+        "Patti's cool!"
     - charKey: oc nova
       testimony: >
-        Patti's cool, she actually hears us out! There's not many adults who bother to.
+        "Patti's cool, she actually hears us out! It's hard to find good adults around us."
   facts:
     - An only child living with a single mom.
     - The oldest out of the trio, and the tallest.
@@ -115,51 +115,52 @@ oc curry:
   quote: >
     "It's fun to go fast, it's all like FWOOOOH and WAHHHHH!"
   description: >
-    An energetic boy with the ability to manipulate wind. The combination makes him quite troublesome and Curry enjoys making a mess wherever he goes. He's best friends with Nova and together, they're insufferable and inseparable.
+    An energetic boy with the ability to manipulate wind. The combination makes him quite troublesome and Curry enjoys making a mess wherever he goes.
+
+    He's best friends with Nova and together, they're insufferable and inseparable.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/aejkl.png
   relationships:
     - charKey: oc seven
       testimony: >
-        No comment.
+        "This kid's been trying to prank me ever since he joined. Haha, I can't let him win that easily."
     - charKey: oc aster
       testimony: >
-        "Oh look, it's Brat #1. No I'm not being petty when I call him by what he is: a brat that went wild with pranks in the quarters until Patti finally stopped him!"
+        "Look, I'm not good with kids, especially ones that try to make me the butt of their jokes."
     - charKey: oc patti
       testimony: >
-        "It's been livelier since Curry joined us."
+        "It's been livier since Curry joined but I don't mind that. I finally get a friend to do freerunning together."
     - charKey: oc nova
       testimony: >
-        "My partner-in-crime, Captain Snifflebutt. we're inseperable!"
+        "My partner-in-crime, Captain Snifflebutt. I'm really glad he's here!"
   facts:
     - has a baby sister (yet to be born)
     - ...don't worry, that's not his real name.
-    - His real name is Captain Snifflebutt (I'm kidding but actually that's how this oc came to be)
 
 oc nova:
   title: Agent Pooplord
   quote: >
-    "The fact that I've been brought to this facility means I'm pretttty sure there's some child labor laws in violation."
+    "The fact that I've been brought to this facility means there's a child labor law in violation."
   description: |
-    He's not a shy kid, but his lack of social skills makes him hard to approach. It doesn't help when he has such a cheeky tongue. However, he's a sweet boy when he opens up to others.
+    He's not a shy kid, but his lack of social skills and cheeky tongue makes him hard to approach. However, he's a sweet boy when he opens up to others.
 
-    Nova's gifted with the ability to manipulate gravity, making him a target for many hero associations. He hated the pressure and almost developed a mistrust for the hero industry. But after meeting Curry though, he decided to stay around.
+    Nova's gifted with the ability to manipulate gravity, making him a target for many hero associations. He hated the pressure and almost developed a mistrust for the hero industry. After meeting Curry though, he decided to stay around.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/1437091470.png
   relationships:
     - charKey: oc seven
       testimony: >
-        "He must have had it hard to give that up and join our humble team."
+        "Kid was on the best track to become a hero but he decided to give that up just to join our tiny team? ...How lucky."
     - charKey: oc aster
       testimony: >
-        "Brat #2- well Nova's a good kid but I can't fathom why he made such a big fuss to the higher-ups just to bring Curry on our team."
+        "Brat #2- but he's more alright. Smart kid, knows how shitty the hero business can be."
     - charKey: oc patti
       testimony: >
-        ""
+        "How Nova acts when Curry's around or not is like night and day. It's funny to watch, they're a cute pair."
     - charKey: oc curry
       testimony: >
-        ""
+        "Hehe, I threw a tantrum at the higher ups so I could join Agent Pooplord's team. Don't mess with us!"
   facts:
     - Likes space and kind of wants to be an astronaut
     - also likes ghosts or the undead, so kind of wants to become a supernatural investigator too
     - Can't stand spicy food
     - he/they pronouns (still exploring because they're young and because he can)
-    - A fav oc because precocious kids are super endearing. Also his actual name is Agent Pooplord.
+    - A fav oc because precocious kids are super endearing.

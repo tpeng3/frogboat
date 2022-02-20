@@ -2,7 +2,7 @@ main:
   title: One Night Murder
   genre: Mystery, Supernatural, Romance(?)
   description: |
-    One day, Hotaru wakes up in an unknown mansion with five other girls. None of them claim to know what's going on but everyone's bent on trying to leave. It's too bad Hotaru's got a knack for unlucky timings because suddenly there's a dead body on the floor and they're holding the knife.
+    One day, Hotaru wakes up in an unknown mansion with five other girls. None of them claim to know what's going on but everyone's bent on trying to leave. It's too bad Hotaru's got a knack for unlucky timings because suddenly there's a dead body on the floor and they're the one holding the knife.
 
     Active project to turn this into an adventure visual novel with 6 chapters. In the past, I had an hour long prologue demo done, but I've been revamping it.
 
@@ -20,13 +20,13 @@ oc hotaru:
         "Hocchan's a funny friend! I don't always understand what they're saying... But it's cute when they get all excited about... what was it... Aliens?"
     - charKey: oc marina
       testimony: >
-        "What's my impression of Hotaru? If I squin- Ehem, disregard their childish conduct, we can... likely bond over our mutual fondness for a good mystery."
+        "What's my impression of Hotaru? Well, I know I can trust them on conducting... lively conversations."
     - charKey: oc tetsu
       testimony: >
-        "First thought: "The hell's a kid doin' here?" Imagine my surprise that they're only a year younger! Can't help but want to look out for 'em though."
+        "First thought: "The hell's a kid doin' here?" Imagine my surprise that they're only a year younger! Can't help but look out for 'em though."
     - charKey: oc sachiko
       testimony: >
-        "Soooo silly~ Their thoughts show up exactly on their face. It's fun to poke at their stupidity~"
+        "Hocchan's a total idiot~ Like, why are you even here?"
     - charKey: oc jun
       testimony: >
         "..."
@@ -42,17 +42,17 @@ oc kokoro:
     "A-aliens? Are you sure?"
   description: >
     [the following content is unavailable to the public]
-  mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newheader_1.png
+  mainImg: https://lh3.googleusercontent.com/kMVE0Wqc9L97u8Ololb7hRqXLQApr2V9RXo5qdeHtc3ekdVs9YdYzbvjTO7s10OWc5kqu-AYlziVETd9zk-ZX2TlFdFQtdAelb4hh2jhA7Ci2i-afBWUsS82sVT0E-7OMJSkdxYxQxjxXjLRTD-q4vHLC4dOTkz5_ja9ctClwEB-gjFL3sO2NPYGtYtWnJBrojPw13Ivj0Il6pm1IsRkeq95w-4Ul6QDPgIUkdDkXycYzobD4_pGq8gJY5M3TrfWpu3u4YmqASHcsWDwPlVjKE9CKp-r1-CDZYIEbyX3pTpugJsd5eDrFzfPXrgHxKxDubTOiamdwEdlUuA4ApjPMvYYl5yG2n9M_VgcPjECYSl49S67MApPkAOjWEu22rwiysk5uStYJWaeTq5oRPOquyZ9HGlHcdLxfc4EDK-5ZmM6u4VCDdBle1v9RZbeh1-DzCqEECPEWGcjWw4IYZLFq9JtK2tzcFWhRRqpYsOOPPiA_4UyDpJRcyHFgLs0i_SI7zwK-GQ48-sIytfFvvmGnGuB_hBQZDmZ6U-lCVmQcRrNRpb3V7bEeIXgx1HmMWe-6Dswxgs020uzsn2pFc1jwga-QTAGGL9UPPMWHpMIqFme6CMs8DEdaNH6KSSdBiuLkbV2SShjuzJxmuKITCEklomFXXuP5JIacbFKSAhyxwGo9gCLCfUvSoqUAWLECpsXWIEwH5b8GrI6A-ZoARpDflI=w802-h914-no?authuser=0
   relationships:
     - charKey: oc hotaru
       testimony: >
         "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was charmed by my cool demeanor?"
     - charKey: oc marina
       testimony: >
-        "Kokoro's a really sweet girl. Bright and optimistic, I'm really saved by her presence admist this dreary situation."
+        "Kokoro's a really sweet girl. Bright and optimistic, I'm really saved by her presence in this frightful situation."
     - charKey: oc tetsu
       testimony: >
-        "Haha, I joked with Hotaru that outta 'veryone here, Kokoro was my type. Well, despite lookin' scared outta her wits, she still tries to look out for 'veryone. She's strong, I respect that."
+        "Haha, I joked with Hotaru that Kokoro was my type. Well, despite lookin' scared outta her wits, she still tries to look out for 'veryone. She's cool, y'know?"
     - charKey: oc sachiko
       testimony: >
         "Sweet. Sweet Kokoron. Everybody loves Kokoron."
@@ -70,20 +70,20 @@ oc marina:
     "Forgive my pessimism but I believe our situation is quite serious."
   description: >
     [the following content is unavailable to the public]
-  mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newheadertest_1.png
+  mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/oceptember3_orig.png
   relationships:
     - charKey: oc hotaru
       testimony: >
         "Queen... Goddess... Never thought I'd meet my soulmate during an alien abduction... I wouldn't say this out loud but I hope she can step on m-"
     - charKey: oc kokoro
       testimony: >
-        "Marina's good at solving mysteries so she's been the most eager on getting to the bottom of our situation. I want to support her however I can!"
+        "Mari's really smart so I trust her to getting to the bottom of our situation. I want to support her however I can!"
     - charKey: oc tetsu
       testimony: >
         "Miss leader's doing a fine job leading the team and all... I just have my own methods I'd like to follow, don't hate me alright?"
     - charKey: oc sachiko
       testimony: >
-        "Oh? Did Miss Goody-two-shoes provide another strongly worded complaint for me to trash?"
+        "Me? I'm just waiting for Miss Goody-two-shoes to break down once everything stops going her way~"
     - charKey: oc jun
       testimony: >
         "..."
@@ -106,13 +106,13 @@ oc tetsu:
         "Probably one of the chillest people I know. I respect Tetsu a lot but the fact she wears a SHIRT shirt drives me insane."
     - charKey: oc marina
       testimony: >
-        "Although Tetsu is quite friendly and easygoing, there seems to be an invisible wall whenever we speak in regards to personal life."
+        "Tetsu is quite friendly to the team, there seems to be a wall whenever I try to speak on more personal matters."
     - charKey: oc kokoro
       testimony: >
-        "I don't know much about Tecchan but she smiles a lot and likes to give out head pats."
+        "Hm... I don't know much about Tecchan but she smiles a lot and likes to give out head pats."
     - charKey: oc sachiko
       testimony: >
-        "Welllll, I'm ALWAYS nice to a fan~"
+        "Welllll, I'm NICE to my fans."
     - charKey: oc jun
       testimony: >
         "...Tetsu..."
@@ -135,10 +135,10 @@ oc sachiko:
         "Ah, the Devil's spawn... Sachiko was put on Earth to inflict misery on all mortals and even Satan doesn't want her back."
     - charKey: oc marina
       testimony: >
-        "It's not polite of me to gossip, but Sachiko is quite skilled with all the methods of vexing oneself- that is to say: she's insufferable."
+        "It's impolite of me to gossip, but Sachiko is skilled with all the methods of vexing oneself- which is to say: she's absolutely insufferable."
     - charKey: oc tetsu
       testimony: >
-        "I know somma the others' a bit wary of Sachiko 'cause of the way she presents 'erself. I keep my distance."
+        "I know somma the others' a bit wary of Sachiko 'cause of the way she presents 'erself. I play neutral."
     - charKey: oc kokoro
       testimony: >
         "Sacchi likes to talk about herself a lot! But she doesn't look very happy when anyone else speaks."
@@ -153,26 +153,26 @@ oc jun:
   keyName: oc jun
   title: Kiyono Jun (清ノ淳)
   quote: >
-    "Shut up."
+    "It's better to keep quiet."
   description: >
     [the following content is unavailable to the public]
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/junwh_2.png
   relationships:
     - charKey: oc hotaru
       testimony: >
-        "That girl is so suspicious, I don't think she even spoke a word since we met. What's her deal?"
+        "That girl is so suspicious, I don't think she spoke a word since we met. What's her deal?"
     - charKey: oc kokoro
       testimony: >
         "Um... Junny's a very quiet person."
     - charKey: oc marina
       testimony: >
-        "I get the impression that Jun is one with a keen mind, but she seems to find comfort more in the corners of the house than by our sides."
+        "I get the impression that Jun is one with a keen mind, but she has found more comfort in the corners of the house than by our sides."
     - charKey: oc tetsu
       testimony: >
         "Haha sorry, no comment. I don't think Jun'll like me talkin' about her. Well, she has her reasons."
     - charKey: oc sachiko
       testimony: >
-        "Jun~ Junny~ Jun~ It seems I've caught her reticent attention. I wouldn't mind a chance to pry open her thoughts given the chance~"
+        "Jun~ Junny~ Jun~ It seems I've caught her reticent attention. I wouldn't mind a chance to pry her thoughts given the chance~"
   facts:
     - likes to write
     - rivals with Marina in terms of solving mysteries

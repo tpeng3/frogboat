@@ -11,8 +11,8 @@ const DFCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   return (
     <div>
       <SEO
-        title="About gatsby-starter-template-deluxe"
-        description="Examples using the gatsby-starter-template-deluxe."
+        title="DFC | About"
+        // description="Examples using the gatsby-starter-template-deluxe."
       />
       <ProjectAbout {...content.main} />
       <hr />

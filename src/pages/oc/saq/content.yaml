@@ -3,36 +3,40 @@ main:
     Seina and Quille
   genre: Puzzle, Fantasy, Cooking, Slice of Life
   description: |
-    Far away in the land of ██████, there exists magic derived from language and thoughts. To the public, the few odd individuals who practice the art are known as Wordeaters. The Witch of Words dedicated her life to researching and recording this form of magic, working tirelessly day and night, to the unfortunate point of exhaustion. Upon her recent passing, her legacy now falls into the hands of two innocent apprentices. The story follows a curious girl and reluctant young man's one year journey around their world and the discoveries they make about "magic" and themselves.
+    Far away in the land of ██████, there exists magic derived from language and thoughts. To the public, the few odd individuals who practice the art are known as Wordeaters.
+
+    The Witch of Words dedicated her life to researching and recording this form of magic, working tirelessly day and night, to the unfortunate point of exhaustion. Upon her recent passing, her legacy now falls into the hands of two innocent apprentices. 
+
+    The story follows a curious girl and reluctant young man's one year journey around their world and the discoveries they make about "magic" and themselves.
 
     WIP that ideally will take form as a simple 4 chapter rpgmaker-styled fetch-quest game, with small crafting elements for cooking and eating "words". My goto project when I want to think about funky fresh magic systems and random worldbuilding lore.
 
 oc quille:
   title: Quille
   quote: >
-    "Every word is important to me so let me just save my breath."
+    "Words are important to me so let me save my breath."
   description: |
-    A second year university student currently taking a gap year to travel around the world. He specializes in linguistics and did research work under the Witch. To a stranger, Quille comes off as a reserve man of few words. In truth, he just tires out easily from casual conversations and prefers to avoid small talk if at all possible. Most of the time, he prefers to indulge in books and writing instead.
+    A second year university student taking a gap year to travel around the world. He major in linguistics and originally researched under the Witch. To a stranger, Quille comes off as a reserve man of few words. In truth, he struggles in finding the appropiate words in small talk. He looks to books and writing as the alternative.
 
-    Quille has very low self esteem in regards to his intelligence. The university he's enrolled in is incredibly competitive and he was one of the students who fell behind. Although he is enthusiastic about learning, he hates getting compared to others.
+    Quille has low self esteem in regards to his intelligence. The university he's enrolled in is incredibly competitive and he was one who fell behind. Although he is enthusiastic about learning, he hates getting compared to others.
 
     Quille met Seina because she was under the custody of the Witch. The story starts not too long after his mentor "passed away from old age".
 
-    In contrast to the Witch of Words who made abundant use of her magic, Quille prefers to save his spells for special or emergency occasions. He worries for unexpected side effects due to the general lack of knowledge around Wordeating. When he does eat, his spells usually take the form of sweets.
+    In contrast to the Witch of Words who made abundant use of her magic, Quille prefers to save his spells for special occasions. He worries for unexpected side effects due to the general lack of knowledge around Wordeating. When he does eat, his spells take the form of sweets.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/aqaqsq.png
   relationships:
     - charKey: oc seina
       testimony: >
-        "I met Quille when he became mah auntie's apprentice. He's kind and knows a lotta words, but lately he's been tellin' me not to wordeat. I don't get it, doesn't he wanna help people?"
+        "Mah auntie's apprentice! He's kind and knows a lotta words, but lately he told me to stop wordeating. I don' get it...
     - charKey: oc heidi
       testimony: >
-        "Quille's my bro's childhood friend! We played together a lot as kids and he really looked after me. I even had a crush at one point! But that's old news, you know?"
+        "Quille's actually my brother's childhood friend! We played together as kids and he really looked after me. I even had a crush! But that's old news, you know?"
     # - charKey: oc kane
     #   testimony: >
     #     "I heard from Heidi he's a student at one of the best universities in the world. He must be incredibly smart! I wonder how much it must have costed to enroll..."
   facts:
     - An only child
-    - Linguistics major at the top university in Spadeus
+    - Moved around a lot as a kid
     - Has a sweet tooth, but keeps this fact quiet and tries not to openly splurge
     - Bad at waking up in the mornings
     - my self-indulgent pretty boy oc i love him one of my favs
@@ -44,14 +48,14 @@ oc seina:
   description: |
     A curious child with a natural talent for wordeating. Her conservative parents had trouble comprehending this power so they have always kept at a distance. She ended up living with her aunt and eventually with Quille.
 
-    A bit of a chatterbox and always willing to help others. She seems mature for her age but Seina is just very sensitive to her surroundings. In doing so, she believes she won't cause discomfort, especially to her parents. At the end of the day, Seina's just a child who wants to be loved.
+    A bit of a chatterbox and always eager to help others. She appears mature for her age but Seina is just sensitive to her surroundings. In doing so, she believes she won't cause discomfort, especially to her parents. At the end of the day, Seina's just a child who wants to be loved.
 
     ​Seina's more selfless with her magic, thinking it's a gift meant to improve the lives of others- as taught by her beloved aunt. She wants to prove that Wordeating isn't something unusual or scary like her parents believe. Her spells generally take form in hearty dishes (carbs), commonly bread.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/seinaa.png
   relationships:
     - charKey: oc quille
       testimony: >
-        "The old hag's niece who came under my care after... the incident. She's a bright kid. I'm aware of her complicated famiy situation so I didn't mind her tagging along... If anything, I hope she finds comfort in my company."
+        "The old hag's niece I now have to babysit after... the incident. She's a bright kid. I'm aware of her complicated famiy situation so I didn't mind her tagging along... I hope my company's enough."
     - charKey: oc heidi
       testimony: >
         "Seina is soooo cute, I want her as my little sister! Oooh she's so sweet I could just eat her up!"
@@ -70,12 +74,14 @@ oc heidi:
   quote: >
     "Love is just like, the most amazing thing ever don't you think? Omigosh like, I def wanna find true love one day."
   description: |
-    One of the first people Seina and Quille meet upon arrival into town. In love with the idea of love, Heidi currently has a crush on someone and sends love letters to this person often. Energetic, caring, and optimistic- she can come off as charming to some, but annoying to others. Her family owns a small restaurant, and she frequently helps out.
+    One of the first people Seina and Quille meet upon arrival into town. In love with the idea of love, Heidi currently has a crush on someone and sends love letters to this person often.
 
-    Heidi finds Seina absolutely precious and treats her like a little sister. The two have a good relationship. She also likes to follow fads and give nicknames to people. She has no affinity for wordeating but is surprisingly good at coming up with spell ideas.
+    Energetic, caring, and optimistic- she can come off as charming to some, and annoying to others. Her family owns a small restaurant, and she frequently assists.
 
-    Quille was childhood friends with Heidi's older brother but the two are rather distant themselves. There's a bit of an awkward backstory involved.
-  mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newheadertest_1.png
+    She also likes to follow fads and give nicknames to people. While Heidi has no affinity for wordeating, she's surprisingly good at inventing spell ideas.
+
+    Quille was childhood friends with Heidi's older brother but the two are rather distant now themselves. There's a bit of an awkward backstory involved.
+  mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/ey-f9fkuwaio31d_orig.jpg
   relationships:
     - charKey: oc quille
       testimony: >
@@ -90,8 +96,9 @@ oc heidi:
     - 16 years old, birthday is on December 26th (Capricorn)
     - 5'3" tall
     - Has an older brother who is currently away in a business school in Diya
-    - Is surprisingly bad at cooking because she goes with her gut feelings and gets distracted easily (improves in the future)
+    - The love letters she sends don't actually go to her crush, but to the unlucky roommate who's been correcting her grammar. They've been penpals since.
     - Writes fanfics
+    - Is surprisingly bad at cooking because she goes with her gut feelings and gets distracted easily (improves in the future)
     - She's my oldest oc, I made her back in my first year of high school as a shoujo protag parody. Heidi's been through a lot since...
 
 oc kane:

@@ -7,6 +7,7 @@ import { SlideFromRight } from "@components/StyledContainers";
 import { media, font } from "@util/helpers";
 import HomePic from "src/images/homepic.jpg";
 import sitelog from "src/docs/sitelog.yaml";
+import { Tooltip } from "@mui/material/Tooltip";
 
 const ImageContainer = styled.div`
   max-width: 500px;
@@ -46,10 +47,7 @@ const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   const path = location.pathname;
   return (
     <SlideFromRight>
-      <SEO
-        title="About gatsby-starter-template-deluxe"
-        description="Examples using the gatsby-starter-template-deluxe."
-      />
+      <SEO title="Froggo's OCs" description="Home page." />
       <h1>Froggo's OCs</h1>
       <hr />
       <AboutContainer>
@@ -64,9 +62,11 @@ const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
         <SocialLinks />
       </AboutContainer>
       <hr />
-      <ImageContainer>
-        <img src={HomePic} alt="404 icon" />
-      </ImageContainer>
+      <Tooltip title="Go to a random page" followCursor>
+        <ImageContainer>
+          <img src={HomePic} alt="404 icon" />
+        </ImageContainer>
+      </Tooltip>
       <hr />
       <LogContainer>
         <h4>Site Log</h4>

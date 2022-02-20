@@ -1,11 +1,13 @@
 main:
   title: >
-    [No title yet but I just call them horoscope kids]
+    [Untitled]
   genre: Action, Adventure, Fantasy
-  description: >
+  description: |
     Fate decided to bring five Asian American high schoolers and a meteor together on one cold night during a camping trip. But what awaited them wasn't the afterlife, but the Land of Night - a vast dreamscape filled with bright stars and dark creatures hiding under known as the Restless. It's not a safe world, and the five friends have to use weapons based on their star-aligned zodiac in order to fight for their right to return home... if that's what they want to do.
 
-      Superrr self indulgent on and off WIP project where I just wanted to make a roguelike game with cooking and friend support mechanics.
+    Superrr self indulgent on and off WIP project where I just wanted to make a roguelike game with cooking and friend support mechanics.
+
+    UNDER CONSTRUCTION I still need to add the pages
 
 oc fei:
   key: fei

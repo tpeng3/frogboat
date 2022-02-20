@@ -9,13 +9,13 @@ import content from "./content.yaml";
 
 const THEME_KEY = ThemeTypes.HORO;
 
-const DFCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
+const HoroPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   const path = location.pathname;
   return (
     <div>
       <SEO
-        title="About gatsby-starter-template-deluxe"
-        description="Examples using the gatsby-starter-template-deluxe."
+        title="HORO | About"
+        // description="Examples using the gatsby-starter-template-deluxe."
       />
       <ProjectAbout {...content.main} />
       <hr />
@@ -26,4 +26,4 @@ const DFCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   );
 };
 
-export default DFCPage;
+export default HoroPage;
