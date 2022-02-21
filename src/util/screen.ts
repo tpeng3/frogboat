@@ -1,6 +1,7 @@
 // import { isRunningInBrowser } from "../util/helpers";
 
 import { useEffect, useState, useRef } from "react";
+import {isInBrowser} from "@util/helpers";
 
 export const breakpoints = {
   mobile: 370,
@@ -17,11 +18,11 @@ export const breakpoints = {
  */
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-    isMobile: window.innerWidth < breakpoints.tablet,
-    isTablet: window.innerWidth <= breakpoints.laptop,
-    isLandscape: window.matchMedia(
+    width: isInBrowser && window.innerWidth,
+    height: isInBrowser && window.innerHeight,
+    isMobile: isInBrowser && window.innerWidth < breakpoints.tablet,
+    isTablet: isInBrowser && window.innerWidth <= breakpoints.laptop,
+    isLandscape: isInBrowser && window.matchMedia(
       "only screen and (max-device-height: 411px) and (max-device-width: 823px) and (orientation: landscape)"
     ).matches,
   });

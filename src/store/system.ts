@@ -1,4 +1,6 @@
 import create from "zustand";
+import {LILYPAD} from "@util/constants";
+import {isInBrowser} from "@util/helpers";
 
 interface SystemState {
   darkMode: boolean;
@@ -9,7 +11,7 @@ interface SystemState {
 
 const initialState = {
   darkMode: true,
-  isLocked: false, // TODO: true
+  isLocked: isInBrowser && window.localStorage.getItem("ul") !== LILYPAD, // TODO: true
   activeFilters: [],
   filterType: "reference",
   sortType: "created",

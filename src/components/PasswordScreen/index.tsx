@@ -73,6 +73,8 @@ export default function PasswordScreen() {
   const handlePassword = () => {
     if (currentInput === LILYPAD) {
       setLocked(false);
+      localStorage.setItem("ul", currentInput);
+      // security? I don't know her
     } else {
       inputAnimationControls.start(screenShake);
     }

@@ -1,5 +1,8 @@
 import { COLORS } from "@util/constants";
 
+// Check if window is defined (so if in the browser or in node.js).
+export const isInBrowser = typeof window !== "undefined";
+
 // convert hex value to rgba for that sweet opacity
 export const hexToRGBA = (hex: string, alpha?: string | number): string => {
   const r = parseInt(hex.slice(1, 3), 16);
