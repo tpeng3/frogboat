@@ -5,6 +5,10 @@ _________________________________________________
 - if hosting images gets to be too much, move them to external links
 - add tooltip to a random page, bc fun shenan...
 
+
+BUGS:
+- on mobile, I need to add overflow scroll to the texts when they get too long
+
 Eventually I should add other OC links
 
 Also a blog post page

@@ -11,6 +11,7 @@ import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import NAV_CONTENT from "@components/Nav/content.yaml";
 import Link from "@components/Link";
 import { COLORS } from "@util/constants";
+import { StaticImage } from "gatsby-plugin-image";
 
 const StyledTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -22,21 +23,10 @@ const StyledTooltip = styled(({ className, ...props }) => (
   },
 }));
 
-// const StyledTooltip = muiStyled(({ className, ...props }) => (
-//   <Tooltip {...props} classes={{ popper: className }} />
-// ))(({ theme }) => ({
-//   [`& .${tooltipClasses.tooltip}`]: {
-//     backgroundColor: theme.palette.common.white,
-//     color: 'rgba(0, 0, 0, 0.87)',
-//     boxShadow: theme.shadows[1],
-//     fontSize: 11,
-//   },
-// }));
-
 const ImageContainer = styled.div`
   max-width: 500px;
   margin: 2rem auto;
-  img {
+  .gatsby-image-wrapper {
     border-radius: 16px;
   }
 `;
@@ -100,7 +90,11 @@ const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
       <StyledTooltip title="Go to a random page" followCursor placement="right">
         <ImageContainer>
           <Link to={getRandomLink()}>
-            <img src={HomePic} alt="404 icon" />
+            <StaticImage
+              src={"../../images/homepic.jpg"}
+              alt="home pic"
+              placeholder="dominantColor"
+            />
           </Link>
         </ImageContainer>
       </StyledTooltip>

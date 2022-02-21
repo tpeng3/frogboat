@@ -8,7 +8,7 @@ import LockedIcon from "@images/SVG/locked.svg";
 import { AnimationDefinition } from "framer-motion/types/render/VisualElement/utils/animation";
 
 const Overlay = styled(motion.div)`
-  position: absolute;
+  position: fixed;
   background-color: ${COLORS.TEAL_500};
   width: 100vw;
   height: 100vh;
@@ -89,24 +89,26 @@ export default function PasswordScreen() {
   };
 
   return (
-    <Overlay>
-      <IconContainer>
-        <LockedIcon />
-      </IconContainer>
-      <InputContainer>
-        <motion.div
-          animate={inputAnimationControls}
-          onAnimationComplete={() => inputAnimationControls.stop()}
-        >
-          <StyledInput
-            type="password"
-            autoFocus
-            variant="outlined"
-            onChange={(e) => updateInput(e.target.value)}
-            onKeyDown={handleKeydown}
-          />
-        </motion.div>
-      </InputContainer>
-    </Overlay>
+    <div>
+      <Overlay>
+        <IconContainer>
+          <LockedIcon />
+        </IconContainer>
+        <InputContainer>
+          <motion.div
+            animate={inputAnimationControls}
+            onAnimationComplete={() => inputAnimationControls.stop()}
+          >
+            <StyledInput
+              type="password"
+              autoFocus
+              variant="outlined"
+              onChange={(e) => updateInput(e.target.value)}
+              onKeyDown={handleKeydown}
+            />
+          </motion.div>
+        </InputContainer>
+      </Overlay>
+    </div>
   );
 }
