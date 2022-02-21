@@ -5,7 +5,7 @@ import { Variants, AnimatePresence } from "framer-motion";
 import DarkUnderlay from "@components/DarkUnderlay";
 import HelpOutlineIcon from "@images/SVG/helpoutline.svg";
 import CloseIcon from "@images/SVG/close.svg";
-import InputAdornment from "@material-ui/core/InputAdornment";
+import InputAdornment from "@mui/material/InputAdornment";
 import {
   Title,
   ModalContainer,
@@ -36,8 +36,14 @@ interface Props {
 }
 
 export const PromptModal = (props: Props) => {
-  const { defaultPrompts, promptList, updatePromptList, open, togglePrompt, updateTemplate } =
-    props;
+  const {
+    defaultPrompts,
+    promptList,
+    updatePromptList,
+    open,
+    togglePrompt,
+    updateTemplate,
+  } = props;
   const [editted, toggleEditted] = useState(false);
 
   const modalVariants: Variants = {
@@ -173,11 +179,9 @@ export const PromptModal = (props: Props) => {
                   Reset to Default
                 </ModalButton>
               ) : (
-                  <div />
-                )}
-              <ModalButton onClick={handleClick}>
-                Close
-              </ModalButton>
+                <div />
+              )}
+              <ModalButton onClick={handleClick}>Close</ModalButton>
             </ButtonsContainer>
           </ModalItems>
         </ModalContainer>

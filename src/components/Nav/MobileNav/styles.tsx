@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import DownArrowIcon from "@images/SVG/down_arrow.svg";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
 import { font, media, elevation } from "@util/helpers";
 import { COLORS } from "@util/constants";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@mui/styles";
 
 export const StyledAccordion = withStyles({
   root: {

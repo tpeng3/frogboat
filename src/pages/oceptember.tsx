@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import { motion, useAnimation, Variants } from "framer-motion";
-import { COLORS, LILYPAD } from "@util/constants";
+import { motion, useAnimation } from "framer-motion";
 import { shuffle, hexToRGBA, media } from "@util/helpers";
-import useSystemStore from "@store/system";
-import TextField from "@material-ui/core/TextField";
 import { PromptModal } from "@components/OCeptember/PromptModal";
 import { AnimationDefinition } from "framer-motion/types/render/VisualElement/utils/animation";
 import TemplateImage from "src/images/canvas.png";
@@ -271,11 +268,11 @@ export default function App() {
             animate={
               showInfo
                 ? {
-                  rotateY: 0,
-                }
+                    rotateY: 0,
+                  }
                 : {
-                  rotateY: -90,
-                }
+                    rotateY: -90,
+                  }
             }
             transition={{ duration: 0.6, delay: showInfo ? 0.6 : 0 }}
           >

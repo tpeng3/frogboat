@@ -4,10 +4,34 @@ import { RouteComponentProps } from "@reach/router";
 import { SEO } from "@components/seo";
 import SocialLinks from "@components/SocialLinks";
 import { SlideFromRight } from "@components/StyledContainers";
-import { media, font } from "@util/helpers";
+import { media, font, hexToRGBA } from "@util/helpers";
 import HomePic from "src/images/homepic.jpg";
 import sitelog from "src/docs/sitelog.yaml";
-import { Tooltip } from "@mui/material/Tooltip";
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import NAV_CONTENT from "@components/Nav/content.yaml";
+import Link from "@components/Link";
+import { COLORS } from "@util/constants";
+
+const StyledTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(() => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: hexToRGBA(COLORS.GREY_DEFAULT, 0.9),
+    border: `2px solid ${COLORS.WHITE_50}`,
+    fontSize: 12,
+  },
+}));
+
+// const StyledTooltip = muiStyled(({ className, ...props }) => (
+//   <Tooltip {...props} classes={{ popper: className }} />
+// ))(({ theme }) => ({
+//   [`& .${tooltipClasses.tooltip}`]: {
+//     backgroundColor: theme.palette.common.white,
+//     color: 'rgba(0, 0, 0, 0.87)',
+//     boxShadow: theme.shadows[1],
+//     fontSize: 11,
+//   },
+// }));
 
 const ImageContainer = styled.div`
   max-width: 500px;
@@ -43,6 +67,17 @@ const LogContainer = styled.div`
   `}
 `;
 
+const getRandomLink = () => {
+  let allLinks: string[] = [];
+  NAV_CONTENT.navItems.forEach((nav) => {
+    if (nav.route !== "/oc") allLinks.push(nav.route);
+    if (nav.subItems) {
+      nav.subItems.forEach((subnav) => allLinks.push(subnav.route));
+    }
+  });
+  return allLinks[Math.floor(Math.random() * allLinks.length)];
+};
+
 const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
   const path = location.pathname;
   return (
@@ -62,11 +97,14 @@ const OCPage: React.FC<RouteComponentProps> = ({ location = {} }) => {
         <SocialLinks />
       </AboutContainer>
       <hr />
-      <Tooltip title="Go to a random page" followCursor>
+      <StyledTooltip title="Go to a random page" followCursor placement="right">
         <ImageContainer>
-          <img src={HomePic} alt="404 icon" />
+          <Link to={getRandomLink()}>
+            <img src={HomePic} alt="404 icon" />
+          </Link>
         </ImageContainer>
-      </Tooltip>
+      </StyledTooltip>
+
       <hr />
       <LogContainer>
         <h4>Site Log</h4>

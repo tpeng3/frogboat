@@ -21,9 +21,9 @@ const ImageContainer = styled.div`
 const NotFoundPage: React.FC = () => (
   <PageContainer>
     <SEO title="404: Not found" />
-    <ImageContainer>
+    {/* <ImageContainer>
       <img src={ApologyIcon} alt="404 icon" />
-    </ImageContainer>
+    </ImageContainer> */}
     <h1>404 Not Found</h1>
     <span>
       I'm still in the process of updating the site, so if you came here through

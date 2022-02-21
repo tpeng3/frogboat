@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
 import { COLORS, LILYPAD } from "@util/constants";
 import useSystemStore from "@store/system";
-import TextField from "@material-ui/core/TextField";
+import TextField from "@mui/material/TextField";
 import LockedIcon from "@images/SVG/locked.svg";
 import { AnimationDefinition } from "framer-motion/types/render/VisualElement/utils/animation";
 

@@ -16,18 +16,23 @@ oc hotaru:
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/ey-wr-qxgaecbt6_orig.jpg
   relationships:
     - charKey: oc kokoro
+      portrait: /portraits/k_sweat.png
       testimony: >
         "Hocchan's a funny friend! I don't always understand what they're saying... But it's cute when they get all excited about... what was it... Aliens?"
     - charKey: oc marina
+      portrait: /portraits/m_sweat.png
       testimony: >
         "What's my impression of Hotaru? Well, I know I can trust them on conducting... lively conversations."
     - charKey: oc tetsu
+      portrait: /portraits/t_default.png
       testimony: >
         "First thought: "The hell's a kid doin' here?" Imagine my surprise that they're only a year younger! Can't help but look out for 'em though."
     - charKey: oc sachiko
+      portrait: /portraits/s_smile.png
       testimony: >
         "Hocchan's a total idiot~ Like, why are you even here?"
     - charKey: oc jun
+      portrait: /portraits/j_distant.png
       testimony: >
         "..."
   facts:
@@ -45,18 +50,23 @@ oc kokoro:
   mainImg: https://lh3.googleusercontent.com/kMVE0Wqc9L97u8Ololb7hRqXLQApr2V9RXo5qdeHtc3ekdVs9YdYzbvjTO7s10OWc5kqu-AYlziVETd9zk-ZX2TlFdFQtdAelb4hh2jhA7Ci2i-afBWUsS82sVT0E-7OMJSkdxYxQxjxXjLRTD-q4vHLC4dOTkz5_ja9ctClwEB-gjFL3sO2NPYGtYtWnJBrojPw13Ivj0Il6pm1IsRkeq95w-4Ul6QDPgIUkdDkXycYzobD4_pGq8gJY5M3TrfWpu3u4YmqASHcsWDwPlVjKE9CKp-r1-CDZYIEbyX3pTpugJsd5eDrFzfPXrgHxKxDubTOiamdwEdlUuA4ApjPMvYYl5yG2n9M_VgcPjECYSl49S67MApPkAOjWEu22rwiysk5uStYJWaeTq5oRPOquyZ9HGlHcdLxfc4EDK-5ZmM6u4VCDdBle1v9RZbeh1-DzCqEECPEWGcjWw4IYZLFq9JtK2tzcFWhRRqpYsOOPPiA_4UyDpJRcyHFgLs0i_SI7zwK-GQ48-sIytfFvvmGnGuB_hBQZDmZ6U-lCVmQcRrNRpb3V7bEeIXgx1HmMWe-6Dswxgs020uzsn2pFc1jwga-QTAGGL9UPPMWHpMIqFme6CMs8DEdaNH6KSSdBiuLkbV2SShjuzJxmuKITCEklomFXXuP5JIacbFKSAhyxwGo9gCLCfUvSoqUAWLECpsXWIEwH5b8GrI6A-ZoARpDflI=w802-h914-no?authuser=0
   relationships:
     - charKey: oc hotaru
+      portrait: /portraits/h_blush.png
       testimony: >
         "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was charmed by my cool demeanor?"
     - charKey: oc marina
+      portrait: /portraits/m_smile.png
       testimony: >
         "Kokoro's a really sweet girl. Bright and optimistic, I'm really saved by her presence in this frightful situation."
     - charKey: oc tetsu
+      portrait: /portraits/t_default.png
       testimony: >
         "Haha, I joked with Hotaru that Kokoro was my type. Well, despite lookin' scared outta her wits, she still tries to look out for 'veryone. She's cool, y'know?"
     - charKey: oc sachiko
+      portrait: /portraits/s_smile.png
       testimony: >
         "Sweet. Sweet Kokoron. Everybody loves Kokoron."
     - charKey: oc jun
+      portrait: /portraits/j_distant.png
       testimony: >
         "..."
   facts:
@@ -73,18 +83,23 @@ oc marina:
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/oceptember3_orig.png
   relationships:
     - charKey: oc hotaru
+      portrait: /portraits/h_blush.png
       testimony: >
         "Queen... Goddess... Never thought I'd meet my soulmate during an alien abduction... I wouldn't say this out loud but I hope she can step on m-"
     - charKey: oc kokoro
+      portrait: /portraits/k_smile.png
       testimony: >
         "Mari's really smart so I trust her to getting to the bottom of our situation. I want to support her however I can!"
     - charKey: oc tetsu
+      portrait: /portraits/t_distant.png
       testimony: >
         "Miss leader's doing a fine job leading the team and all... I just have my own methods I'd like to follow, don't hate me alright?"
     - charKey: oc sachiko
+      portrait: /portraits/s_smile.png
       testimony: >
         "Me? I'm just waiting for Miss Goody-two-shoes to break down once everything stops going her way~"
     - charKey: oc jun
+      portrait: /portraits/j_distant.png
       testimony: >
         "..."
   facts:
@@ -102,18 +117,23 @@ oc tetsu:
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newheadertest2_2.png
   relationships:
     - charKey: oc hotaru
+      portrait: /portraits/h_sweat.png
       testimony: >
         "Probably one of the chillest people I know. I respect Tetsu a lot but the fact she wears a SHIRT shirt drives me insane."
     - charKey: oc marina
+      portrait: /portraits/m_sweat.png
       testimony: >
-        "Tetsu is quite friendly to the team, there seems to be a wall whenever I try to speak on more personal matters."
+        "Tetsu is friendly to the team, but there seems to be a wall whenever I try to speak on more personal matters."
     - charKey: oc kokoro
+      portrait: /portraits/k_smile.png
       testimony: >
         "Hm... I don't know much about Tecchan but she smiles a lot and likes to give out head pats."
     - charKey: oc sachiko
+      portrait: /portraits/s_smile.png
       testimony: >
         "Welllll, I'm NICE to my fans."
     - charKey: oc jun
+      portrait: /portraits/j_distant.png
       testimony: >
         "...Tetsu..."
   facts:
@@ -131,18 +151,23 @@ oc sachiko:
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/oh.jpg
   relationships:
     - charKey: oc hotaru
+      portrait: /portraits/h_distaste.png
       testimony: >
         "Ah, the Devil's spawn... Sachiko was put on Earth to inflict misery on all mortals and even Satan doesn't want her back."
     - charKey: oc marina
+      portrait: /portraits/m_sweat.png
       testimony: >
-        "It's impolite of me to gossip, but Sachiko is skilled with all the methods of vexing oneself- which is to say: she's absolutely insufferable."
+        "It's impolite of me to gossip, but Sachiko is skilled with all the methods of causing vexation- which is to say: she's insufferable."
     - charKey: oc tetsu
+      portrait: /portraits/t_default.png
       testimony: >
         "I know somma the others' a bit wary of Sachiko 'cause of the way she presents 'erself. I play neutral."
     - charKey: oc kokoro
+      portrait: /portraits/k_think.png
       testimony: >
         "Sacchi likes to talk about herself a lot! But she doesn't look very happy when anyone else speaks."
     - charKey: oc jun
+      portrait: /portraits/j_distant.png
       testimony: >
         "... ................ ................. .............................................."
   facts:
@@ -159,18 +184,23 @@ oc jun:
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/junwh_2.png
   relationships:
     - charKey: oc hotaru
+      portrait: /portraits/h_sweat.png
       testimony: >
         "That girl is so suspicious, I don't think she spoke a word since we met. What's her deal?"
     - charKey: oc kokoro
+      portrait: /portraits/k_think.png
       testimony: >
         "Um... Junny's a very quiet person."
     - charKey: oc marina
+      portrait: /portraits/m_sweat.png
       testimony: >
         "I get the impression that Jun is one with a keen mind, but she has found more comfort in the corners of the house than by our sides."
     - charKey: oc tetsu
+      portrait: /portraits/t_distant.png
       testimony: >
         "Haha sorry, no comment. I don't think Jun'll like me talkin' about her. Well, she has her reasons."
     - charKey: oc sachiko
+      portrait: /portraits/s_smile.png
       testimony: >
         "Jun~ Junny~ Jun~ It seems I've caught her reticent attention. I wouldn't mind a chance to pry her thoughts given the chance~"
   facts:

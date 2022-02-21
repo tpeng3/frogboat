@@ -1,0 +1,13 @@
+_________________________________________________
+ ================ TODO =========================
+_________________________________________________
+- clean up code (remove commented out stuff)
+- if hosting images gets to be too much, move them to external links
+- add tooltip to a random page, bc fun shenan...
+
+Eventually I should add other OC links
+
+Also a blog post page
+
+shuttlefrog.com can be repurposed to a generic personal site (so /oc is purely for ocs)
+blog posts can go to shuttlefrog.com/blog

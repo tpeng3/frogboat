@@ -23,17 +23,21 @@ oc seven:
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/editor/seeevevne.png
   relationships:
     - charKey: oc aster
-      testimony: |
+      portrait: /portraits/temp_aster.png
+      testimony: >
         "Have you seen a two-faced idiot with droopy eyes and a stupid grin- wears a blue jacket and carries a few inches over me like the bastard that he is? Yeah that's my best friend."
     - charKey: oc patti
+      portrait: /portraits/temp_patti.png
       testimony: >
-        "To tell you the truth, I know Sev's dream is to die a matyr... but I'll kill him before he ever gets a chance to pull that shit on us."
-    - charKey: oc curry
-      testimony: >
-        "Seven's weird! None of my pranks ever work on him and when I ask how come, he just laughs! Is this part of his luck thing?"
+        "To tell you the truth, I know Sev's dream is to die a matyr... but I'll kill him before he ever pulls that shit on us."
     - charKey: oc nova
+      portrait: /portraits/temp_nova.png
       testimony: >
         "Actually I've heard about Seven before I joined the Dragonfly division. He's banned by the government from a lot of places so I didn't expect the hero in person to be so... easygoing."
+    - charKey: oc curry
+      portrait: /portraits/temp_curry.png
+      testimony: >
+        "Seven's weird! None of my pranks ever work on him and when I ask how come, he just laughs! Is this part of his luck thing?"
   facts:
     - Bi and has a terrible crush on his best friend, Aster
     - Has a younger sister currently in middle school
@@ -59,17 +63,21 @@ oc aster:
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/ez4xr-2uwae96dx.jpg
   relationships:
     - charKey: oc seven
+      portrait: /portraits/temp_seven.png
       testimony: >
         "I know my best friend complains about the hero job, but he actually works the hardest out of all of us. It's part of why I like him so m-... Forget I said that."
     - charKey: oc patti
+      portrait: /portraits/temp_patti.png
       testimony: >
-        "I'm the go-to person when someone's looking for where my invisible best friend wound up. Our freaky situation means I always know what that guy's up to, which is annoying! But... He isn't the worst person to be around."
-    - charKey: oc curry
-      testimony: >
-        "That stuck up glasses guy? Boo, he's no fun."
+        "Stupid powers means I'm the one who's gotta look for where our dumb invisible best friend wound up. But... He isn't the worst person to be around."
     - charKey: oc nova
+      portrait: /portraits/temp_nova.png
       testimony: >
         "Curry doesn't like how Aster always nags at us, but I think he's okay. He helps us with homework!"
+    - charKey: oc curry
+      portrait: /portraits/temp_curry.png
+      testimony: >
+        "That stuck up glasses guy? Boo, he's no fun."
   facts:
     - my trans sonion
     - School-wise, he studies his butt off to maintain straight A's. Unfortunately, he comes in second when compared to the naturally gifted.
@@ -91,17 +99,21 @@ oc patti:
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/newcanvas1patjiati.png
   relationships:
     - charKey: oc seven
+      portrait: /portraits/temp_seven.png
       testimony: >
         "Patti carries the entire team's mental well-being on her very broad shoulders. My best friend that I trust with my life, but definitely, try not to get caught lying to her. Haha..."
     - charKey: oc aster
+      portrait: /portraits/temp_aster.png
       testimony: >
         "I feel like I've known Patti since forever, she's kind of like a sister to me- wait don't tell her that I said that!"
-    - charKey: oc curry
-      testimony: >
-        "Patti's cool!"
     - charKey: oc nova
+      portrait: /portraits/temp_nova.png
       testimony: >
         "Patti's cool, she actually hears us out! It's hard to find good adults around us."
+    - charKey: oc curry
+      portrait: /portraits/temp_curry.png
+      testimony: >
+        "Patti's cool!"
   facts:
     - An only child living with a single mom.
     - The oldest out of the trio, and the tallest.
@@ -121,15 +133,19 @@ oc curry:
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/aejkl.png
   relationships:
     - charKey: oc seven
+      portrait: /portraits/temp_seven.png
       testimony: >
         "This kid's been trying to prank me ever since he joined. Haha, I can't let him win that easily."
     - charKey: oc aster
+      portrait: /portraits/temp_aster.png
       testimony: >
         "Look, I'm not good with kids, especially ones that try to make me the butt of their jokes."
     - charKey: oc patti
+      portrait: /portraits/temp_patti.png
       testimony: >
         "It's been livier since Curry joined but I don't mind that. I finally get a friend to do freerunning together."
     - charKey: oc nova
+      portrait: /portraits/temp_nova.png
       testimony: >
         "My partner-in-crime, Captain Snifflebutt. I'm really glad he's here!"
   facts:
@@ -147,15 +163,19 @@ oc nova:
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/1437091470.png
   relationships:
     - charKey: oc seven
+      portrait: /portraits/temp_seven.png
       testimony: >
         "Kid was on the best track to become a hero but he decided to give that up just to join our tiny team? ...How lucky."
     - charKey: oc aster
+      portrait: /portraits/temp_aster.png
       testimony: >
         "Brat #2- but he's more alright. Smart kid, knows how shitty the hero business can be."
     - charKey: oc patti
+      portrait: /portraits/temp_patti.png
       testimony: >
         "How Nova acts when Curry's around or not is like night and day. It's funny to watch, they're a cute pair."
     - charKey: oc curry
+      portrait: /portraits/temp_curry.png
       testimony: >
         "Hehe, I threw a tantrum at the higher ups so I could join Agent Pooplord's team. Don't mess with us!"
   facts:

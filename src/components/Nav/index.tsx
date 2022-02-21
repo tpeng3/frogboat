@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { hexToRGBA, media, elevation } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import useWindowSize from "@util/screen";
-import Drawer from "@material-ui/core/Drawer";
+import Drawer from "@mui/material/Drawer";
 import HomeIcon from "@images/SVG/home.svg";
 import MenuIcon from "@images/SVG/menu.svg";
 import { SettingsButton, SettingsModal } from "./Settings";
@@ -37,7 +37,7 @@ const NavContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 0 32px 0 20px;
-  gap: .5rem;
+  gap: 0.5rem;
   ${elevation(5)};
   ${media.desktop`
     background-color: ${COLORS.GREY_DEFAULT};

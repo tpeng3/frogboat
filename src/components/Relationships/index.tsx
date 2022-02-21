@@ -13,6 +13,7 @@ import Link from "@components/Link";
 import { hexToRGBA, media, elevation } from "@util/helpers";
 import { COLORS } from "@util/constants";
 import content from "./content.yaml";
+import MobileArrow from "@images/SVG/mobilearrow.svg";
 
 const StyledDiv = styled.div`
   max-width: 800px;
@@ -63,6 +64,13 @@ const Bubble = styled.div<{ currentTheme: string }>`
       props.theme[props.currentTheme].secondaryColor};
     transform: scale(1.02);
     ${(props) => elevation(1, props.theme[props.currentTheme].secondaryColor)};
+  }
+  .mobilearrow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 1rem;
+    top: 1rem;
   }
 `;
 
@@ -140,16 +148,36 @@ const Relationships = (props: Props) => {
             custom={i}
             variants={testimonyVariants}
           >
-            <Link to={content[chara.charKey].link}>
+            {!isTablet ? (
+              <Link to={content[chara.charKey].link}>
+                <Bubble currentTheme={currentTheme}>
+                  <PortraitIcon
+                    src={
+                      chara.portrait
+                        ? chara.portrait
+                        : content[chara.charKey].icon
+                    }
+                    alt={`${chara.charKey}-icon`}
+                  />
+                  <Description>{chara.testimony}</Description>
+                </Bubble>
+              </Link>
+            ) : (
               <Bubble currentTheme={currentTheme}>
                 <PortraitIcon
-                  src={content[chara.charKey].icon}
+                  src={
+                    chara.portrait
+                      ? chara.portrait
+                      : content[chara.charKey].icon
+                  }
                   alt={`${chara.charKey}-icon`}
                 />
-                {/* <StyledIcon src={HomeIcon} alt={"home icon"} /> */}
+                <Link to={content[chara.charKey].link}>
+                  <MobileArrow alt={"goto icon"} className="mobilearrow" />
+                </Link>
                 <Description>{chara.testimony}</Description>
               </Bubble>
-            </Link>
+            )}
           </Testimony>
         ))}
       </StyledDiv>

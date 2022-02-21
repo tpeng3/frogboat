@@ -26,9 +26,11 @@ oc quille:
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/aqaqsq.png
   relationships:
     - charKey: oc seina
+      portrait: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/seinaa.png
       testimony: >
         "Mah auntie's apprentice! He's kind and knows a lotta words, but lately he told me to stop wordeating. I don' get it...
     - charKey: oc heidi
+      portrait: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/ey-f9fkuwaio31d.jpg
       testimony: >
         "Quille's actually my brother's childhood friend! We played together as kids and he really looked after me. I even had a crush! But that's old news, you know?"
     # - charKey: oc kane
@@ -54,9 +56,11 @@ oc seina:
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/seinaa.png
   relationships:
     - charKey: oc quille
+      portrait: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/aqaqsq.png
       testimony: >
-        "The old hag's niece I now have to babysit after... the incident. She's a bright kid. I'm aware of her complicated famiy situation so I didn't mind her tagging along... I hope my company's enough."
+        "She's a bright kid. I'm aware of her complicated famiy situation so I didn't mind her tagging along... I'm not caretaker though, she deserves a better influence."
     - charKey: oc heidi
+      portrait: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/ey-f9fkuwaio31d.jpg
       testimony: >
         "Seina is soooo cute, I want her as my little sister! Oooh she's so sweet I could just eat her up!"
     # - charKey: oc kane
@@ -79,14 +83,14 @@ oc heidi:
     Energetic, caring, and optimistic- she can come off as charming to some, and annoying to others. Her family owns a small restaurant, and she frequently assists.
 
     She also likes to follow fads and give nicknames to people. While Heidi has no affinity for wordeating, she's surprisingly good at inventing spell ideas.
-
-    Quille was childhood friends with Heidi's older brother but the two are rather distant now themselves. There's a bit of an awkward backstory involved.
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/ey-f9fkuwaio31d_orig.jpg
   relationships:
     - charKey: oc quille
+      portrait: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/aqaqsq.png
       testimony: >
         "Lance's little sister... I suppose it's good to know that she's still as energetic as ever."
     - charKey: oc seina
+      portrait: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/seinaa.png
       testimony: >
         "Hehe, Heidi lets me call her big sis! She's very fun and gives out nice hugs."
     # - charKey: oc kane
@@ -114,12 +118,15 @@ oc kane:
   mainImg: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/914409.png
   relationships:
     - charKey: oc quille
+      portrait: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/aqaqsq.png
       testimony: >
         "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
     - charKey: oc heidi
+      portrait: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/ey-f9fkuwaio31d.jpg
       testimony: >
         "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
     - charKey: oc kane
+      portrait: http://pestemon.weebly.com/uploads/2/8/6/2/28624773/published/seinaa.png
       testimony: >
         "The naive and gullible type. For some reason she seems to have grown attached to me. Could it be... she was swayed by my cool demeanor?"
   facts:
