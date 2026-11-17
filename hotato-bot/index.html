@@ -1,0 +1,816 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Hotato Bot</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="1679db29-4471-80f3-8d62-ed3436209672" class="page sans" data-notion-page-icon="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/332c4868-3a0e-4354-8025-c49f11917c80/hotato.png"><header><div class="page-header-icon undefined"><img class="icon" src="hotato.png"/></div><h1 class="page-title" dir="auto">Hotato Bot</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><p id="0c786cfd-d17a-4dce-9be7-4e4c87c38797" class="" dir="auto">I was asked to make a bot that calculates word counts of posts on Discord so that’s what this is… It’s based off the code I wrote for QuingeeBot (from the hit RP group<a href="https://galesend.twohoot.net/index.html"> Gale’s End</a>)</p><p id="89e686cb-730f-4872-8da6-559b3a581c40" class="" dir="auto">
+</p><p id="69de1342-5760-47d6-958b-8e18e49ecb3e" class="" dir="auto">!!!Mark sure not to post any messages with sensitive information in public channels since this bot has the potential for evil and can log receipts of what people say. Hotato doesn’t store, read or keep any of the data itself but I have to write this disclaimer so Discord doesn&#x27;t get mad. Please don’t use Hotato for evil!!!</p><p id="23931d60-751e-4e2d-b8cb-d957c0ff6ce7" class="" dir="auto">
+</p><p id="7c16d0b1-16a4-45d9-8461-90cd9143f310" class="" dir="auto"><strong>Link to Invite the bot:</strong></p><figure id="59264d4e-d56e-4ac4-a2e6-a81d56f76847" dir="ltr"><a href="https://discord.com/api/oauth2/authorize?client_id=1100199527484502137&amp;permissions=275012167680&amp;scope=bot" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Discord - A New Way to Chat with Friends &amp; Communities</div><div class="bookmark-description">Discord is the easiest way to communicate over voice, video, and text.  Chat, hang out, and stay close with your friends and communities.</div></div><div class="bookmark-href"><img src="https://discord.com/assets/ec2c34cadd4b5f4594415127380a85e6.ico" class="icon bookmark-icon"/>https://discord.com/api/oauth2/authorize?client_id=1100199527484502137&amp;permissions=275012167680&amp;scope=bot</div></div><img src="https://discord.com/oauth2/undefined//discord.com/assets/652f40427e1f5186ad54836074898279.png" class="bookmark-image"/></a></figure><h1 id="66b00b22-3e33-4cac-8f38-d35c4dfc1b8f" class="" dir="auto">/log</h1><figure id="79397a64-aa6e-4bbe-8e28-a6ac2e3f6ae5" class="image" data-notion-image="Untitled.png" dir="ltr"><a href="Untitled.png"><img style="width:528px" src="Untitled.png"/></a></figure><p id="6d4bd730-6e0b-4e93-b2f9-5e0b30a86026" class="" dir="auto">Creates a log summary of your messages. By default, it grabs the last 100 non-bot messages in the current channel/thread you’re in. You can specify the fields to customize it a bit more.</p><p id="95020d3c-d130-4f3c-8119-91d9eb57c245" class="" dir="auto"><code>thread</code> - What thread or channel the bot should read from (useful for when you want to grab messages from a channel you don’t want to post it.) Sorry, it can’t read archived threads.</p><p id="60805ee1-4b1b-4c38-b1b7-4caabda1d775" class="" dir="auto"><code>start</code> - Paste in a Discord message link for where /log should start reading.</p><p id="44f5ada1-f681-498b-9b16-299fced762e4" class="" dir="auto"><code>end</code> - Paste in a Discord message link for where /log should end reading.</p><p id="3f16f798-7681-47d7-b279-5c4dd8a47062" class="" dir="auto"><code>increasecap</code> - <strong>NOTE: by default, /log only grabs the last 100 messages!!!</strong> (even if you use “start”) Sorry, Discord limitations. It’s to prevent someone from accidentally exporting an entire OOC or general chat. Because that will make the bot explode. However, you can increase the cap by specifying a number or setting the option to “<strong>all”</strong> to grab all the messages in an RP thread or channel.</p><p id="df22bb4b-85e6-46b9-92ad-ca5b5d4d5fe1" class="" dir="auto">After the command there are two export dropdown options:</p><ul id="b2f54e58-58f8-4c23-bb3b-88edc32beba0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Markdown</strong> files are more readable and can be manually uploaded/imported to Notion page and other places</li></ul><ul id="8d6a226c-a9de-4cb1-a84e-3a7573b2a9e2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Text</strong> files are more viewed like stats since it includes information about the time of post and reactions</li></ul><h1 id="d9349c00-e9c6-4e89-b152-c58bc26af057" class="" dir="auto">/dice</h1><figure id="4c196033-5ec6-4c4e-a1d2-b6b71e9e3dfd" class="image" data-notion-image="https://i.gyazo.com/80b45fff476366b960f7d3162e060b8d.png" dir="ltr"><a href="https://i.gyazo.com/80b45fff476366b960f7d3162e060b8d.png"><img style="width:278px" src="https://i.gyazo.com/80b45fff476366b960f7d3162e060b8d.png"/></a></figure><p id="aea45eb9-b6c8-4097-a80d-3faf68c6d8dd" class="" dir="auto">Rolls a random number. Ex: <code>d20</code> would pick a number between 1-20. You know how DnD dices go. It can add a simple <code>modifier</code> (like “+3”) on top but nothing more than that.</p><p id="df3bc7dc-a9e7-4089-a2a1-1a6f4342a40e" class="" dir="auto">You can also add descriptions to your dice rolls!</p><h1 id="d27c0adc-f630-4043-abcc-9a134d01c732" class="" dir="auto">/choose</h1><figure id="1d45562f-7ec7-44ea-a4a4-db908ebbf175" class="image" data-notion-image="Untitled%201.png" dir="ltr"><a href="Untitled%201.png"><img style="width:295.984375px" src="Untitled%201.png"/></a></figure><p id="102f6610-9d86-45e0-adfe-31cdb9d9c9d5" class="" dir="auto">Chooses a random option between a given list of strings. For example:</p><p id="14c5b0eb-222b-495d-abc3-1dbe9e0247f0" class="" dir="auto">Typing the choices <code>one | two | three</code> will have the bot pick between “one”, “two”, or “three”. You don’t have to worry if there’s spaces between the <code>|</code> or not, it doesn’t matter.</p><p id="1ea278d6-bbaa-4b95-83be-3edfe4ee069c" class="" dir="auto">You can also add descriptions to your choice roll!</p><p id="3e734531-5a5b-4b1c-abda-d17e5af3df5c" class="" dir="auto">
+</p><h1 id="81d6fe8d-e70f-42ce-8e0d-80b04ed5083d" class="" dir="auto">/poll</h1><figure id="b26e7519-ba86-411e-bfc0-5ee2905fe54e" class="image" data-notion-image="Untitled%202.png" dir="ltr"><a href="Untitled%202.png"><img style="width:288px" src="Untitled%202.png"/></a></figure><p id="b855d6fd-f19b-4e70-99ad-3687107ca3db" class="" dir="auto">Hold a poll that people can click on buttons to vote for. The results only appear when the person who started the command hits “End Poll”</p><p id="3a83fbf1-d8ba-472d-9f85-f25265f7aab9" class="" dir="auto"><code>title</code> - Title of the poll, give context to why you’re holding it</p><p id="a59e1721-d190-4792-85cf-25a25e28d521" class="" dir="auto"><code>choices</code> - Similar to /choose, the options are seperated by <code>|</code> .</p><p id="af8339fa-130a-4b53-bdd9-7e6b5fb4adbe" class="" dir="auto"><code>incognito</code> (optional) - If true, the results of the vote gets DMed to the person who started the poll</p><p id="8b1b30b2-5a06-4b40-b6af-a5d0625170f9" class="" dir="auto">
+</p><h1 id="84ec8d55-f8f2-4bda-8142-2fbd9fe3b495" class="" dir="auto">/signup</h1><figure id="c681a696-9b74-4323-96b9-f31d1c6669ca" class="image" data-notion-image="Untitled%203.png" dir="ltr"><a href="Untitled%203.png"><img style="width:432px" src="Untitled%203.png"/></a></figure><p id="10f36f60-b51e-4cd3-8a9f-30d1b3ab88b6" class="" dir="auto">Create a signup form where people who react will have their names show up on the form</p><p id="33870b22-d762-4f7f-bb63-5252e95f38cd" class="" dir="auto"><code>title</code> - Title of the form, give context to why you’re holding it</p><p id="a68102c1-ee6d-4ec0-80f1-5bd87e610de5" class="" dir="auto"><code>groups</code> - Similar to /choose, the options are seperated by <code>|</code> . If you add an emoji in front of the choice (ex: <code>🌻 Group A | 🌹 Group B</code>) It’ll link that emoji as the one to react with. Otherwise, it’ll default to alphabet emojis as the corresponding react.</p><p id="b2140473-5ec1-41e2-a125-2379a98bc29d" class="" dir="auto"><code>description</code> (optional) - Add a description for more details if needed</p><p id="876bb324-1ceb-43f9-9175-f3494884cbce" class="" dir="auto">
+</p><h1 id="96ef3912-a05c-42b9-8501-b7bcd3812e49" class="" dir="auto">&gt;ping</h1><p id="db7af1df-35db-4453-83e8-541284d97a78" class="" dir="auto">You can ping users that reacted to a certain message by grabbing the Discord link after the command. Useful for reminders or a user-run event.</p><figure id="0298a7ae-864b-4c63-9e2b-81b4abcb733f" class="image" data-notion-image="image.png" dir="ltr"><a href="image.png"><img style="width:384px" src="image.png"/></a></figure><figure id="05a60684-04b6-4e38-98bf-fae2d43d89f0" class="image" data-notion-image="image%201.png" dir="ltr"><a href="image%201.png"><img style="width:384px" src="image%201.png"/></a></figure><p id="5d79816a-030f-46df-a2b1-40f42f191b51" class="" dir="auto">You can also specify the ping to users that reacted to a specific emoji.</p><p id="5974c73b-b2de-41ab-af38-236dd7184c2f" class="" dir="auto">
+</p><h1 id="2641db43-dc8b-41ef-a420-9811f34f8d69" class="" dir="auto">&gt;embed</h1><p id="ca8d75c0-1e66-4ed5-bda1-50a7df3db5a7" class="" dir="auto">By pasting a link that fills out the following form, you can generate custom embeds that can be decorated with gifs or images.</p><figure id="cead053d-a7c5-4780-832e-e54e3cdafc2b" dir="ltr"><div class="source"><a href="https://gyazo.com/ff7cd515f4a7906bdd35934b1341593c">https://gyazo.com/ff7cd515f4a7906bdd35934b1341593c</a></div></figure><figure id="ba00d9a8-feac-4a43-af30-5c83985be905" class="image" data-notion-image="Untitled%204.png" dir="ltr"><a href="Untitled%204.png"><img style="width:707.984375px" src="Untitled%204.png"/></a></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6190c24e-d840-4199-8950-6eca46a9abad" class="code code-wrap" data-notion-code-syntax="markdown"><code class="language-markdown" style="white-space:pre-wrap;word-break:break-all">
+**AuthorPic:** 
+**Author:** 
+**Title:** 
+**Thumbnail:** 
+**Image:** 
+**Color:**
+**Description:**</code></pre><p id="9f250042-c4b2-4e66-9356-b637635d74cb" class="" dir="auto"><code>AuthorPic</code> - Tiny icon on the top left of the embed, it has to be a valid image link</p><p id="bda7faff-434d-464e-8c9d-21af10c674b6" class="" dir="auto"><code>Author</code> - Text besides the tiny top left icon, this field has to be populated if AuthorPic is used</p><p id="7e89316e-32e1-4a51-9301-80e639b233e2" class="" dir="auto"><code>Title</code> - Bolded text</p><p id="25e4ffb8-acca-4d79-a9de-d807a8d2843d" class="" dir="auto"><code>Color</code> - Color of the line besides the embed. If left empty, it defaults to Hotato’s color (#67A4A6)</p><p id="be1da11b-a5f6-481c-8ed9-98d7a05654df" class="" dir="auto"><code>Image</code> - Image at the bottom. The size of the image affects the size of the embed.</p><p id="4df0adbb-4eef-441f-96a7-d3bc3ef1dcf3" class="" dir="auto"><code>Description</code> - Supports Discord’s markdown.</p><p id="f856e34b-4286-4b2e-8d8f-ebbd4dcc5f7d" class="" dir="auto">Notes:</p><ul id="dea8dd82-ba86-40f3-9186-d55627c177a2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">All fields are OPTIONAL besides Description</li></ul><ul id="e692786e-f17c-46de-a3f0-abb357fe045d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">There are no image size recommendations, Discord changes up the styling all the time so nothing is ever consistent.</li></ul><ul id="f8a97208-9f67-447b-9951-7fe0c2355351" class="bulleted-list" dir="auto"><li style="list-style-type:disc">You can react with ❌ to delete any of Hotato’s messages if formatting looks off</li></ul><ul id="361eb9d7-f2f3-4869-a149-d779380a49e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">You can use <code>&gt;embed [Discord message link]</code> as a reply to ping a person with the message</li></ul><ul id="e9d77de0-3086-49ea-952c-def31c177392" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Embedded messages support custom emojis that exist in the servers Hotato Bot is part of.<ul id="b9715b0e-d196-4e44-8070-3dd0fac2a9e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Fun fact: they’re in over 300 servers now!</li></ul></li></ul><p id="96510430-d18a-4fe7-893c-391921a48427" class="" dir="auto">
+</p><hr id="51819ba7-ec5f-40fc-a94b-9665091a00a6" dir="auto"/><p id="b3426e55-d180-406a-8e05-26e959ce2141" class="" dir="auto">If you run into any bugs or questions, you can reach me at <strong>shuttlefrog</strong> (Discord) or email me at <strong>hanmorinn@gmail.com</strong>.</p><p id="597d9c89-0aee-4483-bf25-0fa771278f81" class="" dir="auto">
+</p><p id="b38ee8fd-7e47-4ad0-befb-00792969bb29" class="" dir="auto">If you ever want to host the bot yourself or make changes to it, here’s the source code!</p><p id="b8a4c781-a7b1-48bb-834f-7a1b50e3f4bb" class="" dir="auto"><a href="https://github.com/tpeng3/logexportbot">https://github.com/tpeng3/logexportbot</a></p><p id="a193d769-1714-49a8-bdab-9f397e3eca33" class="" dir="auto">
+</p><p id="a53f6288-459b-4eb9-b783-ad921d2e34b0" class="" dir="auto">Obligatory ko-fi link drop if you want to support:</p><p id="f5e6064c-dd23-4f7c-9457-3ae3daf586ef" class="" dir="auto"><a href="https://ko-fi.com/shuttlefrog">https://ko-fi.com/shuttlefrog</a></p><p id="9d7a0678-f531-490a-ade1-19decf37df62" class="" dir="auto">
+</p><p id="e40d8417-9d18-46f7-9330-d69cd721f98d" class="" dir="auto"><strong>“What’s a Hotato?”</strong></p><p id="7cea3fda-eddb-4f3f-a3e0-e397f7184515" class="" dir="auto">That’s the name of my mascot OC, <a href="http://pestemon.weebly.com/uploads/2/8/6/2/28624773/ey-wr-qxgaecbt6_orig.jpg">Hotaru</a>. I call them Hotato because they have the personality of a potato. 🥔</p><p id="5aaabe5f-396c-4f19-b2c6-ce2124be7726" class="" dir="auto">
+</p><hr id="bd1b2370-13fd-47d6-b1d3-dd67554b0c74" dir="auto"/><h3 id="70999a76-afee-4a87-b539-fca93aaca3ec" class="" dir="auto">Update Log</h3><p id="cab1ebcb-8b56-4fc6-a8b3-e3c03334b3e1" class="" dir="auto"><em>Last Updated: 1/20/25</em></p><ul id="1829db29-4471-80ea-a5dc-cc1c450e9b3d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>1/20/25 - Added regex to filter out Tupper replies from word counts</em></li></ul><ul id="e1a41446-de1f-43c2-a2a5-9207378bd041" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>8/25/24 - Added &gt;ping</em></li></ul><ul id="4bcd5789-2b16-46ee-a553-0ea46e960532" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>6/29/24 - Added &gt;embed</em></li></ul><ul id="7ef41de4-96ef-4fb6-b3f3-6824da5bc645" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>2/28/24 - Added /signup and /poll</em></li></ul><p id="349f5a6e-8c92-4031-8b92-853710ff6196" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
